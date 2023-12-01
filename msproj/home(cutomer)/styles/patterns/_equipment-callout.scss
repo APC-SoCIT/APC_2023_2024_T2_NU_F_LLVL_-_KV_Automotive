@@ -1,0 +1,81 @@
+// Equipment Callout Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.equipment-callout {
+  min-height: 60rem;
+  background: HSL(var(--color-sweetmint)) url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-equipment-bg.png') no-repeat left center / cover;
+}
+
+.equipment-callout__inner {
+  display: flex;
+}
+
+.equipment-callout__image,
+.equipment-callout__content {
+  flex-basis: 100%;
+  
+  @include breakpoint(medium) {
+    flex-basis: 50%;
+  }
+}
+
+//-----------------------------------------
+// Image Column
+//-----------------------------------------
+.equipment-callout__image {
+  display: none;
+  flex-shrink: 1;
+  margin-right: calc(var(--gutter) * 2);
+  
+  @include breakpoint(medium) {
+    display: initial;
+  }
+  
+  img {
+    will-change: transform;
+  }
+}
+
+//-----------------------------------------
+// Text Content Column
+//-----------------------------------------
+.equipment-callout__content {
+  flex-shrink: 0;
+  padding: 6rem 0 var(--gutter);
+}
+
+.equipment-callout__heading,
+.equipment-callout__copy {
+  color: white;
+}
+
+.equipment-callout__heading {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: var(--font-weight-semi);
+  line-height: 1;
+  
+  @include breakpoint(medium) {
+    font-size: 3.6rem;
+  }
+}
+
+.equipment-callout__cta-row {
+  display: flex;
+  margin-top: 6rem;
+}
+
+//-----------------------------------------
+// Logo
+//-----------------------------------------
+.equipment-callout__logo {
+  display: none;
+  margin-left: var(--gutter);
+  
+  @include breakpoint(large) {
+    display: initial;
+  }
+}

@@ -1,0 +1,95 @@
+// Site-Wide Footer Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.site-footer {
+  --footer-top-space: 6rem;
+  position: relative;
+  padding: var(--footer-top-space) 0 0;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/mountains.svg) no-repeat center var(--footer-top-space) / cover;
+  overflow: hidden;
+}
+
+.site-footer__newsletter {
+  position: relative;
+  margin: 3rem 0 4rem;
+  z-index: 1;
+}
+
+.site-footer__social-list {
+  position: relative;
+  margin-bottom: 4rem;
+  z-index: 1;
+}
+
+.site-footer__nav {
+  position: relative;
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+
+.site-footer__colophon {
+  position: relative;
+  padding: 3rem;
+  background-color: HSL(var(--color-black));
+  color: white;
+  font-size: 1.4rem;
+  z-index: 1;
+  
+  sup {
+    font-size: 1rem;
+  }
+}
+
+//-----------------------------------------
+// Privacy Link
+//-----------------------------------------
+.site-footer__privacy {
+  @include plain-link;
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
+//-----------------------------------------
+// Snowflakes
+//-----------------------------------------
+.site-footer__snowflake {
+  position: absolute;
+  
+  &.snowflake-1 {
+    top: 3vw;
+    left: 3vw;
+  }
+  
+  &.snowflake-2 {
+    top: 40vw;
+    left: 4vw;
+  }
+  
+  &.snowflake-3 {
+    top: 36vw;
+    left: 20vw;
+  }
+  
+  &.snowflake-4 {
+    top: 5vw;
+    right: 23vw;
+  }
+  
+  &.snowflake-5 {
+    top: 13vw;
+    right: 5vw;
+  }
+  
+  &.snowflake-6 {
+    top: 30vw;
+    right: 15vw;
+  }
+  
+  &.snowflake-7 {
+    top: 2vw;
+    right: 50vw;
+  }
+}

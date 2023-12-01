@@ -1,0 +1,41 @@
+// Hero Pattern Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.hero {
+  min-height: 60rem;
+  position: relative;
+  
+  .booking-bar {
+    @include breakpoint(large) {
+     max-width: 90%; 
+    }
+  }
+}
+
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: calc(var(--gutter) * 3);
+  background-color: HSLA(var(--color-black), 0.1);
+}
+
+.hero__heading {
+  max-width: 66%;
+  // font-size: 5rem;
+  font-size: calc(35px + (50 - 35) * (100vw - 400px) / (1100 - 400) );
+  color: white;
+  font-weight: var(--font-weight-light);
+  line-height: 1.2;
+  
+  + * {
+    margin-top: calc(var(--gutter) * 2);
+  }
+}

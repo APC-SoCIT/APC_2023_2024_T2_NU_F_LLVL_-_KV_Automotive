@@ -1,0 +1,86 @@
+// Button Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// Button Base
+//-----------------------------------------
+.button {
+  --button-ease: var(--ease-out-cubic, ease);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 1em 2em;
+  appearance: none;
+  border: none;
+  border-radius: 5rem;
+  overflow: hidden;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.075rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: HSL(var(--button-text-color, var(--color-black)));
+  background-image: linear-gradient(to left, HSL(var(--button-background, 0, 0%, 100%)) 50%, HSL(var(--button-hover-background, 0, 0%, 100%)) 50%);
+  background-position: 100% 50%;
+  background-size: 200%;
+  will-change: background-position;
+  transition: background-position 0.4s 0.1s var(--button-ease), color 0.4s 0.1s var(--button-ease);
+  
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    color: HSL(var(--button-hover-text-color, currentColor));
+    background-position: 0 50%;
+  }
+  
+  &:focus {
+    @include focus-outline
+  }
+  
+  &::-moz-focus-inner {
+    border: none;
+    outline: 0;
+  }
+}
+
+//-----------------------------------------
+// Button Text (for effect)
+//-----------------------------------------
+.button__text {
+  position: relative;
+}
+
+
+//-----------------------------------------
+// Color Themes
+//-----------------------------------------
+.button--green {
+  --button-background: var(--color-lime);
+  --button-hover-background: var(--color-sweetmint);
+}
+
+.button--dark-green {
+  --button-background: var(--color-sweetmint);
+  --button-hover-background: var(--color-lime);
+}
+
+.button--white {
+  --button-hover-background: var(--color-ice);
+}
+
+//-----------------------------------------
+// Arrow Button
+//-----------------------------------------
+.button--arrow {
+  &:hover {
+    .button__icon {
+      transform: translateX(0.5em);
+    }
+  }
+  .button__icon {
+    margin-left: 1rem;
+    line-height: 0;
+    will-change: transform;
+    transition: transform 0.4s 0.10s var(--button-ease);
+  }
+}
