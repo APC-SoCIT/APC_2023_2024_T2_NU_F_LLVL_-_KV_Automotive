@@ -1,0 +1,135 @@
+// Image Text Row Styles for Ski Homepage
+// Author: John Flynn
+
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.image-text-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-text-row__text {
+  width: 100%;
+  
+  @include breakpoint(medium) {
+   width: 60%; 
+  }
+}
+
+//-----------------------------------------
+// Image Column
+//-----------------------------------------
+.image-text-row__image {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(4rem);
+  transition: opacity 0.8s var(--ease-in-out-quad), transform 0.8s var(--ease-in-out-quad);
+  will-change: transform, opacity;
+  
+  @include breakpoint(medium) {
+   width: 40%; 
+  }
+  
+  .reveal & {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+.image-text-row__image {
+  margin-bottom: var(--gutter);
+  
+  @include breakpoint(medium) {
+    margin-bottom: 0;
+  }
+}
+
+.image-text-row__figure {
+  display: inline-block;
+  border-radius: 2rem;
+  overflow: hidden;;
+}
+
+//-----------------------------------------
+// Text Column
+//-----------------------------------------
+.image-text-row__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  @include breakpoint(medium) {
+   padding-left: 7.2rem;
+  }
+}
+
+.image-text-row__heading {
+  position: relative;
+  font-size: 2.6rem;
+  font-weight: var(--font-weight-semi);
+  
+  @include breakpoint(medium) {
+    font-size: 2.8rem;
+  }
+  
+  @include breakpoint(medium) {
+    font-size: 3.2rem;
+  }
+}
+
+.image-text-row__copy {
+  color: HSL(var(--color-mid-grey));
+}
+
+
+//-----------------------------------------
+// Reversed Variant
+//-----------------------------------------
+.image-text-row--reverse {
+  flex-direction: row-reverse;
+  
+  .image-text-row__text {
+    @include breakpoint(medium) {
+     padding: 0 7.2rem 0 0; 
+    }
+  }
+}
+
+//-----------------------------------------
+// Heading Underlines
+//-----------------------------------------
+.image-text-row__underline {
+  position: absolute;
+  z-index: -1;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 1s 0.8s ease;
+  
+  .reveal & {
+    max-width: 100%;
+  }
+}
+
+.image-text-row {
+  .underline-1 {
+    left: 0;
+    bottom: -1rem;
+  }
+  
+  .underline-2 {
+    left: 2.5rem;
+    bottom: -1.2rem;
+  }
+  
+  .underline-2 {
+    left: 2.5rem;
+    bottom: -1.2rem;
+  }
+  
+  .underline-3 {
+    left: 3rem;
+    bottom: -1.6rem;
+  }
+}

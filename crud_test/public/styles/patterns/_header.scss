@@ -1,0 +1,70 @@
+// Site-Wide Header Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.site-header {
+  padding: 1.5rem 0;
+  
+  @include breakpoint(medium) {
+    padding: 0.6rem 0;
+  }
+}
+
+.site-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  
+  @include breakpoint(medium) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+//-----------------------------------------
+// Logo
+//-----------------------------------------
+.site-header__logo {
+  margin-bottom: 1rem;
+  
+  @include breakpoint(medium) {
+    margin: 0;
+  }
+}
+
+//-----------------------------------------
+// Actions (Nav + Phone)
+//-----------------------------------------
+.site-header__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  @include breakpoint(medium) {
+    flex-direction: row;
+  }
+}
+
+.site-header__nav {
+  margin-bottom: 1rem;
+  
+  @include breakpoint(medium) {
+    margin-bottom: 0;
+    margin-right: calc(var(--gutter) * 2);
+  }
+}
+
+.site-header__phone {
+  @include plain-link;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__phone-icon {
+  display: inline-block;
+  margin-right: calc(var(--gutter) / 2);
+}
