@@ -26,24 +26,13 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $user = $request->user();
+        $request->user()->fill($request->validated());
 
-        // Update common profile information
-        $user->fill($request->validated());
-
-        // Update role for staff or admin
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
         }
 
-        // Check if user is admin or staff and update role accordingly
-        if ($user->isAdmin()) {
-            $user->role = 'admin';
-        } elseif ($user->isStaff()) {
-            $user->role = 'staff';
-        }
-
-        $user->save();
+        $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

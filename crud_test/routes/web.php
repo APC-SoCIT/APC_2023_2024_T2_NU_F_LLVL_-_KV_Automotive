@@ -1,11 +1,8 @@
 <?php
 
-use App\Http\Controllers\vehicleController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\StaffController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\vehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,28 +16,24 @@ use App\Http\Controllers\StaffController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home.index');
-
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/vehicle', [vehicleController::class, 'index'])->name('vehicle.index');
-    Route::get('/vehicle/create', [vehicleController::class, 'create'])->name('vehicle.create');
-    Route::post('/vehicle', [vehicleController::class, 'store'])->name('vehicle.store');
-    Route::match(['get', 'post'], '/vehicle/{vehicle}/edit', [VehicleController::class, 'edit'])->name('vehicle.edit');
-    Route::put('/vehicle/{vehicle}/update', [VehicleController::class, 'update'])->name('vehicle.update');
-    Route::delete('/vehicle/{vehicle}/destroy', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
 });
 
+Route::get('/vehicle', [vehicleController::class, 'index'])->name('vehicle.index');
+Route::get('/vehicle/create', [vehicleController::class, 'create'])->name('vehicle.create');
+Route::post('/vehicle', [vehicleController::class, 'store'])->name('vehicle.store');
+Route::match(['get', 'post'], '/vehicle/{vehicle}/edit', [VehicleController::class, 'edit'])->name('vehicle.edit');
+Route::put('/vehicle/{vehicle}/update', [VehicleController::class, 'update'])->name('vehicle.update');
+Route::delete('/vehicle/{vehicle}/destroy', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
 
-
-
+require __DIR__.'/auth.php';
