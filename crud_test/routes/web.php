@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\vehicleController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,11 @@ use App\Http\Controllers\vehicleController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// routes/web.php
+Route::get('/user', function () {
+    return view('user');
 });
 
 Route::get('/dashboard', function () {
@@ -37,3 +46,34 @@ Route::put('/vehicle/{vehicle}/update', [VehicleController::class, 'update'])->n
 Route::delete('/vehicle/{vehicle}/destroy', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+   
+//Normal Users Routes List
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+   
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
+   
+//Admin Routes List
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+   
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+
+
+    Route::get('/admin/users', [AdminController::class, 'viewAllUsers'])->name('admin.view-all-users');
+    Route::get('/admin/edit-user-role/{user}', [AdminController::class, 'editUserRole'])->name('admin.edit-user-role');
+    Route::post('/admin/update-user-role/{user}', [AdminController::class, 'updateUserRole'])->name('admin.update-user-role');
+    Route::delete('/admin/delete-user/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+    
+
+});
+   
+//Admin Routes List
+Route::middleware(['auth', 'user-access:staff'])->group(function () {
+   
+    Route::get('/staff/home', [HomeController::class, 'staffHome'])->name('staff.home');
+});
+
+
+

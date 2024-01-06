@@ -1,0 +1,19 @@
+// Logo Card Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.logo-card {
+  text-align: center;
+}
+
+.logo-card__title {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: HSL(var(--color-mid-grey));
+}
+
+.logo-card__logo {
+  display: inline-block;
+}

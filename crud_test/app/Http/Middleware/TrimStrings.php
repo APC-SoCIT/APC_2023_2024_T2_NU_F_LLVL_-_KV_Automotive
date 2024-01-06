@@ -2,19 +2,29 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Foundation\Http\Middleware\TrimStrings as Middleware;
 
-class TrimStrings
+class TrimStrings extends Middleware
 {
     /**
-     * Handle an incoming request.
+     * The names of the attributes that should not be trimmed.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @var array
      */
-    public function handle(Request $request, Closure $next): Response
+    protected $except = [
+        'password',
+        'password_confirmation',
+    ];
+
+    /**
+     * Transform the given value.
+     *
+     * @param  string  $key
+     * @param  mixed  $value
+     * @return mixed
+     */
+    protected function transform($key, $value)
     {
-        return $next($request);
+        return is_string($value) ? trim($value) : $value;
     }
 }

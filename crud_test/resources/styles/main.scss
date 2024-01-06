@@ -1,0 +1,57 @@
+//--------------------------------------------------------------
+// Main Sass file for Ski Homepage
+// Author: John Flynn
+//
+// Only imports here
+//--------------------------------------------------------------
+
+//----------Settings
+@import 'settings/animations';
+@import 'settings/fonts';
+@import 'settings/colors';
+@import 'settings/breakpoints';
+@import 'settings/spacing';
+@import 'settings/z-index';
+
+//----------Tools
+@import 'tools/mixins';
+
+//----------Base Styles
+@import 'base/reset';
+@import 'base/document';
+@import 'base/typography';
+@import 'base/images';
+@import 'base/accessibility';
+
+
+//----------Objects
+@import 'objects/background-image';
+@import 'objects/buttons';
+@import 'objects/inputs';
+@import 'objects/header-nav';
+@import 'objects/page-section';
+@import 'objects/section-heading';
+@import 'objects/shadow-box';
+
+//----------Components
+@import 'components/accolades-row';
+@import 'components/booking-bar';
+@import 'components/footer-nav';
+@import 'components/image-bg-card';
+@import 'components/image-text-row';
+@import 'components/logo-card';
+@import 'components/newsletter-cta';
+@import 'components/notice-bar';
+@import 'components/slider';
+@import 'components/star-ranking';
+@import 'components/quote';
+@import 'components/quote-slider';
+@import 'components/social-list';
+
+
+//----------Patterns
+@import 'patterns/equipment-callout';
+@import 'patterns/header';
+@import 'patterns/hero';
+@import 'patterns/footer';
+@import 'patterns/process';

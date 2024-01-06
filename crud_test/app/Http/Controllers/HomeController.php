@@ -1,9 +1,13 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+ 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
+
+ 
 class HomeController extends Controller
 {
     /**
@@ -13,37 +17,48 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        
+        $this->middleware('auth');
     }
-
+ 
     /**
-     * Show the application dashboard for the user role.
+     * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function userHome()
+    public function index()
     {
-        return view('home', ["msg" => "Hello! I am user"]);
+        return view('home');
     }
-
+ 
     /**
-     * Show the application dashboard for the staff role.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function staffHome()
-    {
-        return view('home', ["msg" => "Hello! I am staff"]);
-    }
-
-    /**
-     * Show the application dashboard for the admin role.
+     * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function adminHome()
     {
+           // Check if the user is an admin
+           if (Auth::user()->isAdmin()) {
+            // Redirect the admin to the '/vehicle' route
+            return Redirect::route('vehicle.index');
+        }
 
-        return view('home', ["msg" => "Hello! I am admin"]);
+        // If not an admin, continue with your existing logic for admin home
+        return view('adminHome');
+    }
+    
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function staffHome()
+    {
+                   // Check if the user is an admin
+                   if (Auth::user()->isStaff()) {
+                    // Redirect the admin to the '/vehicle' route
+                    return Redirect::route('vehicle.index');
+                }
+        return view('staffHome');
     }
 }

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ski Homepage</title>
+  <title>LLBL & KV</title>
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/cb52a032da.js" crossorigin="anonymous"></script>
 
@@ -34,22 +34,26 @@
 
         <div class="site-header__actions">
           <nav class="site-header__nav header-nav">
-                @auth
-                    <a href="{{ route('profile.edit') }}" class="header-nav__item">Hi, {{ Auth::user()->name }}</a>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="header-nav__item">
-                        Logout
-                    </a>
-                    <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
-                        @csrf 
+          <a href="#0" class="header-nav__item">
+                      @auth
+                        Hi, {{ Auth::user()->name }}
+                      @else
+                          My Account
+                      @endauth
+                  </a>
+                  @if (Auth::check())
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="header-nav__item">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
                     </form>
                 @else
-                    <a href="{{ route('vehicle.index') }}" class="header-nav__item">Login</a>
-                @endauth
-            </nav>
-          <a href="#" class="site-header__phone">
+                    <a href="{{ route('login') }}" class="header-nav__item">Login</a>
+                @endif
+          </nav>
+          <a href="tel:" class="site-header__phone">
               <span class="site-header__phone-icon" aria-hidden>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" width="16" height="16">
-                  <title>tite</title>
+                  <title>Phnoe</title>
                   <path d="M29.964 22.653l-3.38-3.38a3.531 3.531 0 00-5 0l-.905.907a75.007 75.007 0 01-9.865-9.867l.905-.9a3.535 3.535 0 000-4.993l-3.38-3.38a3.531 3.531 0 00-5 0L1.484 2.894A5.137 5.137 0 00.838 9.34a74.328 74.328 0 0020.815 20.812 5.116 5.116 0 006.448-.647l1.855-1.855a3.527 3.527 0 00.008-4.997z"/>
                   <path d="M21.662 30.148A74.346 74.346 0 01.847 9.336a5.138 5.138 0 01.647-6.447l1.854-1.854a3.531 3.531 0 015 0l3.381 3.38a3.536 3.536 0 010 4.993l-.906.9a74.921 74.921 0 009.865 9.867l.905-.907a3.532 3.532 0 015 0l3.38 3.38a3.526 3.526 0 010 4.993l-1.854 1.855a5.119 5.119 0 01-6.448.647z" fill="#3bf0a6"/>
                 </svg>

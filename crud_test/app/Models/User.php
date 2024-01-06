@@ -6,8 +6,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens as HasApiTokensAlias;
-use Spatie\Permission\Traits\HasRoles;
+
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -15,8 +18,7 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasRoles; // Add this line to use Spatie\Permission\Traits\HasRoles
-
+   
     /**
      * The attributes that are mass assignable.
      *
@@ -26,6 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type'
     ];
 
     /**
@@ -57,4 +60,27 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+        /**
+     * Interact with the user's first name.
+     *
+     * @param  string  $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function type(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) =>  ["user", "admin", "staff"][$value],
+        );
+    }
+
+    public function isAdmin()
+    {
+        return $this->type === 'admin';
+    }
+
+    public function isStaff()
+    {
+        return $this->type === 'staff';
+    }
 }
