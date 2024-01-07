@@ -72,6 +72,7 @@ class User extends Authenticatable
         return new Attribute(
             get: fn ($value) =>  ["user", "admin", "staff"][$value],
         );
+        return $table[$key] ?? null;
     }
 
     public function isAdmin()

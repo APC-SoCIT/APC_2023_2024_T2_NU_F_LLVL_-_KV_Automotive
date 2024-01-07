@@ -38,13 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/vehicle', [vehicleController::class, 'index'])->name('vehicle.index');
-Route::get('/vehicle/create', [vehicleController::class, 'create'])->name('vehicle.create');
-Route::post('/vehicle', [vehicleController::class, 'store'])->name('vehicle.store');
-Route::match(['get', 'post'], '/vehicle/{vehicle}/edit', [VehicleController::class, 'edit'])->name('vehicle.edit');
-Route::put('/vehicle/{vehicle}/update', [VehicleController::class, 'update'])->name('vehicle.update');
-Route::delete('/vehicle/{vehicle}/destroy', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
-
 require __DIR__.'/auth.php';
 
 Auth::routes();
@@ -65,7 +58,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/edit-user-role/{user}', [AdminController::class, 'editUserRole'])->name('admin.edit-user-role');
     Route::post('/admin/update-user-role/{user}', [AdminController::class, 'updateUserRole'])->name('admin.update-user-role');
     Route::delete('/admin/delete-user/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
-    
+
+
+    Route::get('/vehicle', [vehicleController::class, 'index'])->name('vehicle.index');
+    Route::get('/vehicle/create', [vehicleController::class, 'create'])->name('vehicle.create');
+    Route::post('/vehicle', [vehicleController::class, 'store'])->name('vehicle.store');
+    Route::match(['get', 'post'], '/vehicle/{vehicle}/edit', [VehicleController::class, 'edit'])->name('vehicle.edit');
+    Route::put('/vehicle/{vehicle}/update', [VehicleController::class, 'update'])->name('vehicle.update');
+    Route::delete('/vehicle/{vehicle}/destroy', [VehicleController::class, 'destroy'])->name('vehicle.destroy');
+
 
 });
    
@@ -77,3 +78,7 @@ Route::middleware(['auth', 'user-access:staff'])->group(function () {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

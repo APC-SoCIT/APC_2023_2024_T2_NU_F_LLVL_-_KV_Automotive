@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->boolean('type')->default(false); //add type boolean Users: 0=>User, 1=>Admin, 2=>Manager    
+            $table->boolean('type')->default(false); //add type boolean Users: 0=>User, 1=>Admin, 2=>staff    
         });
     }
 
