@@ -1,0 +1,13 @@
+// Process Patter Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.process {
+  padding-bottom: 10rem;
+  
+  .image-text-row:not(:last-child) {
+    margin-bottom: 7rem;
+  }
+}

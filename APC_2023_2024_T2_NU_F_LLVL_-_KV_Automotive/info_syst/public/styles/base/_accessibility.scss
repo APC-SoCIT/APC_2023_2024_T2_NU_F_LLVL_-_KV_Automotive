@@ -1,0 +1,6 @@
+// Contains Accessibility Utility Functions for Ski Homepage
+// Author: John Flynn
+
+.u-visually-hidden {
+  @include visually-hidden;
+}
