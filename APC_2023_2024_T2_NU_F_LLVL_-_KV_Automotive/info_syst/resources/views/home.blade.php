@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ski Homepage</title>
+  <title>LLKV & KB</title>
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/cb52a032da.js" crossorigin="anonymous"></script>
 
@@ -35,7 +35,7 @@
         <div class="site-header__actions">
           <nav class="site-header__nav header-nav">
             <a href="#0" class="header-nav__item">My Account</a>
-            <a href="#0" class="header-nav__item">Login</a>
+            <a href="{{ route('login') }}" class="header-nav__item">Login</a>
           </nav>
           <a href="tel:" class="site-header__phone">
               <span class="site-header__phone-icon" aria-hidden>
@@ -156,9 +156,9 @@
           <div class="image-text-row__image">
             <figure>
               <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-process-1.jpg" alt="Man and woman smiling at a computer">
+                <img class="lazyload is-lazyloaded" data-src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172   " alt="Man and woman smiling at a computer">
                 <noscript>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-process-1.jpg" alt="Man and woman smiling at a computer">
+                    <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman smiling at a computer">
                   </noscript>
               </div>
               <!--/.image-wrapper-->
@@ -174,7 +174,7 @@
                 </svg>
               </span>
             </h3>
-            <p class="image-text-row__copy">Begin your vacation with the peace of mind of having your equipment reserved ahead of time. Reserve online or call one of our reservation specialists.</p>
+            <p class="image-text-row__copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt aliquet volutpat. Nam eget mi urna. Nullam porttitor velit quis ante imperdiet, at accumsan ante ultrices. Donec non nisi erat.</p>
           </div>
           <!-- /.image-text-row__text -->
         </div>
@@ -183,9 +183,9 @@
           <div class="image-text-row__image">
             <figure>
               <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-process-2.jpg" alt="Man and woman with skis">
+                <img class="lazyload is-lazyloaded" data-src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman with skis">
                 <noscript>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-process-2.jpg" alt="Man and woman with skis">
+                    <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman with skis">
                   </noscript>
               </div>
               <!--/.image-wrapper-->
@@ -202,7 +202,7 @@
               </span>
             </h3>
             <p class="image-text-row__copy">
-              Spend more time with friends and family and not in a rental line. Your expert ski tech will fit you with top of the line equipment at your accommodations. We bring extra gear to ensure a perfect fit!
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt aliquet volutpat. Nam eget mi urna. Nullam porttitor velit quis ante imperdiet, at accumsan ante ultrices. Donec non nisi erat.
             </p>
           </div>
           <!-- /.image-text-row__text -->
@@ -212,9 +212,9 @@
           <div class="image-text-row__image">
             <figure>
               <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-process-3.jpg" alt="Man and woman walking with ski bags">
+                <img class="lazyload is-lazyloaded" data-src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman walking with ski bags">
                 <noscript>
-                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-process-3.jpg" alt="Man and woman walking with ski bags">
+                  <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman walking with ski bags">
                 </noscript>
               </div>
               <!--/.image-wrapper-->
@@ -231,7 +231,7 @@
               </span>
             </h3>
             <p class="image-text-row__copy">
-              Relax on your final day of your vacation while we pick up all your rented equipment at a time and place of your choosing.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt aliquet volutpat. Nam eget mi urna. Nullam porttitor velit quis ante imperdiet, at accumsan ante ultrices. Donec non nisi erat.
             </p>
           </div>
           <!-- /.image-text-row__text -->
@@ -248,7 +248,7 @@
       <div class="container">
         <div class="equipment-callout__inner">
           <div class="equipment-callout__image">
-            <img class="rellax" data-rellax-speed="0.4" src="truck-kun.png" alt="">
+            <img class="rellax" data-rellax-speed="0.4" src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="truck">
           </div>
           <!--/.equipment-callout__image-->
           <div class="equipment-callout__content">
