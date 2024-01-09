@@ -47,7 +47,7 @@ Before you begin, make sure you have the following installed on your system:
 
 4. **Update User Model:**
 
-    Copy and paste the provided code from `updatedUser.txt` into `app/models/User.php`.
+- Copy and paste the provided code from `updatedUser.txt` into `app/models/User.php`.
 
 5. **Run the Application:**
 
@@ -57,19 +57,13 @@ Before you begin, make sure you have the following installed on your system:
 
     Visit [http://localhost:8000](http://localhost:8000) in your web browser.
 
-## User Model Customization
-
-- Customize roles and permissions in `app/models/User.php`.
-
-## Notes
+# Notes
 
 - Ensure that your environment configuration is set up correctly in the `.env` file.
+
+- **Database Setup:**
+  - Delete your current `infosyst.db`.
+  - Create a new `infosyst.db` using phpMyAdmin or your preferred database management tool.
+  - Import the provided `infosyst.db` into the newly created database.
+
 - For additional configuration options for Laravel and Filament, refer to their respective documentation.
-
-## Contributing
-
-If you would like to contribute to the Information Management System project, please follow our [contribution guidelines](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the [Your License Name] License - see the [LICENSE.md](LICENSE.md) file for details.
