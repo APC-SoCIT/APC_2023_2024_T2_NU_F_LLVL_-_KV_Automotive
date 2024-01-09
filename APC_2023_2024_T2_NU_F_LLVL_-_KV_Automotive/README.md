@@ -28,6 +28,7 @@ Before you begin, make sure you have the following installed on your system:
     composer install
     composer require filament/filament:"^3.1" -W
     composer require laravel/jetstream
+    php artisan jetstream:install livewire
     ```
 
     ```bash
