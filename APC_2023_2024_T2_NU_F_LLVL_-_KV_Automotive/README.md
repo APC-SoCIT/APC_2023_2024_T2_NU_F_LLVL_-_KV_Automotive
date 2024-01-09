@@ -47,7 +47,7 @@ Before you begin, make sure you have the following installed on your system:
 
 4. **Update User Model:**
 
-    Copy and paste the provided code from updatedUser.txt into `app/models/User.php`.
+    Copy and paste the provided code from `updatedUser.txt` into `app/models/User.php`.
 
 5. **Run the Application:**
 
