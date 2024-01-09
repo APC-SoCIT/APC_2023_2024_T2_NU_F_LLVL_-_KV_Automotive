@@ -1,6 +1,6 @@
-# Project Setup Guide
+# Information Management System Project Setup Guide
 
-This guide provides step-by-step instructions for setting up the [Your Project Name] project.
+This guide provides step-by-step instructions for setting up the Information Management System project.
 
 ## Getting Started
 
@@ -27,6 +27,9 @@ Before you begin, make sure you have the following installed on your system:
     ```bash
     composer install
     composer require filament/filament:"^3.1" -W
+    ```
+
+    ```bash
     composer require laravel/jetstream
     php artisan jetstream:install livewire
     ```
@@ -44,7 +47,7 @@ Before you begin, make sure you have the following installed on your system:
 
 4. **Update User Model:**
 
-    Copy and paste the provided code into `app/models/User.php`.
+    Copy and paste the provided code from updatedUser.txt into `app/models/User.php`.
 
 5. **Run the Application:**
 
@@ -61,11 +64,11 @@ Before you begin, make sure you have the following installed on your system:
 ## Notes
 
 - Ensure that your environment configuration is set up correctly in the `.env` file.
-- For additional configuration options, refer to the project documentation.
+- For additional configuration options for Laravel and Filament, refer to their respective documentation.
 
 ## Contributing
 
-If you would like to contribute to [Your Project Name], please follow our [contribution guidelines](CONTRIBUTING.md).
+If you would like to contribute to the Information Management System project, please follow our [contribution guidelines](CONTRIBUTING.md).
 
 ## License
 
