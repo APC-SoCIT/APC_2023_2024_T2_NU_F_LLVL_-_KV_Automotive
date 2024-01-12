@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Section;
 
 class UserResource extends Resource
 {
@@ -23,6 +24,9 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
+                Section::make('Create User')
+    ->description('Kindly fill up the forms below')
+    ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -33,8 +37,11 @@ class UserResource extends Resource
                 Forms\Components\Select::make('role')
                     ->required()
                     ->options(User::ROLES)
+                    ->visible(auth()->user()->isAdmin())
                     ->native(false)
                     ->default('USER'),
+                    ])
+
             ]);
     }
 
@@ -61,6 +68,7 @@ class UserResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('role')
+                    ->visible(auth()->user()->isAdmin())
                     ->searchable(),
             ])
             ->filters([
@@ -90,5 +98,19 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+    public static function getEloquentQuery(): Builder
+    {
+        $user = auth()->user();
+
+        $query = parent::getEloquentQuery();
+
+        if ($user->isAdmin()) {
+            // Admin can see all users
+            return $query;
+        } else {
+            // Other users can only see their own record
+            return $query->where('id', $user->id);
+        }
     }
 }

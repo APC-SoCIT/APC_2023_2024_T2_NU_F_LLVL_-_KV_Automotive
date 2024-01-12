@@ -35,7 +35,8 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(FilamentPanel $panel): bool
     {
-        return $this->isAdmin() ||  $this->isStaff();
+    return
+     $this->isAdmin() ||  $this->isStaff() || $this->isUser();
     }
 
     public function isAdmin() {
@@ -45,6 +46,11 @@ class User extends Authenticatable implements FilamentUser
     public function isStaff() {
        return $this->role === self::ROLE_STAFF;
     }
+    public function isUser() : bool
+    {
+       return $this->role === self::ROLE_USER;
+    }
+
     /**
      * The attributes that are mass assignable.
      *

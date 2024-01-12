@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Section;
 
 class VehicleResource extends Resource
 {
@@ -27,6 +28,10 @@ class VehicleResource extends Resource
     {
         return $form
             ->schema([
+                Section::make('Rate limiting')
+                ->description('Prevent abuse by limiting the number of requests per period')
+                ->schema([
+
                 Forms\Components\Select::make('account_id')
                     ->relationship(name: 'account', titleAttribute: 'full_name')
                     ->native(false)
@@ -40,6 +45,10 @@ class VehicleResource extends Resource
                 Forms\Components\TextInput::make('year')
                     ->required()
                     ->numeric(),
+                ]),
+                Section::make('Rate limiting')
+                ->description('betlog')
+                ->schema([
                 Forms\Components\TextInput::make('license_plate')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('color')
@@ -53,6 +62,7 @@ class VehicleResource extends Resource
                     ])
                     ->native(false)
                     ->required(),
+                ]),
                 Forms\Components\Select::make('transmission')
                     ->options([
                         'Manual' => 'Manual',
@@ -63,6 +73,7 @@ class VehicleResource extends Resource
                 Forms\Components\Textarea::make('notes')
                     ->maxLength(65535)
                     ->columnSpanFull(),
+
             ]);
     }
 

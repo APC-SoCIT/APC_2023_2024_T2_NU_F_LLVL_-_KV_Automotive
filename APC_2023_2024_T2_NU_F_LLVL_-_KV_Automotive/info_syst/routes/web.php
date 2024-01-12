@@ -26,3 +26,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+
+
+Route::get('/admin/login', function () {
+    return redirect()->to('login');
+})->name('filament.admin.auth.login');

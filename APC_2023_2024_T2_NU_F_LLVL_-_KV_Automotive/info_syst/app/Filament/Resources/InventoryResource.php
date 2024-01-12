@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Section;
 
 class InventoryResource extends Resource
 {
@@ -25,6 +26,12 @@ class InventoryResource extends Resource
     {
         return $form
             ->schema([
+
+                Section::make('Inventory')
+
+    ->schema([
+
+
                 Forms\Components\TextInput::make('product_name')
                     ->required()
                     ->maxLength(255),
@@ -38,6 +45,7 @@ class InventoryResource extends Resource
                     ->required()
                     ->numeric()
                     ->prefix('$'),
+    ])
             ]);
     }
 
@@ -45,8 +53,10 @@ class InventoryResource extends Resource
     {
         return $table
             ->columns([
+
                 Tables\Columns\TextColumn::make('product_name')
                     ->searchable(),
+                    
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()
                     ->sortable(),

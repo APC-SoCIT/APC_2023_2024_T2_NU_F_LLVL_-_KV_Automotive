@@ -23,13 +23,48 @@
     <!--/.container--->
   </aside>
   <!--/.notice-bar--->
-  <header class="site-header" style="background-color: #3FFFB0;">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .site-header {
+  background-color: rgba(0, 0, 0, 0.904); /* Adjust the alpha value (last parameter) for transparency */
+  color: #fff; /* Change the text color as needed */
+  padding: 4px 0;
+}
+
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .site-header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    .site-header__logo img {
+      max-width: 65%;
+      height: auto;
+      /* Set max-height or max-width as needed to control the logo size */
+      max-height: 40%; /* Adjust this value based on your preference */
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
     <div class="container">
       <div class="site-header__inner">
         <figure class="site-header__logo">
           <a href="#0" aria-label="Go to homepage">
-              <img src="https://scontent.fmnl25-1.fna.fbcdn.net/v/t1.15752-9/370223258_570112988608092_2848893656772701518_n.png?_nc_cat=105&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFbl01TuYhjxLGrlESH1HFBRawxEHTL7LlFrDEQdMvsuR9l6vAKw9hSu0qaVnnhuG5YIzZbcN1inVOEEvb9BmBY&_nc_ohc=rhvM57loqycAX8JFTxT&_nc_ht=scontent.fmnl25-1.fna&oh=03_AdRT59luscaG5mk8BJs1fDrjiXBBpNRy5FDK3X5MpUb-5Q&oe=658D6937" alt="LLBL & KV">
-            </a>
+            <img src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/413428896_888413316319355_4904455853927560991_n.png?_nc_cat=106&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEfMYLjJ9xrvpJjryzF1twvcv80FAQwW1ty_zQUBDBbW0RAI-F3TmVpWgdDy26rhZemkUW4GVc1rCxG4LQ8IPjH&_nc_ohc=ukG1qmt8GDYAX_rzRqX&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdT5qGdNSvotMVYGGR9PQISal6gRHBWXCsaL-SdZeNaSTQ&oe=65C83685" alt="LLBL & KV">
+          </a>
         </figure>
 
         <div class="site-header__actions">
@@ -77,19 +112,12 @@
                 <i class="booking-bar__icon fal fa-calendar-alt"></i>
                 <p class="booking-bar__cell-copy">When are you going?</p>
               </div>
+
               <!--/.booking-bar__dates-->
-              <div class="booking-bar__submit">
-                <button class="button button--green button--arrow">
-                    <span class=button__text>schedule now</span>
-                    <span class="button__icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="29" height="14" viewBox="0 0 56.953 28.557">
-                      <g fill="none" stroke="#fff" stroke-linecap="round" stroke-width="4">
-                        <path d="M2 14.279h52.45"/>
-                        <path d="M44.182 2.824l10.1 11.307-10.1 11.6"/>
-                      </g>
-                      </svg>
-                    </span>
-                  </button>
+              <div class="booking-bar__dates booking-bar__cell">
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                <p class="booking-bar__cell-copy" style="font-size: 30px">Inquire Now!</p>
+              </div>
               </div>
               <!--/.booking-bar__submit-->
             </div>
@@ -105,7 +133,7 @@
     <!---------------------------
         Accolades Row
       ----------------------------->
-    <section class="accolades-row">
+    <section class="accolades-row" style="background-color:#3FFDB0">
       <div class="container">
         <div class="accolades-row__inner">
           <div class="logo-card">
@@ -123,7 +151,7 @@
           <div class="logo-card">
             <h2 class="logo-card__title">Certificate of Excellence</h2>
             <figure class="logo-card__logo">
-              <img class="lazyload is-lazyloaded" data-src="https://www.iconpacks.net/icons/1/free-wrench-icon-951-thumb.png" alt="Trip Advisor Logo">
+              <img class="lazyload is-lazyloaded " data-src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.15752-9/411183834_1564006544435548_4222911070384283150_n.png?_nc_cat=109&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFLihvrpl_XTEBYcjLc802ARlD0wazSz9hGUPTBrNLP2JKUdTg_N_-9Jk9zXOmeBYtmWHEQLPoHIQf1-r258rEf&_nc_ohc=jMyw4HINGoMAX9Qh5eH&_nc_ht=scontent.fmnl4-4.fna&oh=03_AdRa-ot7ItWfbSc1ek-Hge83iC3Cicoodbi1YKy1IwMgEg&oe=65C84325" alt="Trip Advisor Logo">
               <noscript>
                   <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/trip-advisor.png" alt="Trip Advisor Logo">
                 </noscript>
@@ -133,7 +161,7 @@
           <div class="logo-card">
             <h2 class="logo-card__title">Certificate of Excellence</h2>
             <figure class="logo-card__logo">
-              <img class="lazyload is-lazyloaded" data-src="https://www.iconpacks.net/icons/1/free-car-icon-1057-thumb.png" alt="Conde Nast Traveler Logo">
+              <img class="lazyload is-lazyloaded" data-src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/415783692_750598133638533_3235948727697590486_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHJFaG8FzKCPHn2IWpAVIg7QKAAviOSAxRAoAC-I5IDFK34Sqnps8EoS04OPzg1jGnoedQVOTONfJQkfoMnFJZx&_nc_ohc=FppbZJV0-84AX88VLHN&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdQf2ui4uAl6MuJi0uB49PSn3di6KxTEkqhBeQyrpJKnHQ&oe=65C846AC" alt="Conde Nast Traveler Logo">
               <noscript>
                   <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/conde-nast.png" alt="Conde Nast Traveler Logo">
                 </noscript>
@@ -149,14 +177,14 @@
     <!---------------------------
         Process
       ----------------------------->
-    <section class="process page-section">
-      <div class="container">
+    <section class="process page-section "  >
+      <div class="container" >
         <h2 class="section-heading">Service Made Simple</h2>
         <div class="image-text-row">
           <div class="image-text-row__image">
             <figure>
               <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172   " alt="Man and woman smiling at a computer">
+                <img class="lazyload is-lazyloaded" data-src="https://media.istockphoto.com/id/1447963729/photo/thumbtack-pins-on-a-calendar.jpg?s=612x612&w=0&k=20&c=EYxmPCedHyNTxXDPPjleWDBWeMKI7zjv3fnaWZGvsfY= " alt="Man and woman smiling at a computer">
                 <noscript>
                     <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman smiling at a computer">
                   </noscript>
@@ -174,7 +202,7 @@
                 </svg>
               </span>
             </h3>
-            <p class="image-text-row__copy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt aliquet volutpat. Nam eget mi urna. Nullam porttitor velit quis ante imperdiet, at accumsan ante ultrices. Donec non nisi erat.</p>
+            <p class="image-text-row__copy">Schedule Your Slot: Choose a date and time that suits you. We'll be ready to give your car the attention it deserves.</p>
           </div>
           <!-- /.image-text-row__text -->
         </div>
@@ -183,7 +211,7 @@
           <div class="image-text-row__image">
             <figure>
               <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman with skis">
+                <img class="lazyload is-lazyloaded" data-src="https://plus.unsplash.com/premium_photo-1667520550378-b10d85a3c209?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Man and woman with skis">
                 <noscript>
                     <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman with skis">
                   </noscript>
@@ -212,7 +240,7 @@
           <div class="image-text-row__image">
             <figure>
               <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman walking with ski bags">
+                <img class="lazyload is-lazyloaded" data-src="https://plus.unsplash.com/premium_photo-1663045679028-0ecf031f58c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Man and woman walking with ski bags">
                 <noscript>
                   <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman walking with ski bags">
                 </noscript>
@@ -244,11 +272,11 @@
     <!---------------------------
         Equipment Callout
       ----------------------------->
-    <section class="equipment-callout page-section">
+    <section class="equipment-callout page-section" >
       <div class="container">
-        <div class="equipment-callout__inner">
+        <div class="equipment-callout__inner" >
           <div class="equipment-callout__image">
-            <img class="rellax" data-rellax-speed="0.4" src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="truck">
+            <img class="rellax" data-rellax-speed="0.4" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="truck">
           </div>
           <!--/.equipment-callout__image-->
           <div class="equipment-callout__content">
@@ -514,7 +542,7 @@
       <!--/.container-->
       <div class="site-footer__colophon">
         <div class="container">
-          <p>&copy; 2023 LLBL & KV<sup>TM</sup> <a href="#0" class="site-footer__privacy">Privacy Policy</a></p>
+        <p>                    &copy; 2023 LLBL & KV<sup>TM</sup> <a href="#0" class="site-footer__privacy">Privacy Policy</a></p>
         </div>
         <!--/.container-->
       </div>
