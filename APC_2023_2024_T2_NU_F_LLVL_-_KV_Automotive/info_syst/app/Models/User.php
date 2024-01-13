@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel as FilamentPanel;
 use Filament\Tables\Columns\Layout\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,7 +12,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -50,6 +53,17 @@ class User extends Authenticatable implements FilamentUser
     {
        return $this->role === self::ROLE_USER;
     }
+    public function Account(): HasOne
+    {
+        return $this->hasOne(Account::class);
+    }
+
+    public function User(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
+
+
 
     /**
      * The attributes that are mass assignable.

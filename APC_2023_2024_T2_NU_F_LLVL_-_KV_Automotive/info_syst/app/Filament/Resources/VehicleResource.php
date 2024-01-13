@@ -13,6 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
 
 class VehicleResource extends Resource
 {
@@ -20,7 +23,7 @@ class VehicleResource extends Resource
 
 
     protected static ?string $navigationIcon = 'heroicon-o-wrench';
-    protected static ?string $navigationGroup = 'Information Management System';
+    protected static ?string $navigationGroup = 'Information Management';
     protected static ?int $navigationSort = 2;
     protected static ?string $slug = 'Vehicle';
 
@@ -70,9 +73,8 @@ class VehicleResource extends Resource
                     ])
                     ->native(false)
                     ->required(),
-                Forms\Components\Textarea::make('notes')
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
+                    FileUpload::make('image'),
+            MarkdownEditor::make('notes')
 
             ]);
     }
@@ -83,6 +85,7 @@ class VehicleResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
                     ->sortable(),
+              ImageColumn::make('image')->square(),
                 Tables\Columns\TextColumn::make('make')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('model')

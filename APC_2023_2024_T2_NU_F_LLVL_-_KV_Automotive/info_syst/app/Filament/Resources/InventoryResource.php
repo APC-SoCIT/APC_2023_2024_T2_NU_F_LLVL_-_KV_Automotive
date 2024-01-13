@@ -20,7 +20,7 @@ class InventoryResource extends Resource
 
 
     protected static ?string $navigationIcon = 'heroicon-o-arrow-down-on-square-stack';
-    protected static ?string $navigationGroup = 'Inventory Management System';
+    protected static ?string $navigationGroup = 'Inventory Management';
 
     public static function form(Form $form): Form
     {
@@ -56,7 +56,7 @@ class InventoryResource extends Resource
 
                 Tables\Columns\TextColumn::make('product_name')
                     ->searchable(),
-                    
+
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()
                     ->sortable(),

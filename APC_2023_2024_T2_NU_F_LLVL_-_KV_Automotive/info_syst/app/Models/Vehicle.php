@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Vehicle extends Model
 {
     protected $fillable = [
-        'account_id', 
+        'account_id',
         'make',
         'model',
         'year',
@@ -16,7 +16,8 @@ class Vehicle extends Model
         'chassis_no',
         'fuel_type',
         'transmission',
-        'notes',// Assuming you have added this foreign key to connect with accounts
+        'notes',
+        'image',// Assuming you have added this foreign key to connect with accounts
         // Add other attributes you want to allow for mass assignment here
     ];
 
@@ -31,7 +32,7 @@ class Vehicle extends Model
     {
         return $this->hasMany(JobOrder::class);
     }
-    
+
 }
 
 

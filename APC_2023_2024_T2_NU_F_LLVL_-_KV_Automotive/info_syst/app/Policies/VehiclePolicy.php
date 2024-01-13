@@ -14,7 +14,7 @@ class VehiclePolicy
     public function viewAny(User $user): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 
     /**
@@ -22,7 +22,7 @@ class VehiclePolicy
      */
     public function view(User $user, Vehicle $vehicle): bool
     {
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 
     /**
@@ -31,7 +31,7 @@ class VehiclePolicy
     public function create(User $user): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 
     /**
@@ -40,7 +40,7 @@ class VehiclePolicy
     public function update(User $user, Vehicle $vehicle): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 
     /**
@@ -49,7 +49,7 @@ class VehiclePolicy
     public function delete(User $user, Vehicle $vehicle): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 
     /**
@@ -58,7 +58,7 @@ class VehiclePolicy
     public function restore(User $user, Vehicle $vehicle): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 
     /**
@@ -67,6 +67,6 @@ class VehiclePolicy
     public function forceDelete(User $user, Vehicle $vehicle): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 }

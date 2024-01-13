@@ -18,7 +18,7 @@ class AccountResource extends Resource
     protected static ?string $model = Account::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
-    protected static ?string $navigationGroup = 'Account Management System';
+    protected static ?string $navigationGroup = 'Account Management';
     protected static ?string $slug = 'Account';
 
 

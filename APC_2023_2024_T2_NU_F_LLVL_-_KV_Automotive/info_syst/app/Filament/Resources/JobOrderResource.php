@@ -18,7 +18,7 @@ class JobOrderResource extends Resource
     protected static ?string $model = JobOrder::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard';
-    protected static ?string $navigationGroup = 'Information Management System';
+    protected static ?string $navigationGroup = 'Information Management';
     protected static ?int $navigationSort = 2;
     protected static ?string $slug = 'Job_Order';
 
@@ -26,7 +26,7 @@ class JobOrderResource extends Resource
     {
         return $form
             ->schema([
-                
+
                 Forms\Components\Select::make('account_id')
                 ->relationship(name: 'account', titleAttribute: 'full_name')
                 ->searchable()
