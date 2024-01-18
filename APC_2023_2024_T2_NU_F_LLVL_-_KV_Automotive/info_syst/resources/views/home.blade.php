@@ -1,583 +1,1011 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Web Desig Mastery | Carserving</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <div class="nav__bar">
+          <div class="logo nav__logo">
+            <a href="#"><img src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/413151349_1303008093729218_6211963685636022506_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHMn9SJYzRlohYf-YBhd7QrBGvc-wTNTLcEa9z7BM1Mt8-vvNRZwX0GaFZc8Pv1yiEyLI5Nxw_eQz4SV81E6_mA&_nc_ohc=EPL73D9l_wEAX_ncohn&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdQyfvzWldJyAB04z-dEFUzEzOLcMaeiLrWAXRm4PDwhCw&oe=65CCC283" alt="logo " style="max-width: 40%;" /></a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-3-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#service">SERVICE</a></li>
+          <li><a href="#client">CLIENT</a></li>
+          <a href="{{ route('login') }}" class="header-nav__item">Login</a>
+        </ul>
+      </nav>
+      <div class="section__container header__container" id="home">
+        <div class="header__content">
+          <h1>Focus on fun. We’ll take care of the rest.</h1>
+        </div>
+      </div>
+    </header>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>LLKV & KB</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/cb52a032da.js" crossorigin="anonymous"></script>
+    <section class="banner__container">
+      <div class="banner__card">
+        <h4>Satisfaction Guaranteed or Your Dent Back.</h4>
+      </div>
+      <div class="banner__card">
+        <h4>Caring For Your Car The Way You Would.</h4>
+      </div>
+      <div class="banner__image">
+        <img src="https://img.freepik.com/premium-photo/hand-car-mechanic-with-wrench-auto-repair-garage-mechanic-works-engine-car-garage-repair-service-concept-car-inspection-service-car-repair-service_545582-907.jpg" alt="banner" />
+      </div>
+    </section>
 
-  <!-- External dependiences because Codepen -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.5.0/rellax.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.1/lazysizes.min.js"></script>
-  <script src="https://unpkg.com/enter-view"></script>
+    <section class="section__container experience__container" id="about" >
+      <div class="experience__image">
+        <img src="https://img.freepik.com/free-photo/benchman-fixing-engine-car_114579-2807.jpg" alt="experience" />
+      </div>
+      <div class="experience__content">
+        <p class="section__subheader">WHO WE ARE</p>
+        <h2 class="section__header">
+          We Have 25 Years Of Experience In This Field
+        </h2>
+        <p class="section__description">
+          With a rich legacy spanning 25 years, our commitment to excellence in
+          car servicing is unwavering. Our seasoned team brings a wealth of
+          experience to ensure your vehicle receives top-notch care. Trust in
+          our expertise to keep your car running smoothly and safely.
+        </p>
+        <button class="btn">Read More</button>
+      </div>
+    </section>
 
-  <link rel="stylesheet" href="styles/main.processed.css">
-</head>
+    <section class="service" id="service">
+      <div class="section__container service__container">
+        <p class="section__subheader">WHY CHOOSE US</p>
+        <h2 class="section__custom">Great Car Service</h2>
+        <p class="section__description">
+          Trust us to keep your automobile running smoothly and reliably.
+        </p>
+        <div class="service__grid">
+          <div class="service__card">
+            <img src="https://media.istockphoto.com/id/504070478/photo/portrait-of-a-mechanic-replacing-wheel.jpg?s=612x612&w=0&k=20&c=wqpTQkW90bemaEcLquTLVRerleOciPB9rS8yu1iEzZ0=" alt="service" />
+            <h4>Aligned Wheel</h4>
+            <p>
+              Experience smoother rides and extended tire life with our wheel
+              alignment service.
+            </p>
+          </div>
+          <div class="service__card">
+            <img src="https://www.ultimateautoelectrical.com.au/wp-content/uploads/2017/12/service-banner.jpg" alt="service" />
+            <h4>Electrical system</h4>
+            <p>
+              Elevate car's electrical system to peak performance with our
+              specialized expertise.
+            </p>
+          </div>
+          <div class="service__card">
+            <img src="https://1734811051.rsc.cdn77.org/data/images/full/381849/how-new-technologies-are-changing-auto-mechanics.jpg" alt="service" />
+            <h4>System Service</h4>
+            <p>
+              We utilize cutting-edge diagnostics and techniques to ensure
+              optimal condition.
+            </p>
+          </div>
+          <div class="service__card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx5VMQzZC8du1ECoWpqJKk76J6FkiuM9gwxQ&usqp=CAU" alt="service" />
+            <h4>Engine Diagnostics</h4>
+            <p>
+              Unlock the secrets of your car's performance with state-of-the-art
+              diagnostic services.
+            </p>
+          </div>
+          <div class="service__card">
+            <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
+            <h4>Change Oil</h4>
+            <p>
+              With New Oil will bring new experiencec
+            </p>
+          </div>
+          <div class="service__card">
+            <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
+            <h4>Change Oil</h4>
+            <p>
+              With New Oil will bring new experiencec
+            </p>
+          </div>
+          <div class="service__card">
+            <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
+            <h4>Change Oil</h4>
+            <p>
+              With New Oil will bring new experiencec
+            </p>
+          </div>
+          <div class="service__card">
+            <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
+            <h4>Change Oil</h4>
+            <p>
+              With New Oil will bring new experiencec
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<body>
-    <!--/.container--->
-  </aside>
-  <!--/.notice-bar--->
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
 
-    .site-header {
-  background-color: rgba(0, 0, 0, 0.904); /* Adjust the alpha value (last parameter) for transparency */
-  color: #fff; /* Change the text color as needed */
-  padding: 4px 0;
+
+    <section class="contact">
+      <div class="section__container contact__container">
+        <div class="contact__content">
+          <p class="section__subheader">CONTACT US</p>
+          <h2 class="section__header">Imagine Your Car Feeling New Again</h2>
+          <p class="section__description">
+            Experience the magic of a rejuvenated ride as we pamper your car
+            with precision care, leaving it feeling as good as new.
+          </p>
+          <div class="contact__btns">
+            <button class="btn">Our Services</button>
+            <button class="btn">Contact Us</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container testimonial__container" id="client">
+      <p class="section__subheader">CLIENT TESTIMONIALS</p>
+      <h2 class="section__header">100% Approved By Customers</h2>
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="testimonial__card">
+              <img src="https://img.freepik.com/free-photo/young-smiling-asian-man-standing-grey-wall_171337-10473.jpg" alt="testimonial" />
+              <p>
+                I couldn't believe my eyes when I got my car back from the
+                service. It looked and drove like it had just rolled off the
+                assembly line. The team did an incredible job, and I'm a
+                customer for life!
+              </p>
+              <h4>- Weynard T.</h4>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial__card">
+              <img src="assets/testimonial-2.jpg" alt="testimonial" />
+              <p>
+                I've been bringing my car here for years, and they never
+                disappoint. Their attention to detail and commitment to quality
+                service is unmatched. My car always feels brand new after a
+                visit.
+              </p>
+              <h4>- John P.</h4>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial__card">
+              <img src="assets/testimonial-3.jpg" alt="testimonial" />
+              <p>
+                As a car enthusiast, I'm extremely particular about who touches
+                my prized possession. Their team's expertise and passion for
+                cars truly shine through in their work. My car has never looked
+                better.
+              </p>
+              <h4>- David S.</h4>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section__container subscribe__container">
+        <div class="subscribe__content">
+          <p class="section__subheader">OUR NEWSLETTER</p>
+          <h2 class="section__header">Subscribe To Our Newsletter</h2>
+          <p class="section__description">
+            Subscribe to our newsletter and receive exclusive content, expert
+            insights, and special offers delivered directly to your inbox.
+          </p>
+        </div>
+
+      </div>
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <div class="logo footer__logo">
+            <a href="#"><img src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/413151349_1303008093729218_6211963685636022506_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHMn9SJYzRlohYf-YBhd7QrBGvc-wTNTLcEa9z7BM1Mt8-vvNRZwX0GaFZc8Pv1yiEyLI5Nxw_eQz4SV81E6_mA&_nc_ohc=EPL73D9l_wEAX_ncohn&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdQyfvzWldJyAB04z-dEFUzEzOLcMaeiLrWAXRm4PDwhCw&oe=65CCC283" alt="logo" style="max-width: 60%; padding-left:10px;" /></a>
+          </div>
+          <p class="section__description">
+            With a rich legacy spanning 25 years, our commitment to excellence
+            in car servicing is unwavering.
+          </p>
+          <ul class="footer__socials">
+            <li>
+              <a href="#"><i class="ri-facebook-fill"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-google-fill"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-instagram-line"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-youtube-line"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Our Services</h4>
+          <ul class="footer__links">
+            <li><a href="#">Skilled Mechanics</a></li>
+            <li><a href="#">Routine Maintenance</a></li>
+            <li><a href="#">Customized Solutions</a></li>
+            <li><a href="#">Competitive Pricing</a></li>
+            <li><a href="#">Satisfaction Guaranteed</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact Info</h4>
+          <ul class="footer__links">
+            <li>
+              <p>
+                Experience the magic of a rejuvenated ride as we pamper your car
+                with precision care
+              </p>
+            </li>
+            <li>
+              <p>Phone: <span>+91 9876543210</span></p>
+            </li>
+            <li>
+              <p>Email: <span>info@carserving.com</span></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <div class="footer__bar">
+      Copyright © 2023 Web Design Mastery. All rights reserved.
+    </div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #ffe603;
+  --primary-color-dark: #ffe603;
+  --secondary-color: #15151f;
+  --secondary-color-dark: #0a0b0f;
+  --text-light: #6b7280;
+  --extra-light: #f8f7fd;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section__subheader {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.section__header {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3.5rem;
+  color: var(--secondary-color-dark);
+}
+.section__custom{
+    font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3.5rem;
+    color: white;
+}
+
+.section__description {
+  margin-bottom: 2rem;
+  color: var(--text-light);
+}
+.header-nav__item {
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #ffe603;
+            color: #ffe603;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Hover effect */
+        .header-nav__item:hover {
+            background-color: #1d1e1f;
+            color: #fff;
+        }
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+img {
+  width: 100%;
+  display: flex;
+}
+
+.logo img {
+  max-width: 150px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.header {
+  padding-block: 5rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1625047509248-ec889cbff17f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FyJTIwcmVwYWlyfGVufDB8fDB8fHww");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+nav {
+  position: fixed;
+  isolation: isolate;
+  top: 0;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: auto;
+  z-index: 9;
+}
+
+.nav__bar {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  background-color: var(--secondary-color-dark);
+}
+
+.nav__menu__btn {
+  font-size: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav__links {
+  position: absolute;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--secondary-color);
+  transform: translateY(-100%);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.nav__links.open {
+  transform: translateY(0);
+}
+
+.nav__links a {
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.nav__links a:hover {
+  color: var(--primary-color);
+}
+
+.header__content {
+  max-width: 600px;
+}
+
+.header__content h1 {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 4rem;
+  color: var(--white);
+}
+
+.banner__container {
+  display: grid;
+  grid-auto-rows: minmax(0, 350px);
+}
+
+.banner__card {
+  padding: 5rem 2rem;
+  display: grid;
+  place-content: center;
+}
+
+.banner__card:nth-child(1) {
+  background-color: var(--secondary-color);
+}
+
+.banner__card:nth-child(2) {
+  background-color: var(--secondary-color-dark);
+}
+
+.banner__card h4 {
+  max-width: 300px;
+  margin: auto;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.banner__image img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.experience__container {
+  display: grid;
+  gap: 2rem;
+}
+
+.experience__image img {
+  max-width: 500px;
+  margin: auto;
+}
+
+.service {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://wallpaperset.com/w/full/7/9/e/35761.jpg");
+}
+
+.service__container {
+  text-align: center;
+}
+
+.service__grid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 4rem 2rem;
+}
+
+.service__card img {
+  max-width: 25 0px;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  border-radius: 10%;
+  box-shadow: 5px 5px 20px rgb(0, 0, 0);
+}
+
+.service__card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
 }
 
 
-    .container {
-      width: 80%;
-      margin: 0 auto;
-    }
+.service__card p {
+  color: #ffffffde;
+}
 
-    .site-header__inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.customisation {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("assets/customisation.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 
+.customisation__container {
+  text-align: center;
+}
 
-    .site-header__logo img {
-      max-width: 65%;
-      height: auto;
-      /* Set max-height or max-width as needed to control the logo size */
-      max-height: 40%; /* Adjust this value based on your preference */
-    }
-  </style>
-</head>
-<body>
+.customisation__container :is(.section__header, .section__description) {
+  max-width: 750px;
+  margin: auto;
+  color: var(--white);
+}
 
-  <header class="site-header">
-    <div class="container">
-      <div class="site-header__inner">
-        <figure class="site-header__logo">
-          <a href="#0" aria-label="Go to homepage">
-            <img src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/413428896_888413316319355_4904455853927560991_n.png?_nc_cat=106&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEfMYLjJ9xrvpJjryzF1twvcv80FAQwW1ty_zQUBDBbW0RAI-F3TmVpWgdDy26rhZemkUW4GVc1rCxG4LQ8IPjH&_nc_ohc=ukG1qmt8GDYAX_rzRqX&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdT5qGdNSvotMVYGGR9PQISal6gRHBWXCsaL-SdZeNaSTQ&oe=65C83685" alt="LLBL & KV">
-          </a>
-        </figure>
+.customisation__grid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 4rem 2rem;
+}
 
-        <div class="site-header__actions">
-          <nav class="site-header__nav header-nav">
-            <a href="#0" class="header-nav__item">My Account</a>
-            <a href="{{ route('login') }}" class="header-nav__item">Login</a>
-          </nav>
-          <a href="tel:" class="site-header__phone">
-              <span class="site-header__phone-icon" aria-hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" width="16" height="16">
-                  <title>Phnoe</title>
-                  <path d="M29.964 22.653l-3.38-3.38a3.531 3.531 0 00-5 0l-.905.907a75.007 75.007 0 01-9.865-9.867l.905-.9a3.535 3.535 0 000-4.993l-3.38-3.38a3.531 3.531 0 00-5 0L1.484 2.894A5.137 5.137 0 00.838 9.34a74.328 74.328 0 0020.815 20.812 5.116 5.116 0 006.448-.647l1.855-1.855a3.527 3.527 0 00.008-4.997z"/>
-                  <path d="M21.662 30.148A74.346 74.346 0 01.847 9.336a5.138 5.138 0 01.647-6.447l1.854-1.854a3.531 3.531 0 015 0l3.381 3.38a3.536 3.536 0 010 4.993l-.906.9a74.921 74.921 0 009.865 9.867l.905-.907a3.532 3.532 0 015 0l3.38 3.38a3.526 3.526 0 010 4.993l-1.854 1.855a5.119 5.119 0 01-6.448.647z" fill="#3bf0a6"/>
-                </svg>
-              </span>
-              877-123-4567
-            </a>
-        </div>
-        <!--/.site-header__actions-->
-      </div>
-      <!--/.site-header__inner-->
-    </div>
-    <!--/.container--->
-  </header>
-  <main>
-    <!---------------------------
-        Hero
-      ----------------------------->
-    <section class="hero">
-      <img class=background-image aria-hidden src="https://www.carcility.com/blog/wp-content/uploads/2020/04/diy-car-repair.jpg" alt="">
-      <div class="hero__overlay">
-        <div class="container">
-          <h2 class="hero__heading">Focus on fun. We’ll take care of the rest.</h2>
-          <section class="booking-bar shadow-box">
-            <header class="booking-bar__header">
-              <p>My Car needs...</p>
-            </header>
-            <div class="booking-bar__main">
-              <div class="booking-bar__location booking-bar__cell">
-                <i class="booking-bar__icon fal fa-map-marker"></i>
-                <p class="booking-bar__cell-copy">Service?</p>
-              </div>
-              <!--/.booking-bar__location-->
-              <div class="booking-bar__dates booking-bar__cell">
-                <i class="booking-bar__icon fal fa-calendar-alt"></i>
-                <p class="booking-bar__cell-copy">When are you going?</p>
-              </div>
+.customisation__card h4 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white);
+}
 
-              <!--/.booking-bar__dates-->
-              <div class="booking-bar__dates booking-bar__cell">
-                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                <p class="booking-bar__cell-copy" style="font-size: 30px">Inquire Now!</p>
-              </div>
-              </div>
-              <!--/.booking-bar__submit-->
-            </div>
-            <!--/.booking-bar__main-->
-          </section>
-          <!--/.booking-bar-->
-        </div>
-        <!--/.container-->
-      </div>
-      <!--/.hero__overlay-->
-    </section>
+.customisation__card p {
+  color: var(--white);
+}
 
-    <!---------------------------
-        Accolades Row
-      ----------------------------->
-    <section class="accolades-row" style="background-color:#3FFDB0">
-      <div class="container">
-        <div class="accolades-row__inner">
-          <div class="logo-card">
-            <h2 class="logo-card__title">Certificate of Excellence</h2>
-            <div class="star-ranking">
-              <i class="icon fas fa-star"></i>
-              <i class="icon fas fa-star"></i>
-              <i class="icon fas fa-star"></i>
-              <i class="icon fas fa-star"></i>
-              <i class="icon fas fa-star"></i>
-            </div>
-            <!--/.star-ranking-->
-          </div>
-          <!--/.logo-card--->
-          <div class="logo-card">
-            <h2 class="logo-card__title">Certificate of Excellence</h2>
-            <figure class="logo-card__logo">
-              <img class="lazyload is-lazyloaded " data-src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.15752-9/411183834_1564006544435548_4222911070384283150_n.png?_nc_cat=109&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFLihvrpl_XTEBYcjLc802ARlD0wazSz9hGUPTBrNLP2JKUdTg_N_-9Jk9zXOmeBYtmWHEQLPoHIQf1-r258rEf&_nc_ohc=jMyw4HINGoMAX9Qh5eH&_nc_ht=scontent.fmnl4-4.fna&oh=03_AdRa-ot7ItWfbSc1ek-Hge83iC3Cicoodbi1YKy1IwMgEg&oe=65C84325" alt="Trip Advisor Logo">
-              <noscript>
-                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/trip-advisor.png" alt="Trip Advisor Logo">
-                </noscript>
-            </figure>
-          </div>
-          <!--/.logo-card--->
-          <div class="logo-card">
-            <h2 class="logo-card__title">Certificate of Excellence</h2>
-            <figure class="logo-card__logo">
-              <img class="lazyload is-lazyloaded" data-src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/415783692_750598133638533_3235948727697590486_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHJFaG8FzKCPHn2IWpAVIg7QKAAviOSAxRAoAC-I5IDFK34Sqnps8EoS04OPzg1jGnoedQVOTONfJQkfoMnFJZx&_nc_ohc=FppbZJV0-84AX88VLHN&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdQf2ui4uAl6MuJi0uB49PSn3di6KxTEkqhBeQyrpJKnHQ&oe=65C846AC" alt="Conde Nast Traveler Logo">
-              <noscript>
-                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/conde-nast.png" alt="Conde Nast Traveler Logo">
-                </noscript>
-            </figure>
-          </div>
-          <!--/.logo-card--->
-        </div>
-        <!--/.accolades-row__inner--->
-      </div>
-      <!--/.container--->
-    </section>
+.price__container {
+  text-align: center;
+}
 
-    <!---------------------------
-        Process
-      ----------------------------->
-    <section class="process page-section "  >
-      <div class="container" >
-        <h2 class="section-heading">Service Made Simple</h2>
-        <div class="image-text-row">
-          <div class="image-text-row__image">
-            <figure>
-              <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://media.istockphoto.com/id/1447963729/photo/thumbtack-pins-on-a-calendar.jpg?s=612x612&w=0&k=20&c=EYxmPCedHyNTxXDPPjleWDBWeMKI7zjv3fnaWZGvsfY= " alt="Man and woman smiling at a computer">
-                <noscript>
-                    <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman smiling at a computer">
-                  </noscript>
-              </div>
-              <!--/.image-wrapper-->
-            </figure>
-          </div>
-          <!--/.image-text-row__image-->
-          <div class="image-text-row__text">
-            <h3 class="image-text-row__heading">
-              Schedule
-              <span class="image-text-row__underline underline-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="146.74" height="18.39" viewBox="0 0 146.74 18.39">
-                  <path d="M5.26 18.35C50.45 13.69 96 12 141.43 11c7.07-.15 7.09-11.15 0-11C96 1 50.45 2.69 5.26 7.35c-7 .72-7 11.73 0 11z" fill="#3ffdb0"/>
-                </svg>
-              </span>
-            </h3>
-            <p class="image-text-row__copy">Schedule Your Slot: Choose a date and time that suits you. We'll be ready to give your car the attention it deserves.</p>
-          </div>
-          <!-- /.image-text-row__text -->
-        </div>
-        <!--/.image-text-row-->
-        <div class="image-text-row image-text-row--reverse">
-          <div class="image-text-row__image">
-            <figure>
-              <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://plus.unsplash.com/premium_photo-1667520550378-b10d85a3c209?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Man and woman with skis">
-                <noscript>
-                    <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman with skis">
-                  </noscript>
-              </div>
-              <!--/.image-wrapper-->
-            </figure>
-          </div>
-          <!--/.image-text-row__image-->
-          <div class="image-text-row__text">
-            <h3 class="image-text-row__heading">
-              Tell us, We fix it
-              <span class="image-text-row__underline underline-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="279.82" height="17.05" viewBox="0 0 279.82 17.05">
-                  <path d="M4.31 15.26a1301.09 1301.09 0 01211.4-3.54q30 1.95 59.81 5.3c5.75.63 5.71-8.37 0-9A1299.57 1299.57 0 0064.18 1.75q-30 1.56-59.87 4.51c-5.72.57-5.77 9.57 0 9z" fill="#3ffdb0"/>
-                </svg>
-              </span>
-            </h3>
-            <p class="image-text-row__copy">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt aliquet volutpat. Nam eget mi urna. Nullam porttitor velit quis ante imperdiet, at accumsan ante ultrices. Donec non nisi erat.
-            </p>
-          </div>
-          <!-- /.image-text-row__text -->
-        </div>
-        <!--/.image-text-row-->
-        <div class="image-text-row">
-          <div class="image-text-row__image">
-            <figure>
-              <div class="image-wrapper" style="padding-bottom: 93.103448276%">
-                <img class="lazyload is-lazyloaded" data-src="https://plus.unsplash.com/premium_photo-1663045679028-0ecf031f58c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Man and woman walking with ski bags">
-                <noscript>
-                  <img src="https://preview.redd.it/isa5eqanrf651.png?width=640&crop=smart&auto=webp&s=5de097900f752ab76cebd5fc13098c6bb3220172" alt="Man and woman walking with ski bags">
-                </noscript>
-              </div>
-              <!--/.image-wrapper-->
-            </figure>
-          </div>
-          <!--/.image-text-row__image-->
-          <div class="image-text-row__text">
-            <h3 class="image-text-row__heading">
-              We call, you pick it up
-              <span class="image-text-row__underline underline-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="254.94" height="21.95" viewBox="0 0 254.94 21.95">
-                  <path d="M5.26 21.92a2385 2385 0 01244.37-10.86c7.08 0 7.09-11 0-11A2385 2385 0 005.26 10.92c-7 .67-7 11.68 0 11z" fill="#3ffdb0"/>
-                </svg>
-              </span>
-            </h3>
-            <p class="image-text-row__copy">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt aliquet volutpat. Nam eget mi urna. Nullam porttitor velit quis ante imperdiet, at accumsan ante ultrices. Donec non nisi erat.
-            </p>
-          </div>
-          <!-- /.image-text-row__text -->
-        </div>
-        <!--/.image-text-row-->
-      </div>
-      <!--/.container-->
-    </section>
+.price__grid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 2rem 1rem;
+}
 
-    <!---------------------------
-        Equipment Callout
-      ----------------------------->
-    <section class="equipment-callout page-section" >
-      <div class="container">
-        <div class="equipment-callout__inner" >
-          <div class="equipment-callout__image">
-            <img class="rellax" data-rellax-speed="0.4" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="truck">
-          </div>
-          <!--/.equipment-callout__image-->
-          <div class="equipment-callout__content">
-            <h2 class="equipment-callout__heading">Revitalizing Car Care</h2>
-            <p class="equipment-callout__copy">At LLBL & KV, we meticulously select top-tier maintenance products and services tailored to your vehicle's needs. Elevate your driving experience with our expert care, ensuring peak performance in every mile, for all makes and models. </p>
-            <div class="equipment-callout__cta-row">
-              <!-- <a href="/something" class="button button--white button--arrow"> -->
-                  <!-- <span class=button__text>Browse Services</span> -->
-                  <!-- <span class="button__icon"> -->
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="29" height="14" viewBox="0 0 56.953 28.557"> -->
-                    <!-- <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4"> -->
-                      <!-- <path d="M2 14.279h52.45"/> -->
-                      <!-- <path d="M44.182 2.824l10.1 11.307-10.1 11.6"/> -->
-                    <!-- </g> -->
-                    <!-- </svg> -->
-                  <!-- </span> -->
-                <!-- </a> -->
-              <div class="equipment-callout__logo">
-                <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/rossignol-logo.png" alt="Rossignol logo"> -->
-              </div>
-              <!--/.equipment-callout__logo-->
-            </div>
-            <!--/.equipment-callout__cta-row-->
-          </div>
-          <!--/.equipment-callout__content-->
-        </div>
-        <!--/.equipment-callout__inner-->
-      </div>
-      <!--/.container-->
-    </section>
+.price__card {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1rem;
+  border-top: 5px solid var(--extra-light);
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
 
-    <!---------------------------
-        Location Slider
-      ----------------------------->
-    <section class="page-section">
-      <div class="container">
-        <h2 class="section-heading section-heading--tight">Services Offered...</h2>
-      </div>
-      <!--/.container-->
-      <div class="slider swiper js-location-slider">
-        <div class="swiper-wrapper">
-          <article class="image-bg-card swiper-slide">
-            <img class="image-bg-card__image lazyload is-lazyloaded" src="https://www.floridacareercollege.edu/wp-content/uploads/sites/4/2020/08/12-Reasons-to-Become-an-Automotive-Mechanic-Florida-Career-College.png" alt="">
-            <noscript>
-                  <img class="image-bg-card__image" src="https://www.floridacareercollege.edu/wp-content/uploads/sites/4/2020/08/12-Reasons-to-Become-an-Automotive-Mechanic-Florida-Career-College.png" alt="">
-                </noscript>
-            <div class="image-bg-card__overlay">
-              <h2 class="image-bg-card__heading">ECU</h2>
-              <h3 class="image-bg-card__sub-heading">Scanning</h3>
-            </div>
-            <!--/.image-bg-card__overlay-->
-          </article>
-          <article class="image-bg-card swiper-slide">
-            <img class="image-bg-card__image lazyload is-lazyloaded" src="https://parkers-images.bauersecure.com/wp-images/177357/gettyimages-adding-engine-oil.jpg" alt="">
-            <noscript>
-                  <img class="image-bg-card__image" src="https://parkers-images.bauersecure.com/wp-images/177357/gettyimages-adding-engine-oil.jpg" alt="">
-                </noscript>
-            <div class="image-bg-card__overlay">
-              <h2 class="image-bg-card__heading">Change </h2>
-              <h3 class="image-bg-card__sub-heading">Oil</h3>
-            </div>
-            <!--/.image-bg-card__overlay-->
-          </article>
-          <article class="image-bg-card swiper-slide">
-            <img class="image-bg-card__image lazyload is-lazyloaded" src="https://luxury-auto-service.com/wp-content/uploads/2018/09/Under-Service.jpg" alt="">
-            <noscript>
-                  <img class="image-bg-card__image" src="https://luxury-auto-service.com/wp-content/uploads/2018/09/Under-Service.jpg" alt="">
-                </noscript>
-            <div class="image-bg-card__overlay">
-              <h2 class="image-bg-card__heading">Chasis</h2>
-              <h3 class="image-bg-card__sub-heading">Repair</h3>
-            </div>
-            <!--/.image-bg-card__overlay-->
-          </article>
-          <article class="image-bg-card swiper-slide">
-            <img class="image-bg-card__image lazyload is-lazyloaded" src="https://www.autolabusa.com/cm/dpl/images/create/services--electrical-content-01.jpg" alt="">
-            <noscript>
-                  <img class="image-bg-card__image" src="https://www.autolabusa.com/cm/dpl/images/create/services--electrical-content-01.jpg" alt="">
-                </noscript>
-            <div class="image-bg-card__overlay">
-              <h2 class="image-bg-card__heading">Electrical</h2>
-              <h3 class="image-bg-card__sub-heading">Repair</h3>
-            </div>
-            <!--/.image-bg-card__overlay-->
-          </article>
-          <article class="image-bg-card swiper-slide">
-            <img class="image-bg-card__image lazyload is-lazyloaded" src="https://d3hvs2gyy8n2xz.cloudfront.net/blog/wp-content/uploads/2016/06/07110046/signs-its-time-for-an-auto-tune-up.jpg" alt="">
-            <noscript>
-                  <img class="image-bg-card__image" src="https://d3hvs2gyy8n2xz.cloudfront.net/blog/wp-content/uploads/2016/06/07110046/signs-its-time-for-an-auto-tune-up.jpg" alt="">
-                </noscript>
-            <div class="image-bg-card__overlay">
-              <h2 class="image-bg-card__heading">Tune</h2>
-              <h3 class="image-bg-card__sub-heading">Up</h3>
-            </div>
-            <!--/.image-bg-card__overlay-->
-          </article>
-          <article class="image-bg-card swiper-slide">
-            <img class="image-bg-card__image lazyload is-lazyloaded" src="https://koehnsbodyshop.com/images/0/f/a/8/d/0fa8da5de1c9c17bd6e24c89b145f80276b8620b-need.jpg" alt="">
-            <noscript>
-                  <img class="image-bg-card__image" src="https://koehnsbodyshop.com/images/0/f/a/8/d/0fa8da5de1c9c17bd6e24c89b145f80276b8620b-need.jpg" alt="">
-                </noscript>
-            <div class="image-bg-card__overlay">
-              <h2 class="image-bg-card__heading">Body Repair</h2>
-              <h3 class="image-bg-card__sub-heading">Restoration</h3>
-            </div>
-            <!--/.image-bg-card__overlay-->
-          </article>
-        </div>
-        <!--swiper-wrapper-->
-        <div class="slider__navigation">
-          <button aria-label="Previous slides" class="slider__nav-button slider__nav-previous">
-                <i class="slider__nav-icon fas fa-chevron-left"></i>
-              </button>
-          <!--/.slider__nav-previous-->
-          <button aria-label="Next slides" class="slider__nav-button slider__nav-next">
-                <i class="slider__nav-icon fas fa-chevron-right"></i>
-              </button>
-          <!--/.slider__nav-previous-->
-        </div>
-        <!--/.slider__navigation-->
-      </div>
-      <!--/.swiper-container-->
-    </section>
-    <section class="page-section page-section--ice">
-      <div class="container">
-        <h2 class="section-heading">We've repaired many cars ... and counting</h2>
-        <div class="quote-slider">
-          <div class="quote-slider__inner shadow-box">
-            <div class="quote-slider__quotation-mark" aria-hidden="true">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/quotes.png" alt="">
-            </div>
-            <div class="js-quote-slider swiper">
-              <div class="swiper-wrapper">
-                <div class="quote swiper-slide">
-                  <div class="quote__image">
-                    <img class="lazyload is-loaded" data-src="https://scontent.fmnl25-2.fna.fbcdn.net/v/t39.30808-6/290046797_109242278497574_3461038810952315400_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEjY8LpR2U94lvGpDSa5rHRQNCo5ixDHodA0KjmLEMehxwujZ7oqVBgVnrJnO5XyolZXktEPzDArEI3Oq4pggMp&_nc_ohc=T0v7R5HWPo4AX-Q8_Y0&_nc_ht=scontent.fmnl25-2.fna&oh=00_AfCO8Tl4gPYPVeEVTv_XIiX-t0osN3dHYUZ7h8Wo-F4HUg&oe=6569F3AD" alt="" aria-hidden="true">
-                    <noscript>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-avatar.jpg" alt="" aria-hidden="true">
-                      </noscript>
-                  </div>
-                  <!--/.quote__image-->
-                  <div class="quote__content">
-                    <p class="quote__copy">“nung pumunta ako shop eh napaka accomodating nila eh pag dating mga mababait sila eh, tsaka napakalapit nila eh kaya't pag may aberya ey sugod kaagad to eh overall approve”</p>
-                    <p class="quote__attribution">— Niñ0 B, internet influencer</p>
-                  </div>
-                  <!--/.quote__content-->
-                </div>
-                <!--/.quote-->
-                <div class="quote swiper-slide">
-                  <div class="quote__image">
-                    <img class="lazyload is-lazyloaded" data-src="https://yt3.googleusercontent.com/qHii7Z3HXooPsaxWbyzLRxjyXVIAhI6lFLEhnTW6amjxQ4yW4u8V50kfJDslRBEqSl7oJeJ75w=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true">
-                    <noscript>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/ski-homepage-avatar.jpg" alt="" aria-hidden="true">
-                      </noscript>
-                  </div>
-                  <!--/.quote__image-->
-                  <div class="quote__content">
-                    <p class="quote__copy">“I recently visited LLBL & KV Auto Repair for car repairs, and the experience was top-notch. The location is convenient, right in Manila Otis. The staff is professional, and the mechanics demonstrated expertise in diagnosing and fixing issues promptly. The service was efficient, and my car is running smoothly. I highly recommend LLBL & KV for reliable auto repairs in the area.”</p>
-                    <p class="quote__attribution">— Joey B, using Ski Corp Services since 2011</p>
-                  </div>
-                  <!--/.quote__content-->
-                </div>
-                <!--/.quote-->
-              </div>
-              <!--/.swiper-wrapper-->
-            </div>
-            <!--/.swiper-container-->
-          </div>
-          <!--/.quote-slider__inner-->
-          <div class="quote-slider__pagination">
-          </div>
-          <!--/.quote-slider__pagination-->
-        </div>
-        <!--/.quote-slider-->
-      </div>
-      <!--/.container-->
-    </section>
-    <footer class="site-footer">
-      <div class="container">
-        <div class="site-footer__newsletter newsletter-cta shadow-box">
-          <div class="newsletter-cta__lede">
-            <h2 class="newsletter-cta__heading">Suggestion & Concerns?</h2>
-            <p class="newsletter-cta__copy">got any suggestion and concerns email us so that LLBL & KV may improve more</p>
-          </div>
-          <!--/.newsletter-cta__lede-->
-          <div class="newsletter-cta__form">
-            <div class="icon-input">
-              <i class="icon-input__icon fas fa-paper-plane"></i>
-              <label for="newsletter-email" class="u-visually-hidden">Email</label>
-              <input type="email" id="newletter-email" class="newsletter-cta__form-input text-input" placeholder="LASQUETY@gmail.com">
-            </div>
-            <button type="submit" class="newsletter-cta__form-button button button--dark-green button--arrow">
-                <span class=button__text>Send</span>
-                <span class="button__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="29" height="14" viewBox="0 0 56.953 28.557">
-                  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-width="4">
-                    <path d="M2 14.279h52.45"/>
-                    <path d="M44.182 2.824l10.1 11.307-10.1 11.6"/>
-                  </g>
-                  </svg>
-                </span>
-              </button>
-          </div>
-          <!--/.newsletter-cta__form-->
-        </div>
-        <!--/.news-letter__cta-->
+.price__card:hover {
+  border-color: var(--primary-color);
+  background-color: var(--extra-light);
+}
 
-        <div class="site-footer__social-list social-list">
-          <a href="#0" class="social-list__item">
-              <i class="fab fa-instagram"></i>
-            </a>
-          <a href="#0" class="social-list__item">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          <a href="#0" class="social-list__item">
-              <i class="fab fa-twitter"></i>
-            </a>
-          <a href="#0" class="social-list__item">
-              <i class="fab fa-youtube"></i>
-            </a>
-          <a href="#0" class="social-list__item">
-              <i class="fas fa-rss"></i>
-            </a>
-        </div>
-        <!--/.social-list-->
-        <div class="footer-nav site-footer__nav">
-          <div class="footer-nav__column">
-            <h3 class="footer-nav__heading"></h3>
-            <nav>
-            </nav>
-          </div>
-          <div class="footer-nav__column">
-            <h3 class="footer-nav__heading">Customer Service</h3>
-            <nav>
-              <a href="#0" class="footer-nav__item">123-456-7891</a>
-              <a href="#0" class="footer-nav__item">Service Center Contracts</a>
-              <a href="#0" class="footer-nav__item">Help</a>
-              <a href="#0" class="footer-nav__item">Calcenaltion Policy</a>
-            </nav>
-          </div>
-          <!--/.footer-nav__column-->
-          <div class="footer-nav__column">
-            <h3 class="footer-nav__heading">My Account</h3>
-            <nav>
-              <a href="#0" class="footer-nav__item">Login / Create Account</a>
-            </nav>
-          </div>
-          <!--/.footer-nav__column-->
-          <div class="footer-nav__column">
-            <h3 class="footer-nav__heading">LLBL & KV</h3>
-            <nav>
-              <a href="#0" class="footer-nav__item">About</a>
-              <a href="#0" class="footer-nav__item">Partners</a>
-              <a href="#0" class="footer-nav__item"></a>
-              <a href="#0" class="footer-nav__item"> </a>
-              <a href="#0" class="footer-nav__item"></a>
-            </nav>
-          </div>
-          <!--/.footer-nav__column-->
-        </div>
-        <!--/.footer-nav-->
-      </div>
-      <!--/.container-->
-      <div class="site-footer__colophon">
-        <div class="container">
-        <p>                    &copy; 2023 LLBL & KV<sup>TM</sup> <a href="#0" class="site-footer__privacy">Privacy Policy</a></p>
-        </div>
-        <!--/.container-->
-      </div>
-      <!--/.colophon-->
-      <div class="site-footer__snowflake snowflake-1" aria-hidden=true>
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/snowflake--small.png" alt="">
-      </div>
-      <!--/.snowflake-1-->
-      <div class="site-footer__snowflake snowflake-2" aria-hidden=true>
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/snowflake--large.png" alt="">
-      </div>
-      <!--/.snowflake-2-->
-      <div class="site-footer__snowflake snowflake-3" aria-hidden=true>
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/snowflake--small.png" alt="">
-      </div>
-      <!--/.snowflake-3-->
-      <div class="site-footer__snowflake snowflake-4" aria-hidden=true>
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/snowflake--small.png" alt="">
-      </div>
-      <!--/.snowflake-4-->
-      <div class="site-footer__snowflake snowflake-5" aria-hidden=true>
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/snowflake--small.png" alt="">
-      </div>
-      <!--/.snowflake-5-->
-      <div class="site-footer__snowflake snowflake-6" aria-hidden=true>
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/snowflake--large.png" alt="">
-      </div>
-      <!--/.snowflake-6-->
-      <div class="site-footer__snowflake snowflake-7" aria-hidden=true>
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/6791/snowflake--large.png" alt="">
-      </div>
-      <!--/.snowflake-7-->
-    </footer>
-  </main>
-  <script src="scripts/main.processed.js"></script>
-</body>
+.price__card__ribbon {
+  position: absolute;
+  width: fit-content;
+  top: 2rem;
+  right: -4.5rem;
+  transform: rotate(45deg);
+  padding: 5px 5rem;
+  font-size: 0.9rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  transition: 0.3s;
+}
 
-</html>
+.price__card:hover .price__card__ribbon {
+  font-size: 1rem;
+}
+
+.price__card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-color-dark);
+}
+
+.price__card h3 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--secondary-color-dark);
+  transition: 0.3s;
+}
+
+.price__card h3 sup {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.price__card:hover h3 {
+  color: var(--primary-color);
+}
+
+.price__card p {
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+.price__card .btn {
+  margin-top: 1rem;
+  min-width: 150px;
+}
+
+.contact {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://us.123rf.com/450wm/sorapop/sorapop2307/sorapop230700610/211054466-people-connect-through-contact-us-or-customer-support-hotline-concept-finger-touch-to-access-contact.jpg?ver=6");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.contact__container :is(.section__header, .section__description) {
+  color: var(--white);
+}
+
+.contact__btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact__btns .btn:nth-child(1) {
+  background-color: transparent;
+  border: 2px solid var(--white);
+}
+
+.contact__btns .btn:nth-child(2) {
+  color: var(--primary-color);
+  background-color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.testimonial__container {
+  text-align: center;
+}
+
+.swiper {
+  width: 100%;
+  margin-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.testimonial__card {
+  max-width: 600px;
+  margin: auto;
+}
+
+.service__card:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease-in-out;
+        }
+.testimonial__card img {
+  max-width: 100px;
+  margin: auto;
+  margin-bottom: 1rem;
+  border-radius: 100%;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial__card p {
+  margin-bottom: 1rem;
+  color: var(--secondary-color-dark);
+}
+
+.testimonial__card h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.footer {
+  background-color: var(--secondary-color-dark);
+}
+
+.subscribe__container {
+  padding-bottom: 0;
+  display: grid;
+  gap: 2rem;
+}
+
+.subscribe__content .section__header {
+  color: var(--white);
+}
+
+.subscribe__form form {
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.subscribe__form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.footer__container {
+  display: grid;
+  gap: 4rem 2rem;
+}
+
+.footer__logo {
+  margin-bottom: 2rem;
+}
+
+.footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer__socials a {
+  padding: 5px 10px;
+  font-size: 1.25rem;
+  color: var(--text-light);
+  background-color: var(--secondary-color);
+  border-radius: 100%;
+  transition: 0.3s;
+}
+
+.footer__socials a:hover {
+  color: var(--primary-color);
+  background-color: var(--white);
+}
+
+.footer__col h4 {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.footer__links li {
+  margin-bottom: 1rem;
+}
+
+.footer__links a {
+  color: var(--text-light);
+  transition: 0.3s;
+}
+
+.footer__links a:hover {
+  color: var(--white);
+}
+
+.footer__links p {
+  color: var(--text-light);
+}
+
+.footer__links p span {
+  font-weight: 500;
+  color: var(--white);
+}
+
+.footer__bar {
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: var(--white);
+  background-color: var(--secondary-color);
+  text-align: center;
+}
+
+@media (width > 480px) {
+  .header__content h1 {
+    font-size: 4rem;
+    line-height: 5rem;
+  }
+
+  .banner__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .banner__image {
+    grid-column: 1/3;
+  }
+
+  .service__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .customisation__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .price__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__col:first-child {
+    grid-column: 1/3;
+  }
+}
+
+@media (width > 768px) {
+  nav {
+    padding: 2rem 1rem;
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__bar {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .nav__menu__btn {
+    display: none;
+  }
+
+  .nav__links {
+    padding: 0;
+    width: unset;
+    position: static;
+    transform: none;
+    flex-direction: row;
+    background-color: transparent;
+  }
+
+  .header {
+    padding-top: 0;
+  }
+
+  .header__content h1 {
+    font-size: 5rem;
+    line-height: 6rem;
+  }
+
+  .banner__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .banner__image {
+    grid-column: 3/5;
+  }
+
+  .experience__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .service__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .customisation__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .price__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact__content {
+    grid-column: 2/3;
+  }
+
+  .subscribe__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .footer__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer__col:first-child {
+    max-width: 400px;
+  }
+}
+
+@media (width > 1024px) {
+  .price__grid {
+    gap: 2rem;
+  }
+}
+</style>
+<script>
+    const menuBtn = document.getElementById("menu-btn");
+const navLinks = document.getElementById("nav-links");
+const menuBtnIcon = menuBtn.querySelector("i");
+
+menuBtn.addEventListener("click", (e) => {
+  navLinks.classList.toggle("open");
+
+  const isOpen = navLinks.classList.contains("open");
+  menuBtnIcon.setAttribute(
+    "class",
+    isOpen ? "ri-close-line" : "ri-menu-3-line"
+  );
+});
+
+navLinks.addEventListener("click", (e) => {
+  navLinks.classList.remove("open");
+  menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+});
+
+const scrollRevealOptions = {
+  distance: "50px",
+  origin: "bottom",
+  duration: 1000,
+};
+
+// header container
+ScrollReveal().reveal(".header__content h1", {
+  ...scrollRevealOptions,
+});
+
+ScrollReveal().reveal(".header__btn", {
+  ...scrollRevealOptions,
+  delay: 500,
+});
+
+// service container
+ScrollReveal().reveal(".service__card", {
+  ...scrollRevealOptions,
+  interval: 500,
+});
+
+// price container
+ScrollReveal().reveal(".price__card", {
+  ...scrollRevealOptions,
+  interval: 500,
+});
+
+const swiper = new Swiper(".swiper", {
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+  },
+});
+document.addEventListener('DOMContentLoaded', function () {
+                    var serviceCards = document.querySelectorAll('.service__card');
+
+                    serviceCards.forEach(function (card) {
+                        card.addEventListener('mouseenter', function () {
+                            card.classList.add('hovered');
+                        });
+
+                        card.addEventListener('mouseleave', function () {
+                            card.classList.remove('hovered');
+                        });
+                    });
+                });
+</script>

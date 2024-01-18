@@ -27,7 +27,9 @@ Route::middleware([
     })->name('dashboard');
 });
 
-
+Route::get('/', function () {
+    return view('home'); // Assuming your home page view is named 'welcome.blade.php'
+})->name('home');
 
 
 Route::get('/admin/login', function () {
