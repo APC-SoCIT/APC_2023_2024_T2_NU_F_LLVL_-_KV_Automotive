@@ -35,4 +35,10 @@ class JobOrderWidget extends BaseWidget
                     ->toggleable(isToggledHiddenByDefault: true),
             ]);
     }
+
+    public static function canView(): bool
+    {
+        return auth()->user()->isAdmin() || auth()->user()->isStaff();
+
+    }
 }

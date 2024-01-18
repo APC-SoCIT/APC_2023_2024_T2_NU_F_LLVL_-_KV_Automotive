@@ -16,4 +16,10 @@ class UserStatWidget extends BaseWidget
             Stat::make('Staffs', User::where('role',User::ROLE_STAFF)->count()),
         ];
     }
+
+        public static function canView(): bool
+    {
+        return auth()->user()->isAdmin() || auth()->user()->isStaff();
+
+    }
 }
