@@ -19,8 +19,16 @@ class JobOrderWidget extends BaseWidget
             ->columns([
                 Tables\Columns\TextColumn::make('Account.full_name')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                    Tables\Columns\TextColumn::make('status')
+                    ->sortable()
+                    ->badge()
+                    ->color(function(string $state) : string{
+                          return match($state) {
+                            'pending' => 'primary',
+                            'in_progress' => 'info',
+                            'completed' => 'success',
+                          };
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

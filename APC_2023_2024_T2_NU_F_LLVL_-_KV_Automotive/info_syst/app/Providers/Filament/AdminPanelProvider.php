@@ -31,6 +31,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
+            ->brandName('LLBL & KV')
             ->path('admin')
             ->plugin(
                 BreezyCore::make()
