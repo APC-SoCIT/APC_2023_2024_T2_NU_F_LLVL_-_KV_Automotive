@@ -10,10 +10,10 @@ class JobOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['vehicle_id', 'account_id'];
+    protected $fillable = ['vehicle_id', 'account_id', 'status'];
 
 
-  
+
     public function Vehicle(): BelongsTo
     {
         return $this->belongsTo(Vehicle::class);

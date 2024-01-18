@@ -55,12 +55,6 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('two_factor_confirmed_at')
-                    ->dateTime()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -71,6 +65,15 @@ class UserResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('role')
                     ->visible(auth()->user()->isAdmin())
+                    ->sortable()
+                    ->badge()
+                    ->color(function(string $state) : string{
+                          return match($state) {
+                            'ADMIN' => 'danger',
+                            'STAFF' => 'info',
+                            'USER' => 'success',
+                          };
+                    })
                     ->searchable(),
             ])
             ->filters([

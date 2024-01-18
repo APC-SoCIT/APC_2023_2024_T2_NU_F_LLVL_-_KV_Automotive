@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\JobOrderResource\Pages;
 
 use App\Filament\Resources\JobOrderResource;
+use App\Filament\Resources\JobOrderResource\Widgets\JobOrderWidget;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,12 @@ class ListJobOrders extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+    protected function getHeaderWidgets(): array
+    {
+        return [
+        
         ];
     }
 }

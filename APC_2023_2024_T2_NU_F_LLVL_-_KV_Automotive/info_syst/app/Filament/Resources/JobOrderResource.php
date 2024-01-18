@@ -37,10 +37,14 @@ class JobOrderResource extends Resource
                 ->searchable()
                 ->native(false)
                 ->required(),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('pending'),
+                Forms\Components\Select::make('status')
+                ->required()
+                ->options([
+                    'pending' => 'Pending',
+                    'in_progress' => 'In Progress',
+                    'completed' => 'Completed',
+                ])
+                ->default('pending'),
             ]);
     }
 
@@ -48,11 +52,20 @@ class JobOrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('vehicle_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('account.full_name')
+                ->sortable(),
+                Tables\Columns\TextColumn::make('vehicle.make')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                ->sortable()
+                ->badge()
+                ->color(function(string $state) : string{
+                      return match($state) {
+                        'pending' => 'primary',
+                        'in_progress' => 'info',
+                        'completed' => 'success',
+                      };
+                }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

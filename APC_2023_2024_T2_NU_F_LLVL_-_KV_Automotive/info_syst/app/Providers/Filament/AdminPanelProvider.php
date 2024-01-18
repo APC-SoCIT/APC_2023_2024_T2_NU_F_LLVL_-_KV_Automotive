@@ -2,6 +2,9 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\JobOrderResource\Widgets\JobOrderWidget;
+use App\Filament\Resources\UserResource\Widgets\UserStatWidget;
+use App\Filament\Resources\VehicleResource\Widgets\VehicleType;
 use App\Models\User;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -33,7 +36,7 @@ class AdminPanelProvider extends PanelProvider
                 BreezyCore::make()
                 ->myProfile(
                     shouldRegisterUserMenu: true, // Sets the 'account' link in the panel User Menu (default = true)
-                    shouldRegisterNavigation: true, // Adds a main navigation item for the My Profile page (default = false)
+                    shouldRegisterNavigation: false, // Adds a main navigation item for the My Profile page (default = false)
                     navigationGroup: 'Account Management', // Sets the navigation group for the My Profile page (default = null)
                     hasAvatars: false, // Enables the avatar upload form component (default = false)
                     slug: 'my-profile' // Sets the slug for the profile page (default = 'my-profile')
@@ -41,7 +44,7 @@ class AdminPanelProvider extends PanelProvider
             )
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Orange,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -51,7 +54,10 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                UserStatWidget::class,
+                VehicleType::class,
+                JobOrderWidget::class,
+                //Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
