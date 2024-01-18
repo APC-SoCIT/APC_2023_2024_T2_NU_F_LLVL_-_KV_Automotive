@@ -44,7 +44,7 @@ class InventoryResource extends Resource
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
-                    ->prefix('$'),
+                    ->prefix('₱'),
     ])
             ]);
     }
@@ -56,12 +56,13 @@ class InventoryResource extends Resource
 
                 Tables\Columns\TextColumn::make('product_name')
                     ->searchable(),
-
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()
                     ->sortable(),
+                    Tables\Columns\TextColumn::make('description')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money()
+                    ->money('PHP')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
