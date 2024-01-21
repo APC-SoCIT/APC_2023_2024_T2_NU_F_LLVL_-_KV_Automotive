@@ -30,37 +30,32 @@
             </div>
         </form>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const errorMessageContainer = document.getElementById('error-message');
+            const form = document.querySelector('form');
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Get the form, email, password, and error message elements
-        const form = document.querySelector('form');
-        const emailInput = document.getElementById('email');
-        const passwordInput = document.getElementById('password');
-        const errorMessage = document.getElementById('error-message');
-
-        // Attach an event listener to the form submission
-        form.addEventListener('submit', function (event) {
-            // Reset the error message
-            errorMessage.textContent = '';
-
-            // Perform your custom validation here
-            const email = emailInput.value;
-            const password = passwordInput.value;
-
-            // For demonstration purposes, let's check if the email and password are both 'incorrect'
-            if (email === 'incorrect' && password === 'incorrect') {
-                // Display the error message
-                errorMessage.textContent = 'Email or password is incorrect.';
-                errorMessage.style.color = 'red';
-
-                // Prevent the form submission
+            form.addEventListener('submit', async function (event) {
                 event.preventDefault();
-            }
-            // You can add more complex validation based on your requirements
+
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Redirect or perform any action for successful login
+                    window.location.href = data.redirect;
+                } else {
+                    // Display error message
+                    errorMessageContainer.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 
 </body>
@@ -98,6 +93,11 @@ body{
   font-size: 36px;
   text-align: center;
 }
+#error-message {
+        color: #ff0000;
+        text-align: center;
+        font-size: 14px;
+    }
 .wrapper .input-box{
   position: relative;
   width: 100%;
