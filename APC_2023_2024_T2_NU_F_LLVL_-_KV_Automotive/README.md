@@ -37,20 +37,23 @@ Before you begin, make sure you have the following installed on your system:
     ```bash
     composer require laravel/jetstream
     php artisan jetstream:install livewire
+    composer require jeffgreco13/filament-breezy
+    php artisan breezy:install
     ```
 
     ```bash
     npm install
     npm run build
     ```
+    
 
-3. **Run Migrations:**
+2. **Run Migrations:**
 
     ```bash
     php artisan migrate
     ```
 
-4. **Update User Model:**
+3. **Update User Model:**
 
 - Copy and paste the provided code from `updatedUser.txt` into `app/models/User.php`.
 
