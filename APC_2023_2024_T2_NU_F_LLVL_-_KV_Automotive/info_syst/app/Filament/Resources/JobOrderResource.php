@@ -105,4 +105,19 @@ class JobOrderResource extends Resource
             'edit' => Pages\EditJobOrder::route('/{record}/edit'),
         ];
     }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $user = auth()->user();
+
+        $query = parent::getEloquentQuery();
+
+        if ($user->isAdmin()) {
+            // Admin can see all users
+            return $query;
+        } else {
+            // Other users can only see their own record
+            return $query->where('id', $user->id);
+        }
+    }
 }

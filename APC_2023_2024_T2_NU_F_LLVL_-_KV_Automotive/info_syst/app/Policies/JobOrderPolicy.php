@@ -32,7 +32,7 @@ class JobOrderPolicy
     public function create(User $user): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
+        return $user->isAdmin() ||  $user->isStaff();
     }
 
     /**
@@ -41,7 +41,7 @@ class JobOrderPolicy
     public function update(User $user, JobOrder $jobOrder): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
+        return $user->isAdmin() ||  $user->isStaff();
     }
 
     /**
@@ -50,7 +50,7 @@ class JobOrderPolicy
     public function delete(User $user, JobOrder $jobOrder): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
+        return $user->isAdmin() ||  $user->isStaff();
     }
 
     /**
@@ -59,7 +59,7 @@ class JobOrderPolicy
     public function restore(User $user, JobOrder $jobOrder): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
+        return $user->isAdmin() ||  $user->isStaff();
     }
 
     /**
@@ -68,6 +68,6 @@ class JobOrderPolicy
     public function forceDelete(User $user, JobOrder $jobOrder): bool
     {
         //
-        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
+        return $user->isAdmin() ||  $user->isStaff();
     }
 }

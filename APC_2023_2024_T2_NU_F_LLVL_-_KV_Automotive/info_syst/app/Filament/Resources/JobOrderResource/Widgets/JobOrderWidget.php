@@ -41,4 +41,5 @@ class JobOrderWidget extends BaseWidget
         return auth()->user()->isAdmin() || auth()->user()->isStaff();
 
     }
+
 }
