@@ -12,7 +12,7 @@
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
-    <title>Web Desig Mastery | Carserving</title>
+    <title>LLVL&KB</title>
   </head>
   <body>
     <header class="header">
@@ -29,7 +29,7 @@
           <li><a href="#home">HOME</a></li>
           <li><a href="#about">ABOUT</a></li>
           <li><a href="#service">SERVICE</a></li>
-          <li><a href="#client">CLIENT</a></li>
+          <li><a href="#client">REVIEWS</a></li>
           <a href="{{ route('login') }}" class="header-nav__item">Login</a>
         </ul>
       </nav>
@@ -115,28 +115,28 @@
             <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
             <h4>Change Oil</h4>
             <p>
-              With New Oil will bring new experiencec
+                Ensure peak engine performance with our oil change service. We'll replace the old oil, swap out the filter, and refill it with top-quality oil.
             </p>
           </div>
           <div class="service__card">
             <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
-            <h4>Change Oil</h4>
+            <h4>Tune Up</h4>
             <p>
-              With New Oil will bring new experiencec
+                Boost efficiency and reduce emissions with our tune-up service. Our experts will inspect and optimize key components, including spark plugs and fuel injectors.
             </p>
           </div>
           <div class="service__card">
             <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
-            <h4>Change Oil</h4>
+            <h4>Body Repair</h4>
             <p>
-              With New Oil will bring new experiencec
+                Restore your vehicle's look and structure with our professional body repair. From minor dents to major collision damage, we'll bring your car back to its pre-accident condition.
             </p>
           </div>
           <div class="service__card">
             <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
-            <h4>Change Oil</h4>
+            <h4>Brake Repair</h4>
             <p>
-              With New Oil will bring new experiencec
+                Prioritize safety with our brake repair service. Our skilled technicians will diagnose and address any brake issues, ensuring reliable stopping power.
             </p>
           </div>
         </div>
@@ -155,7 +155,6 @@
             with precision care, leaving it feeling as good as new.
           </p>
           <div class="contact__btns">
-            <button class="btn">Our Services</button>
             <button class="btn">Contact Us</button>
           </div>
         </div>
@@ -184,7 +183,7 @@
           </div>
           <div class="swiper-slide">
             <div class="testimonial__card">
-              <img src="assets/testimonial-2.jpg" alt="testimonial" />
+              <img src="https://apiwp.thelocal.com/cdn-cgi/image/format=webp,width=850,quality=75/https://apiwp.thelocal.com/wp-content/uploads/2018/12/6d67730d16af04f3f956389d4cc244af808b8381c23b1e3d218ecd792de14fa8.jpg" alt="testimonial" />
               <p>
                 I've been bringing my car here for years, and they never
                 disappoint. Their attention to detail and commitment to quality
@@ -196,7 +195,7 @@
           </div>
           <div class="swiper-slide">
             <div class="testimonial__card">
-              <img src="assets/testimonial-3.jpg" alt="testimonial" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu0IhjJOzg0jzzdbgPwKWKSBYTynTsUtREbA&usqp=CAU" alt="testimonial" />
               <p>
                 As a car enthusiast, I'm extremely particular about who touches
                 my prized possession. Their team's expertise and passion for
@@ -213,15 +212,9 @@
     </section>
 
     <footer class="footer">
-      <div class="section__container subscribe__container">
-        <div class="subscribe__content">
-          <p class="section__subheader">OUR NEWSLETTER</p>
-          <h2 class="section__header">Subscribe To Our Newsletter</h2>
-          <p class="section__description">
-            Subscribe to our newsletter and receive exclusive content, expert
-            insights, and special offers delivered directly to your inbox.
-          </p>
-        </div>
+
+
+
 
       </div>
       <div class="section__container footer__container">
@@ -230,8 +223,7 @@
             <a href="#"><img src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/413151349_1303008093729218_6211963685636022506_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHMn9SJYzRlohYf-YBhd7QrBGvc-wTNTLcEa9z7BM1Mt8-vvNRZwX0GaFZc8Pv1yiEyLI5Nxw_eQz4SV81E6_mA&_nc_ohc=EPL73D9l_wEAX_ncohn&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdQyfvzWldJyAB04z-dEFUzEzOLcMaeiLrWAXRm4PDwhCw&oe=65CCC283" alt="logo" style="max-width: 60%; padding-left:10px;" /></a>
           </div>
           <p class="section__description">
-            With a rich legacy spanning 25 years, our commitment to excellence
-            in car servicing is unwavering.
+            Our unwavering commitment to excellence in car servicing sets us apart. Whether it's a routine oil change, a precision tune-up, meticulous body repair, or ensuring top-notch brake performance, we go above and beyond to deliver quality and reliability with every service.
           </p>
           <ul class="footer__socials">
             <li>
@@ -277,9 +269,7 @@
         </div>
       </div>
     </footer>
-    <div class="footer__bar">
-      Copyright © 2023 Web Design Mastery. All rights reserved.
-    </div>
+
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
