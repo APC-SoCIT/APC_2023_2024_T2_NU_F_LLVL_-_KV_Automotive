@@ -110,12 +110,14 @@ class UserResource extends Resource
 
         $query = parent::getEloquentQuery();
 
-        if ($user->isAdmin()) {
+        if ($user->isAdmin() || $user->isStaff()) {
             // Admin can see all users
             return $query;
         } else {
             // Other users can only see their own record
-            return $query->where('id', $user->id);
+            return $query->whereHas('account', function ($accountQuery) use ($user) {
+                $accountQuery->where('id', $user->account->id);
+            });
         }
     }
 }

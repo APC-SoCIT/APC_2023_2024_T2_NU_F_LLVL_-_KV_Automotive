@@ -31,8 +31,8 @@ class VehicleResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Rate limiting')
-                ->description('Prevent abuse by limiting the number of requests per period')
+                Section::make('Owner')
+                ->description('Make Model Year')
                 ->schema([
 
                 Forms\Components\Select::make('account_id')
@@ -49,8 +49,8 @@ class VehicleResource extends Resource
                     ->required()
                     ->numeric(),
                 ]),
-                Section::make('Rate limiting')
-                ->description('betlog')
+                Section::make('Car')
+                ->description('Descriptions')
                 ->schema([
                 Forms\Components\TextInput::make('license_plate')
                     ->maxLength(255),
@@ -65,7 +65,6 @@ class VehicleResource extends Resource
                     ])
                     ->native(false)
                     ->required(),
-                ]),
                 Forms\Components\Select::make('transmission')
                     ->options([
                         'Manual' => 'Manual',
@@ -73,9 +72,12 @@ class VehicleResource extends Resource
                     ])
                     ->native(false)
                     ->required(),
-                    FileUpload::make('image'),
-            MarkdownEditor::make('notes')
-
+                ]),
+                    FileUpload::make('image')
+                    ->openable()
+                    ->imageEditor()
+                    ->deletable(true),
+                    MarkdownEditor::make('notes')
             ]);
     }
 
@@ -85,20 +87,21 @@ class VehicleResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
                     ->sortable(),
-              ImageColumn::make('image')->square(),
+                ImageColumn::make('image')
+                    ->square(),
                 Tables\Columns\TextColumn::make('make')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('model')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('year')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('license_plate')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('color')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('chassis_no')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('fuel_type')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('transmission')
@@ -149,12 +152,15 @@ class VehicleResource extends Resource
 
         $query = parent::getEloquentQuery();
 
-        if ($user->isAdmin()) {
+        if ($user->isAdmin() || $user->isStaff()) {
             // Admin can see all users
             return $query;
         } else {
             // Other users can only see their own record
-            return $query->where('id', $user->id);
+            return $query->whereHas('account', function ($accountQuery) use ($user) {
+                $accountQuery->where('id', $user->account->id);
+            });
         }
     }
+
 }

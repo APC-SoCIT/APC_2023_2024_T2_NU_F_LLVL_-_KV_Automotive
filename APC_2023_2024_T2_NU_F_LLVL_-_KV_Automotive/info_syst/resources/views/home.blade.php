@@ -58,16 +58,15 @@
       </div>
       <div class="experience__content">
         <p class="section__subheader">WHO WE ARE</p>
-        <h2 class="section__header">
-          We Have 25 Years Of Experience In This Field
-        </h2>
+        <h3 class="section__header">
+          We are LLVL & KV Automotive Repair Services with 2 years of experience
+        </h3>
         <p class="section__description">
-          With a rich legacy spanning 25 years, our commitment to excellence in
+          With a owner of business in this industry have spanning 30 years of experience, our commitment to excellence in
           car servicing is unwavering. Our seasoned team brings a wealth of
           experience to ensure your vehicle receives top-notch care. Trust in
           our expertise to keep your car running smoothly and safely.
         </p>
-        <button class="btn">Read More</button>
       </div>
     </section>
 
@@ -119,21 +118,21 @@
             </p>
           </div>
           <div class="service__card">
-            <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
+            <img src="https://qph.cf2.quoracdn.net/main-qimg-de4b6d5c404b9e6dc8ab4b946e0b9b09" alt="service" />
             <h4>Tune Up</h4>
             <p>
                 Boost efficiency and reduce emissions with our tune-up service. Our experts will inspect and optimize key components, including spark plugs and fuel injectors.
             </p>
           </div>
           <div class="service__card">
-            <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
+            <img src="https://www.vtechauto.co.uk/assets/images/car-body-repair01.jpg" alt="service" />
             <h4>Body Repair</h4>
             <p>
                 Restore your vehicle's look and structure with our professional body repair. From minor dents to major collision damage, we'll bring your car back to its pre-accident condition.
             </p>
           </div>
           <div class="service__card">
-            <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
+            <img src="https://www.servicegm.com/blogs/1652/wp-content/uploads/2021/11/brakes.jpg" alt="service" />
             <h4>Brake Repair</h4>
             <p>
                 Prioritize safety with our brake repair service. Our skilled technicians will diagnose and address any brake issues, ensuring reliable stopping power.
@@ -149,13 +148,14 @@
       <div class="section__container contact__container">
         <div class="contact__content">
           <p class="section__subheader">CONTACT US</p>
-          <h2 class="section__header">Imagine Your Car Feeling New Again</h2>
+          <h2 class="section__header">Person in charge</h2>
           <p class="section__description">
-            Experience the magic of a rejuvenated ride as we pamper your car
-            with precision care, leaving it feeling as good as new.
+            Percival F. Lasquety <br>
+            Cellphone no# 09178515875 / 09183395464 <br>
+            Email - vallasquety@yahoo.com
           </p>
           <div class="contact__btns">
-            <button class="btn">Contact Us</button>
+
           </div>
         </div>
       </div>
@@ -260,10 +260,10 @@
               </p>
             </li>
             <li>
-              <p>Phone: <span>+91 9876543210</span></p>
+              <p>Phone: <span>09178515875</span></p>
             </li>
             <li>
-              <p>Email: <span>info@carserving.com</span></p>
+              <p>Email: <span>vallasquety@yahoo.com</span></p>
             </li>
           </ul>
         </div>

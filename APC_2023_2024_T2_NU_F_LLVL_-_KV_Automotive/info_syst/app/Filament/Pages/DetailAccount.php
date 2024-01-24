@@ -91,8 +91,33 @@ class DetailAccount extends Page implements HasForms
     {
         try {
             $data = $this->form->getState();
-
-            auth()->user()->account->update($data);
+    
+            $user = auth()->user();
+    
+            if ($user && $user->account) {
+                $user->account->update($data);
+            } else {
+                // Handle the case where the user or account is null
+                // For example, you might want to create a new account or show an error message.
+                // Here, we'll create a new account for demonstration purposes.
+                $accountData = [
+                    'first_name' => $data['first_name'] ?? '',
+                    'middle_name' => $data['middle_name'] ?? '',
+                    'last_name' => $data['last_name'] ?? '',
+                    'email' => $data['email'] ?? '',
+                    'password' => $data['password'] ?? '',
+                    'birthdate' => $data['birthdate'] ?? null,
+                    'phone_number' => $data['phone_number'] ?? '',
+                    'address' => $data['address'] ?? '',
+                    'city' => $data['city'] ?? '',
+                    'country' => $data['country'] ?? '',
+                ];
+    
+                $newAccount = $user->account()->create($accountData);
+    
+                // If you need to associate the new account with the user, you can do it here.
+                // $user->account()->associate($newAccount)->save();
+            }
         } catch (Halt $exception) {
             return;
         }

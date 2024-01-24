@@ -42,11 +42,15 @@ class InvoiceResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('amount')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('₱'),
                 Forms\Components\TextInput::make('invoice_no')
                     ->required()
                     ->numeric(),
-                    FileUpload::make('image'),
+                    FileUpload::make('image')
+                    ->openable()
+                    ->imageEditor()
+                    ->deletable(true),
                     MarkdownEditor::make('notes')
                 ]),
             ]);
@@ -63,7 +67,7 @@ class InvoiceResource extends Resource
                 Tables\Columns\TextColumn::make('created_by')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('amount')
-                    ->numeric()
+                    ->money('PHP')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('invoice_no')
                     ->numeric()
@@ -106,5 +110,22 @@ class InvoiceResource extends Resource
             'view' => Pages\ViewInvoice::route('/{record}'),
             'edit' => Pages\EditInvoice::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $user = auth()->user();
+
+        $query = parent::getEloquentQuery();
+
+        if ($user->isAdmin() || $user->isStaff()) {
+            // Admin can see all users
+            return $query;
+        } else {
+            // Other users can only see their own record
+            return $query->whereHas('account', function ($accountQuery) use ($user) {
+                $accountQuery->where('id', $user->account->id);
+            });
+        }
     }
 }

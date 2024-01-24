@@ -33,6 +33,10 @@ class Vehicle extends Model
         return $this->hasMany(JobOrder::class);
     }
 
+    protected $casts = [
+        'image' => 'array',
+    ];
+
 }
 
 

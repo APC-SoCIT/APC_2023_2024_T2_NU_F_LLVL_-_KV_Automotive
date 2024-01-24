@@ -13,7 +13,7 @@ class InvoicePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 
     /**
@@ -21,7 +21,7 @@ class InvoicePolicy
      */
     public function view(User $user, Invoice $invoice): bool
     {
-        return $user->isAdmin() ||  $user->isStaff();
+        return $user->isAdmin() ||  $user->isStaff() || $user->isUser();
     }
 
     /**
