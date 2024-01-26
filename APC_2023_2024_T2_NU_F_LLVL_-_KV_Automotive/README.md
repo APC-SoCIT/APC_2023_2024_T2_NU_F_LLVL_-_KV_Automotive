@@ -39,6 +39,7 @@ Before you begin, make sure you have the following installed on your system:
     php artisan jetstream:install livewire
     composer require jeffgreco13/filament-breezy
     php artisan breezy:install
+    https://github.com/bezhanSalleh/filament-shield
     ```
 
     ```bash
