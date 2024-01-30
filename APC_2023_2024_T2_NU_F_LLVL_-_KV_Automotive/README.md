@@ -39,7 +39,10 @@ Before you begin, make sure you have the following installed on your system:
     php artisan jetstream:install livewire
     composer require jeffgreco13/filament-breezy
     php artisan breezy:install
-    https://github.com/bezhanSalleh/filament-shield
+    composer require bezhansalleh/filament-shield
+    php artisan vendor:publish --tag=filament-shield-config
+    php artisan shield:install
+    composer require barryvdh/laravel-dompdf
     ```
 
     ```bash
