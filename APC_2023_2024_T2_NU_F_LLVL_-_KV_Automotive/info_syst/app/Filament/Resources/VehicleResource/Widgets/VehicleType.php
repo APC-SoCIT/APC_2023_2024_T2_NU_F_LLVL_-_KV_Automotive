@@ -6,10 +6,11 @@ use App\Models\Vehicle;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
+use Illuminate\Support\Carbon;
 
 class VehicleType extends ChartWidget
 {
-    protected static ?string $heading = 'Chart';
+    protected static ?string $heading = 'Vehicle Entry';
 
     protected int | string | array $columnSpan = '1';
 
@@ -23,6 +24,11 @@ class VehicleType extends ChartWidget
             ->perMonth()
             ->count();
 
+        // Map the date labels to month names (short form)
+        $monthLabels = $data->map(function (TrendValue $value) {
+            return Carbon::parse($value->date)->format('M');
+        });
+
         return [
             'datasets' => [
                 [
@@ -30,19 +36,17 @@ class VehicleType extends ChartWidget
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
-            'labels' => $data->map(fn (TrendValue $value) => $value->date),
+            'labels' => $monthLabels,
         ];
     }
 
-
     protected function getType(): string
     {
-        return 'line';
+        return 'bar';
     }
 
     public static function canView(): bool
     {
         return auth()->user()->isAdmin() || auth()->user()->isStaff();
-
     }
 }

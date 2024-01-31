@@ -19,7 +19,7 @@ class AccountResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?string $navigationGroup = 'Account Management';
-    protected static ?string $slug = 'Account';
+    protected static ?string $slug = 'Customer';
 
 
     public static function form(Form $form): Form
@@ -27,11 +27,14 @@ class AccountResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('first_name')
+                     ->alpha()
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('middle_name')
+                     ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('last_name')
+                     ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
                     ->email()
@@ -41,14 +44,21 @@ class AccountResource extends Resource
                     ->password()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DatePicker::make('birthdate'),
+                Forms\Components\DatePicker::make('birthdate')
+                  ->required(),
                 Forms\Components\TextInput::make('phone_number')
+                    ->numeric()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('address')
+                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('city')
+                    ->alpha()
+                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('country')
+                    ->alpha()
+                    ->required()
                     ->maxLength(255),
             ]);
     }

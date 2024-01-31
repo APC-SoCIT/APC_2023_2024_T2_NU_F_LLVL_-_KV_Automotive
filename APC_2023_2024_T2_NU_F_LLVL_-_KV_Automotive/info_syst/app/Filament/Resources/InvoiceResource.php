@@ -61,15 +61,18 @@ class InvoiceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
+                ->searchable()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('image')
                     ->square(),
                 Tables\Columns\TextColumn::make('created_by')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('amount')
+                    ->searchable()
                     ->money('PHP')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('invoice_no')
+                    ->searchable()
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

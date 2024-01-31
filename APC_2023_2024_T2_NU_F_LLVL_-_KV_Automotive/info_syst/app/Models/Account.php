@@ -3,16 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     protected $dates = ['birthdate'];
 
     protected $fillable = ['first_name', 'middle_name', 'last_name', 'email', 'password', 'birthdate', 'phone_number', 'address', 'city', 'country', 'full_name'];
-    
+
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->middle_name} {$this->last_name}";
@@ -30,5 +32,10 @@ class Account extends Model
             $account->full_name = $account->getFullNameAttribute();
         });
     }
-    
+
+    public function Vehicle()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
+
 }

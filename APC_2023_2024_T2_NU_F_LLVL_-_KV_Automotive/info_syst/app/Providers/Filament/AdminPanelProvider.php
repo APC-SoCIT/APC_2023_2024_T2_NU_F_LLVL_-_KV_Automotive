@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\InvoiceResource\Widgets\TotalRevenue;
 use App\Filament\Resources\JobOrderResource\Widgets\JobOrderWidget;
 use App\Filament\Resources\UserResource\Widgets\UserStatWidget;
 use App\Filament\Resources\VehicleResource\Widgets\VehicleType;
@@ -43,6 +44,9 @@ class AdminPanelProvider extends PanelProvider
                     slug: 'my-profile' // Sets the slug for the profile page (default = 'my-profile')
                 )
             )
+            ->plugins([
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+            ])
             ->login()
             ->colors([
                 'primary' => Color::Orange,
@@ -52,11 +56,13 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
+            ->databaseNotifications()
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 UserStatWidget::class,
                 VehicleType::class,
+                TotalRevenue::class,
                 JobOrderWidget::class,
                 //Widgets\FilamentInfoWidget::class,
             ])

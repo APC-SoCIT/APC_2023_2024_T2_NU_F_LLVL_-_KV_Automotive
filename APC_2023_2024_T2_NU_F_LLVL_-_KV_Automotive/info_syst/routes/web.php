@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Livewire\Form;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +41,10 @@ Route::get('/admin/login', function () {
 
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+Route::prefix('generate-pdf')->name('generate-pdf.')
+    ->group(function () {
+        Route::controller(PdfController::class)->group(function () {
+            Route::get('vehicle-report/{record}', 'vehicleReport')->name('vehicle.report');
+        });
+    });

@@ -20,6 +20,7 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Account Management';
+        protected static ?string $pluralModelLabel = 'Customer';
 
 
     public static function form(Form $form): Form
@@ -36,13 +37,19 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('role')
+                    Forms\Components\Select::make('role')
                     ->required()
                     ->options(User::ROLES)
                     ->visible(auth()->user()->isAdmin())
                     ->native(false)
                     ->default('USER'),
+                    Forms\Components\Select::make('roles')
+                    ->relationship('roles', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
                     ])
+
 
             ]);
     }
@@ -63,7 +70,14 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('role')
+                Tables\Columns\TextColumn::make('roles.name')
+                    ->label('Permission')
+                    ->visible(auth()->user()->isAdmin())
+                    ->sortable()
+                    ->badge()
+                    ->searchable(),
+                    Tables\Columns\TextColumn::make('role')
+                      ->label('Access')
                     ->visible(auth()->user()->isAdmin())
                     ->sortable()
                     ->badge()

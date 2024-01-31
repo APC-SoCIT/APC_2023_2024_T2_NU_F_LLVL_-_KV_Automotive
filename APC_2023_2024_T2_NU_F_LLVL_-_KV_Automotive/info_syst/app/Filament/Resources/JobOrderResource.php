@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Notifications\Notification;
+use Filament\Notifications\Actions\Action;
+
 
 class JobOrderResource extends Resource
 {
@@ -27,16 +30,35 @@ class JobOrderResource extends Resource
         return $form
             ->schema([
 
-                Forms\Components\Select::make('account_id')
-                ->relationship(name: 'account', titleAttribute: 'full_name')
+                    Forms\Components\Select::make('account_id')
+                    ->relationship(name: 'account', titleAttribute: 'full_name')
+                    ->searchable()
+                    ->preload()
+                    ->native(false)
+                    ->disabledOn('edit')
+                    ->required(),
+                    Forms\Components\Select::make('vehicle_id')
+                    ->relationship('vehicle', 'model', function ($get, $query) {
+                        if ($get('account_id')) {
+                            $query->where('account_id', $get('account_id'));
+                        }
+                    })
+                    ->searchable()
+                    ->preload()
+                    ->native(false)
+                    ->disabledOn('edit')
+                    ->required(),
+
+                Forms\Components\Select::make('inventory_id')
+                ->relationship(name: 'inventory', titleAttribute: 'product_name')
+                ->preload()
                 ->searchable()
-                ->native(false)
-                ->required(),
-                Forms\Components\Select::make('vehicle_id')
-                ->relationship(name: 'vehicle', titleAttribute: 'model')
-                ->searchable()
-                ->native(false)
-                ->required(),
+                ->disabledOn('edit')
+                ->native(false),
+                Forms\Components\TextInput::make('quantity_used')
+                ->numeric()
+                ->disabledOn('edit')
+                ->minValue(1),
                 Forms\Components\Select::make('status')
                 ->required()
                 ->options([
@@ -46,6 +68,9 @@ class JobOrderResource extends Resource
                 ])
                 ->default('pending'),
             ]);
+
+
+
     }
 
     public static function table(Table $table): Table
@@ -56,16 +81,16 @@ class JobOrderResource extends Resource
                 ->sortable(),
                 Tables\Columns\TextColumn::make('vehicle.model')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                ->sortable()
-                ->badge()
-                ->color(function(string $state) : string{
-                      return match($state) {
-                        'pending' => 'primary',
-                        'in_progress' => 'info',
-                        'completed' => 'success',
-                      };
-                }),
+                    Tables\Columns\TextColumn::make('status')
+                    ->sortable()
+                    ->badge()
+                    ->color(function(string $state) : string{
+                          return match($state) {
+                            'pending' => 'primary',
+                            'in_progress' => 'info',
+                            'completed' => 'success',
+                          };
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -122,4 +147,19 @@ class JobOrderResource extends Resource
             });
         }
     }
+    public static function save($record, Form $form)
+{
+
+    parent::save($record, $form);
+
+    // Handle reducing inventory quantity
+    $inventory = $record->inventory;
+    $quantityUsed = (int)$form->getField('quantity_used')->getValue();
+
+    // Reduce the quantity
+    $inventory->quantity -= $quantityUsed;
+    $inventory->save();
+}
+
+
 }

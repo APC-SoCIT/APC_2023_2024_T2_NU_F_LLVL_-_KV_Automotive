@@ -17,16 +17,18 @@ class Vehicle extends Model
         'fuel_type',
         'transmission',
         'notes',
-        'image',// Assuming you have added this foreign key to connect with accounts
+        'image',
+        'miles_per_gallon',
+        'mileage',// Assuming you have added this foreign key to connect with accounts
         // Add other attributes you want to allow for mass assignment here
     ];
 
     // Define relationships or other configurations here
 
-    public function account(): BelongsTo
-    {
-        return $this->belongsTo(Account::class);
-    }
+        public function account(): BelongsTo
+        {
+            return $this->belongsTo(Account::class);
+        }
 
     public function jobOrders()
     {
@@ -38,5 +40,6 @@ class Vehicle extends Model
     ];
 
 }
+
 
 

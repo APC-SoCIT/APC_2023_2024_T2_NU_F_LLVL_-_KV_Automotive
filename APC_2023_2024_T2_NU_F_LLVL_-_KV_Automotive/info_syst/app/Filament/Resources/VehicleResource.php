@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\VehicleResource\Pages;
 use App\Filament\Resources\VehicleResource\RelationManagers;
 use App\Models\Vehicle;
+use App\Policies\VehiclePolicy;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,6 +17,8 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ImageColumn;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Blade;
 
 class VehicleResource extends Resource
 {
@@ -29,21 +32,44 @@ class VehicleResource extends Resource
 
     public static function form(Form $form): Form
     {
+
         return $form
             ->schema([
                 Section::make('Owner')
                 ->description('Make Model Year')
                 ->schema([
 
-                Forms\Components\Select::make('account_id')
+                    Forms\Components\Select::make('account_id')
                     ->relationship(name: 'account', titleAttribute: 'full_name')
                     ->native(false)
-                    ->required(),
+                    ->required()
+                    ->options(function () {
+                        $user = auth()->user();
+
+                        if ($user->isAdmin() || $user->isStaff()) {
+                            // Admin or staff can see all accounts with concatenated names
+                            return \App\Models\Account::select('first_name', 'middle_name', 'last_name', 'id')
+                                ->get()
+                                ->map(function ($account) {
+                                    return [
+                                        'id' => $account->id,
+                                        'name' => "{$account->first_name} {$account->middle_name} {$account->last_name}",
+                                    ];
+                                })
+                                ->pluck('name', 'id');
+                        } else {
+                            // Other users can only see their own account with concatenated names
+                            $userAccount = $user->account;
+                            return [$userAccount->id => "{$userAccount->first_name} {$userAccount->middle_name} {$userAccount->last_name}"];
+                        }
+                    }),
                 Forms\Components\TextInput::make('make')
                     ->required()
+                    ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('model')
                     ->required()
+                    ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('year')
                     ->required()
@@ -53,10 +79,12 @@ class VehicleResource extends Resource
                 ->description('Descriptions')
                 ->schema([
                 Forms\Components\TextInput::make('license_plate')
+                    ->unique()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('color')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('chassis_no')
+                     ->unique()
                     ->maxLength(255),
                     Forms\Components\Select::make('fuel_type')
                     ->options([
@@ -65,6 +93,8 @@ class VehicleResource extends Resource
                     ])
                     ->native(false)
                     ->required(),
+                    Forms\Components\TextInput::make('miles_per_gallon')
+                    ->numeric(),
                 Forms\Components\Select::make('transmission')
                     ->options([
                         'Manual' => 'Manual',
@@ -86,7 +116,8 @@ class VehicleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 ImageColumn::make('image')
                     ->square(),
                 Tables\Columns\TextColumn::make('make')
@@ -100,9 +131,10 @@ class VehicleResource extends Resource
                 Tables\Columns\TextColumn::make('color')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('chassis_no')
-                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('fuel_type')
+                    ->searchable(),
+                    Tables\Columns\TextColumn::make('miles_per_gallon')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('transmission')
                     ->searchable(),
@@ -119,8 +151,10 @@ class VehicleResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ActionGroup::make([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -153,14 +187,15 @@ class VehicleResource extends Resource
         $query = parent::getEloquentQuery();
 
         if ($user->isAdmin() || $user->isStaff()) {
-            // Admin can see all users
+            // Admin or staff can see all records
             return $query;
         } else {
-            // Other users can only see their own record
-            return $query->whereHas('account', function ($accountQuery) use ($user) {
-                $accountQuery->where('id', $user->account->id);
-            });
+            // Other users can only see their own records
+            return $query->where('account_id', $user->account->id);
         }
     }
+
+
+
 
 }
