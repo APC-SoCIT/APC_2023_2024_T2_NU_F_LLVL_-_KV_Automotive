@@ -112,9 +112,9 @@ class DetailAccount extends Page implements HasForms
                     'city' => $data['city'] ?? '',
                     'country' => $data['country'] ?? '',
                 ];
-    
+
                 $newAccount = $user->account()->create($accountData);
-    
+
                 // If you need to associate the new account with the user, you can do it here.
                 // $user->account()->associate($newAccount)->save();
             }

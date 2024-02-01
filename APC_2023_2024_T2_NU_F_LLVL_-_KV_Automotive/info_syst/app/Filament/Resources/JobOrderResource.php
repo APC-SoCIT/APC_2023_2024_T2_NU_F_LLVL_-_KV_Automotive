@@ -57,13 +57,15 @@ class JobOrderResource extends Resource
                 ->required(),
                 Forms\Components\Select::make('status')
                 ->required()
+                ->suffixIcon('heroicon-m-information-circle')
+                ->suffixIconColor('warning')
+                ->native(false)
                 ->options([
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',
                     'completed' => 'Completed',
                 ])
                 ->default('pending'),
-                ToggleButton::make('')
             ]);
     }
 
