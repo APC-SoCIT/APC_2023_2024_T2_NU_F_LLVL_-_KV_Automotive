@@ -1,12 +1,3 @@
-# Information Management System Project Setup Guide
-
-This guide provides step-by-step instructions for setting up the Information Management System project.
-
-<div style="display: flex; justify-content: center;">
-  <img src="https://scontent.fmnl8-1.fna.fbcdn.net/v/t39.30808-6/415767027_3635315576683317_349287106496608218_n.jpg?stp=dst-jpg_s851x315&_nc_cat=110&ccb=1-7&_nc_sid=524774&_nc_eui2=AeErWo7G_50Ryf2hoT-n6ETfYznWZ2gznjBjOdZnaDOeMHIsTgL8HR-Yx6e2ho8udpnkXtEub9fuLSIATUyMJld3&_nc_ohc=vgujG4o2wGkAX-Qv3P8&_nc_ht=scontent.fmnl8-1.fna&oh=00_AfBw69kmLz4ATB7LCzjiXHK-sHT1eutuz7NkewJGZOYNRA&oe=659EF2DE" alt="Project Banner" />
-</div>
-
-
 ## Getting Started
 
 ### Prerequisites
@@ -39,6 +30,10 @@ Before you begin, make sure you have the following installed on your system:
     php artisan jetstream:install livewire
     composer require jeffgreco13/filament-breezy
     php artisan breezy:install
+    composer require bezhansalleh/filament-shield
+    php artisan vendor:publish --tag=filament-shield-config
+    php artisan shield:install
+    composer require barryvdh/laravel-dompdf
     ```
 
     ```bash
