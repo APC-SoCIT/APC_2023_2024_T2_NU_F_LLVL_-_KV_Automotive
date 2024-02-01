@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JobOrder extends Model
 {
@@ -24,8 +25,10 @@ class JobOrder extends Model
 
     public function inventory(): BelongsTo
     {
-        return $this->belongsTo(Inventory::class);
+        return $this->BelongsTo(Inventory::class);
     }
+
+
 
     public static function boot()
     {
@@ -33,17 +36,37 @@ class JobOrder extends Model
 
         static::creating(function ($jobOrder) {
             // Reduce the quantity when creating a new job order
-            $jobOrder->inventory->decrement('quantity', $jobOrder->quantity_used);
+            $inventoryRelation = $jobOrder->inventory;
+            if ($inventoryRelation) {
+                $inventoryRelation->each(function ($inventory) use ($jobOrder) {
+                    $inventory->decrement('quantity', $jobOrder->quantity_used);
+                });
+            }
         });
 
         static::updating(function ($jobOrder) {
             // Check if the inventory is updated, then handle the quantity change
             if ($jobOrder->isDirty('inventory_id')) {
                 // Increase the quantity for the old inventory
-                $jobOrder->getOriginal('inventory_id') && Inventory::find($jobOrder->getOriginal('inventory_id'))->increment('quantity', $jobOrder->quantity_used);
+                $originalInventory = Inventory::find($jobOrder->getOriginal('inventory_id'));
+                if ($originalInventory) {
+                    $originalInventory->increment('quantity', $jobOrder->quantity_used);
+                }
+
                 // Reduce the quantity for the new inventory
-                $jobOrder->inventory->decrement('quantity', $jobOrder->quantity_used);
+                $inventoryRelation = $jobOrder->inventory;
+                if ($inventoryRelation) {
+                    $inventoryRelation->each(function ($inventory) use ($jobOrder) {
+                        $inventory->decrement('quantity', $jobOrder->quantity_used);
+                        // No need to associate with HasMany, as it's already a relationship
+                        $inventory->save();
+                    });
+                }
             }
         });
     }
+
+
+
+
 }
