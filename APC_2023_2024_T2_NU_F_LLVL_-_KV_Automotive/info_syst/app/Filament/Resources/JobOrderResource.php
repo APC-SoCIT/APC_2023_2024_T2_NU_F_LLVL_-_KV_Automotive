@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\ToggleButtons;
 
 class JobOrderResource extends Resource
 {
@@ -34,11 +35,11 @@ class JobOrderResource extends Resource
                 ->required()
                 ->preload(),
                 Forms\Components\Select::make('vehicle_id')
-                ->relationship('vehicle', 'make', function ($get, $query) {
-                    if ($get('account_id')) {
-                        $query->where('account_id', $get('account_id'));
-                    }
-                })
+                    ->relationship('vehicle', 'make', function ($get, $query) {
+                        if ($get('account_id')) {
+                            $query->where('account_id', $get('account_id'));
+                        }
+                    })
                 ->searchable()
                 ->native(false)
                 ->preload()
@@ -62,6 +63,7 @@ class JobOrderResource extends Resource
                     'completed' => 'Completed',
                 ])
                 ->default('pending'),
+                ToggleButton::make('')
             ]);
     }
 

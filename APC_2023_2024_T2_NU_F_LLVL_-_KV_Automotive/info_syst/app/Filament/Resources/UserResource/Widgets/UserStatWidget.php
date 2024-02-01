@@ -11,9 +11,23 @@ class UserStatWidget extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Users', User::count()),
-            Stat::make('Admin', User::where('role',User::ROLE_ADMIN)->count()),
-            Stat::make('Staffs', User::where('role',User::ROLE_STAFF)->count()),
+            Stat::make('Users', User::count())
+                ->description('Total number of users')
+                ->color('success')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->descriptionIcon('heroicon-m-information-circle'),
+
+            Stat::make('Admin', User::where('role', User::ROLE_ADMIN)->count())
+                ->description('Number of admin users')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('danger')
+                ->descriptionIcon('heroicon-m-shield-check'),
+
+            Stat::make('Staffs', User::where('role', User::ROLE_STAFF)->count())
+                ->description('Number of staff users')
+                ->color('info')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->descriptionIcon('heroicon-m-users'),
         ];
     }
 
