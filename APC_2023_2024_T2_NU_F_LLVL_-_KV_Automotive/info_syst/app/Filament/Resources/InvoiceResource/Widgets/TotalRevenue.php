@@ -12,7 +12,7 @@ class TotalRevenue extends ChartWidget
 {
     protected static ?string $heading = 'Total Revenue';
 
-    protected int | string | array $columnSpan = '1';
+    protected int | string | array $columnSpan = '2';
 
     protected \DateTimeInterface $start;
 
@@ -53,7 +53,7 @@ class TotalRevenue extends ChartWidget
 
     protected function getType(): string
     {
-        return 'bar';
+        return 'line';
     }
 
     protected function getChartData(string $interval): \Illuminate\Support\Collection

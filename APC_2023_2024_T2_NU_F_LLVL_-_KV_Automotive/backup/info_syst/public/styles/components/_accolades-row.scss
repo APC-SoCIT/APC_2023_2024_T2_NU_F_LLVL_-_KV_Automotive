@@ -1,0 +1,20 @@
+// Accolades Row Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.accolades-row {
+  padding: calc(var(--gutter) * 1.5) 0;
+  background-color: HSL(var(--color-ice));
+}
+
+.accolades-row__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: calc(var(--gutter) * 2);
+  
+  @include breakpoint(medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

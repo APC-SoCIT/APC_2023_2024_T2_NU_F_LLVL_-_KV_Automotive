@@ -1,0 +1,20 @@
+// Notice Bar Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.notice-bar {
+  padding: 1.3rem 0;
+  background-color: HSL(var(--color-sweetmint));
+  font-size: 1.5rem;
+  
+  @include breakpoint(small) {
+    font-size: 1.8rem;
+  }
+}
+
+.notice-bar__copy {
+  color: white;
+  text-align: center;
+}

@@ -20,6 +20,7 @@ class AccountResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?string $navigationGroup = 'Account Management';
     protected static ?string $slug = 'Customer';
+    protected static ?string $pluralModelLabel = 'Customer';
 
 
     public static function form(Form $form): Form

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2024 at 12:59 PM
+-- Generation Time: Feb 02, 2024 at 11:25 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -43,7 +43,7 @@ CREATE TABLE `accounts` (
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -51,9 +51,12 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `first_name`, `middle_name`, `last_name`, `full_name`, `email`, `password`, `birthdate`, `phone_number`, `address`, `city`, `country`, `remember_token`, `created_at`, `updated_at`, `user_id`) VALUES
-(1, 'Rosss', 'Vernon Neal', 'Woodard', 'Rosss Vernon Neal Woodard', 'rage@mailinator.com', 'Pa$$w0rd!', '2012-10-04', '09055263328', 'Laudantium facere eum adipisicing eos qui velit deserunt numquam voluptatem In sint sed voluptatem', 'Vero dolorum in aliqua Delectus voluptates distinctio Sed quo eos in quas recusandae Dicta', 'Dolorem accusamus eius eligendi bruh', NULL, '2024-01-07 06:57:29', '2024-01-12 02:26:12', 1),
-(5, 'Roberts', 'Dai Fisher', 'Joyner', 'Roberts Dai Fisher Joyner', 'gyzyj@mailinator.com', 'Pa$$w0rd!', '2011-07-05', '+1 (928) 812-8535', 'Saepe dolores neque voluptas fugit laborum', 'Id consequatur quas esse quam provident voluptates dolor odio aperiam ut repellendus Aut consectetur', 'Voluptatem quis voluptatum neque autem at fugit reprehenderit quisquam amet', NULL, '2024-01-07 07:48:21', '2024-01-07 07:55:08', 8),
-(6, 'Kait', 'Amy Mccarthy', 'Crosby', 'Kait Amy Mccarthy Crosby', 'vysibutyv@mailinator.com', 'Pa$$w0rd!', '1992-03-25', '+1 (601) 926-4736', 'Dolores aut omnis et quibusdam tempora eius rerum alias iure dolorem non et et magni beatae consequuntur quae cillum doloribus', 'Fugiat est perspiciatis nisi nisi obcaecati quaerat qui modi sint nobis cum', 'Id recusandae Ipsum cupiditate dolorum', NULL, '2024-01-07 07:50:23', '2024-01-07 07:54:04', 9);
+(1, 'Percival', 'Frias', 'Lasquety', 'Percival Frias Lasquety', 'Val@gmail.com', 'admin', '1965-02-14', '09174515361', 'Blk 6 lot 18 senate phase 2 brgy 173', 'Caloocan City', 'PH', NULL, '2024-01-07 06:57:29', '2024-01-21 06:07:35', NULL),
+(5, 'Robert', 'Bang', 'Ryan', 'Robert Bang Ryan', 'Robert@gmail.com', 'abc', '1994-03-16', '09568402542', 'blk 1 lot 1 forest park', 'Bulacan City', 'PH', NULL, '2024-01-07 07:48:21', '2024-01-21 06:09:00', NULL),
+(6, 'Cait', 'Mcdo', 'Crosby', 'Cait Mcdo Crosby', 'Cait@gmail.com', 'abc', '1992-03-25', '09184315672', 'blk 2 lot 2 senate phase 1', 'Makati', 'PH', NULL, '2024-01-07 07:50:23', '2024-01-21 06:10:02', NULL),
+(7, 'Yolan', 'Dag', 'Pogi', 'Yolan Dag Pogi', 'Yolan@gmail.com', 'abc123456', '1995-12-06', '09176541246', 'blk 1 lot 2 carissa brgy 101', 'Malabon', 'PH', NULL, '2024-01-21 06:51:12', '2024-01-21 06:51:12', NULL),
+(8, 'Rona', 'D.L', 'Cab', 'Rona D.L Cab', 'Rona@gmail.com', '123456abc', '2024-01-18', '09181234521', 'blk 1 lot 2 Carissa Brgy 170', 'Caloocan', 'PH', NULL, '2024-01-21 07:09:49', '2024-01-21 07:09:49', NULL),
+(9, 'Staff', 'Staff', 'Staff', 'Staff Staff Staff', 'staff@gmail.com', 'Staff123', NULL, '09273812940', 'Blk 5 Lot 5, Kamagong st, nangka, Marikina city', 'Marikina City', 'PH', NULL, '2024-01-29 00:29:31', '2024-01-29 00:29:31', 13);
 
 -- --------------------------------------------------------
 
@@ -84,16 +87,21 @@ CREATE TABLE `inventories` (
   `quantity` int(11) NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `job_order_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inventories`
 --
 
-INSERT INTO `inventories` (`id`, `product_name`, `description`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
-(1, 'Chain', 'Est nisi eu', 295, '396.00', '2024-01-18 01:01:56', '2024-01-18 01:06:39'),
-(2, 'Hilel ', 'Quia magnam reiciendis autem ', 455, '431.00', '2024-01-20 23:12:53', '2024-01-20 23:13:11');
+INSERT INTO `inventories` (`id`, `product_name`, `description`, `quantity`, `price`, `created_at`, `updated_at`, `job_order_id`) VALUES
+(1, 'Petron Engine oil', 'Synthetic', 16, '1000.00', '2024-01-18 01:01:56', '2024-01-31 17:49:16', NULL),
+(2, 'Shell Engine oil', 'Synthetic Blend', 16, '700.00', '2024-01-20 23:12:53', '2024-01-31 17:49:16', NULL),
+(3, 'Honda Engine oil', 'Mineral', 494, '500.00', '2024-01-21 06:34:11', '2024-01-31 17:49:16', NULL),
+(4, 'Body Repair Kit Set', 'for Toyota Cars', 16, '1500.00', '2024-01-21 06:35:02', '2024-01-31 17:49:16', NULL),
+(5, 'Wheel Truck', 'Rim type for Isuzu', 1, '5000.00', '2024-01-21 06:36:12', '2024-01-31 17:49:16', NULL),
+(6, 'Prestone Coolant', 'Prestone 50/50 Prediluted Coolant Blue - 1 Gallon', 95, '1499.00', '2024-01-30 21:09:40', '2024-01-31 17:49:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -118,7 +126,10 @@ CREATE TABLE `invoices` (
 --
 
 INSERT INTO `invoices` (`id`, `account_id`, `image`, `created_by`, `amount`, `invoice_no`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 6, NULL, 'Jose', 9000, 1, '![](http://localhost:8000/storage/QVrxoLnWqgCyiqTbMSVkHetdLxbhtsSs8gm10zwj.jpg)', '2024-01-17 19:40:38', '2024-01-18 00:24:25');
+(1, 6, '01HMP86HGP6P8SFJ0B7KYKCWK8.jpg', 'Jose', 9000, 51, '![](http://localhost:8000/storage/tU7tPA1BsgvSNbqERd946BkZMrSXvbbwexbC8ZNy.jpg)', '2024-01-17 19:40:38', '2024-01-21 06:53:37'),
+(6, 7, NULL, 'Jose', 9000, 52, 'basta bayad na to wala pa pic', '2024-01-21 06:52:20', '2024-01-21 06:52:20'),
+(7, 8, NULL, 'Jose', 10000, 53, 'Fully paid cash service', '2024-01-21 07:26:41', '2024-01-21 07:26:41'),
+(8, 7, NULL, 'Jose', 500, 52, NULL, '2024-01-30 07:16:05', '2024-01-30 07:16:05');
 
 -- --------------------------------------------------------
 
@@ -132,15 +143,20 @@ CREATE TABLE `job_orders` (
   `status` varchar(255) DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `account_id` bigint(20) UNSIGNED NOT NULL
+  `account_id` bigint(20) UNSIGNED NOT NULL,
+  `inventory_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `quantity_used` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `job_orders`
 --
 
-INSERT INTO `job_orders` (`id`, `vehicle_id`, `status`, `created_at`, `updated_at`, `account_id`) VALUES
-(5, 1, 'in_progress', '2024-01-17 22:25:51', '2024-01-17 22:30:14', 6);
+INSERT INTO `job_orders` (`id`, `vehicle_id`, `status`, `created_at`, `updated_at`, `account_id`, `inventory_id`, `quantity_used`) VALUES
+(5, 1, 'in_progress', '2024-01-17 22:25:51', '2024-01-17 22:30:14', 6, NULL, NULL),
+(6, 5, 'completed', '2024-01-21 07:27:37', '2024-01-21 07:27:37', 8, NULL, NULL),
+(31, 7, 'in_progress', '2024-01-31 16:33:27', '2024-01-31 16:38:16', 9, 6, 1),
+(47, 4, 'pending', '2024-01-31 17:49:16', '2024-01-31 17:49:16', 7, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -175,7 +191,44 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2014_10_12_200000_add_two_factor_columns_to_users_table', 8),
 (20, '2024_01_08_043857_create_sessions_table', 8),
 (21, '2024_01_12_134709_add_image_to_vehicles_table', 9),
-(22, '2024_01_18_062426_make_status_nullable_in_job_orders_table', 10);
+(22, '2024_01_18_062426_make_status_nullable_in_job_orders_table', 10),
+(23, '2024_01_21_144431_modify_accounts_table', 11),
+(25, '2024_01_29_080958_create_notifications_table', 12),
+(26, '2024_01_31_060711_add_quantity_used_to_job_orders_table', 13),
+(27, '2024_01_31_093217_add_miles_per_gallon_and_mileage_to_vehicles_table', 14),
+(28, '2024_01_31_124623_create_vehicle_history_table', 15),
+(29, '2024_01_31_145535_change_date_performed_data_type_in_vehicle_history_table', 16),
+(30, '2024_01_31_165029_add_mileage_to_vehicle_histories', 17),
+(31, '2024_01_31_092339_add_fuel_usage_to_vehicles_table', 18),
+(32, '2024_01_31_232801_add_foreign_key_to_inventories', 19);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` char(36) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `notifiable_type` varchar(255) NOT NULL,
+  `notifiable_id` bigint(20) UNSIGNED NOT NULL,
+  `data` text NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
+('5b7c3d19-fbf3-43dd-9e73-44dfb70a5eed', 'Filament\\Notifications\\DatabaseNotification', 'App\\Models\\User', 13, '{\"actions\":[{\"name\":\"Mark as Read\",\"color\":null,\"event\":null,\"eventData\":[],\"dispatchDirection\":false,\"dispatchToComponent\":null,\"extraAttributes\":[],\"icon\":null,\"iconPosition\":\"before\",\"iconSize\":null,\"isOutlined\":false,\"isDisabled\":false,\"label\":\"Mark as read\",\"shouldClose\":false,\"shouldMarkAsRead\":true,\"shouldMarkAsUnread\":false,\"shouldOpenUrlInNewTab\":false,\"size\":\"sm\",\"tooltip\":null,\"url\":null,\"view\":\"filament-actions::link-action\"}],\"body\":\"Your Lancer is ready for pick up.\",\"color\":null,\"duration\":\"persistent\",\"icon\":\"heroicon-o-information-circle\",\"iconColor\":\"success\",\"status\":null,\"title\":\"Vehicle Update\",\"view\":\"filament-notifications::notification\",\"viewData\":[],\"format\":\"filament\"}', NULL, '2024-01-30 22:56:44', '2024-01-30 22:56:44'),
+('8a227c64-7dff-4812-9a90-5483da437c3f', 'Filament\\Notifications\\DatabaseNotification', 'App\\Models\\User', 13, '{\"actions\":[{\"name\":\"Mark as Read\",\"color\":null,\"event\":null,\"eventData\":[],\"dispatchDirection\":false,\"dispatchToComponent\":null,\"extraAttributes\":[],\"icon\":null,\"iconPosition\":\"before\",\"iconSize\":null,\"isOutlined\":false,\"isDisabled\":false,\"label\":\"Mark as read\",\"shouldClose\":false,\"shouldMarkAsRead\":true,\"shouldMarkAsUnread\":false,\"shouldOpenUrlInNewTab\":false,\"size\":\"sm\",\"tooltip\":null,\"url\":null,\"view\":\"filament-actions::link-action\"}],\"body\":\"Your Lancer is ready for pick up.\",\"color\":null,\"duration\":\"persistent\",\"icon\":\"heroicon-o-information-circle\",\"iconColor\":\"success\",\"status\":null,\"title\":\"Vehicle Update\",\"view\":\"filament-notifications::notification\",\"viewData\":[],\"format\":\"filament\"}', NULL, '2024-01-30 22:56:20', '2024-01-30 22:56:20'),
+('ac587f77-cdb8-4ef0-bba4-902e38e66d96', 'Filament\\Notifications\\DatabaseNotification', 'App\\Models\\User', 13, '{\"actions\":[{\"name\":\"Mark as Read\",\"color\":null,\"event\":null,\"eventData\":[],\"dispatchDirection\":false,\"dispatchToComponent\":null,\"extraAttributes\":[],\"icon\":null,\"iconPosition\":\"before\",\"iconSize\":null,\"isOutlined\":false,\"isDisabled\":false,\"label\":\"Mark as read\",\"shouldClose\":false,\"shouldMarkAsRead\":true,\"shouldMarkAsUnread\":false,\"shouldOpenUrlInNewTab\":false,\"size\":\"sm\",\"tooltip\":null,\"url\":null,\"view\":\"filament-actions::link-action\"}],\"body\":\"Your Lancer is ready for pick up.\",\"color\":null,\"duration\":\"persistent\",\"icon\":\"heroicon-o-information-circle\",\"iconColor\":\"success\",\"status\":null,\"title\":\"Vehicle Update\",\"view\":\"filament-notifications::notification\",\"viewData\":[],\"format\":\"filament\"}', NULL, '2024-01-30 22:55:23', '2024-01-30 22:55:23'),
+('fd308146-f373-43d2-ae0b-994685c5854c', 'Filament\\Notifications\\DatabaseNotification', 'App\\Models\\User', 13, '{\"actions\":[{\"name\":\"Mark as Read\",\"color\":null,\"event\":null,\"eventData\":[],\"dispatchDirection\":false,\"dispatchToComponent\":null,\"extraAttributes\":[],\"icon\":null,\"iconPosition\":\"before\",\"iconSize\":null,\"isOutlined\":false,\"isDisabled\":false,\"label\":\"Mark as read\",\"shouldClose\":false,\"shouldMarkAsRead\":true,\"shouldMarkAsUnread\":false,\"shouldOpenUrlInNewTab\":false,\"size\":\"sm\",\"tooltip\":null,\"url\":null,\"view\":\"filament-actions::link-action\"}],\"body\":\"The service for Lancer is in progress.\",\"color\":null,\"duration\":\"persistent\",\"icon\":\"heroicon-o-information-circle\",\"iconColor\":\"primary\",\"status\":null,\"title\":\"Vehicle Update\",\"view\":\"filament-notifications::notification\",\"viewData\":[],\"format\":\"filament\"}', NULL, '2024-01-31 16:38:17', '2024-01-31 16:38:17'),
+('ff767974-6450-425e-8be6-91ec7cd8e05f', 'Filament\\Notifications\\DatabaseNotification', 'App\\Models\\User', 1, '{\"actions\":[],\"body\":null,\"color\":null,\"duration\":\"persistent\",\"icon\":null,\"iconColor\":null,\"status\":null,\"title\":\"Saved successfully\",\"view\":\"filament-notifications::notification\",\"viewData\":[],\"format\":\"filament\"}', NULL, '2024-01-31 16:38:16', '2024-01-31 16:38:16');
 
 -- --------------------------------------------------------
 
@@ -228,8 +281,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('GpiYJhxBi8P4IC9ER4O8fbcGZUp4bmkNwtJYBK7u', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidmxKOG5PRGpXbm5XWGg5WlFXNDVPcG9IUU1WUWRnOTNjR3haZTRQUyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1705838367),
-('UlpE4iLKkaOPEJWlSciuo7vPafCtna8mH1aznNHX', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoieDFVemJJVzhYSFpvNFVXZE00Y2Z5N2VQTW9ianZtTTJONjZNYkUydSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1705836362);
+('31va3hpdbHNI22K4beZvruIlLK0I0AUTsbqgwSMS', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicExJcU1QMUtveUFkMlQ3SzMwWVRwbE9GaEh4RjNybFB0c3VSdGdmUSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbiI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMiRpdUthWGhqUUZVQlg5NXc5dzJDTUdPalBubVJVWUZ6TDhycTlmR1pKUXpNaFd1UzVteWFDLiI7fQ==', 1706869426),
+('GO71euaujnm0EvjCaprx5jK5Qat36hkFLjwH0uxq', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiZjhLekJKbkF5OWJQak5ueWtXdWtXQmtMM1pQZngzUVlxUkg5VnE4QSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kZXRhaWwtYWNjb3VudCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMiRpdUthWGhqUUZVQlg5NXc5dzJDTUdPalBubVJVWUZ6TDhycTlmR1pKUXpNaFd1UzVteWFDLiI7czo2OiJ0YWJsZXMiO2E6MTp7czozMToiTGlzdEludmVudG9yaWVzX3RvZ2dsZWRfY29sdW1ucyI7YToyOntzOjEwOiJjcmVhdGVkX2F0IjtiOjA7czoxMDoidXBkYXRlZF9hdCI7YjowO319fQ==', 1706852692);
 
 -- --------------------------------------------------------
 
@@ -258,9 +311,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
 (1, 'admin', 'admin@admim.com', NULL, '$2y$12$iuKaXhjQFUBX95w9w2CMGOjPnmRUYFzL8rq9fGZJQzMhWuS5myaC.', NULL, NULL, NULL, NULL, '2024-01-07 05:55:58', '2024-01-07 05:55:58', 'ADMIN'),
-(8, 'Jose Santos', 'bydivihox@mailinator.com', NULL, '$2y$12$SKdruBZj2wW5SSuYxf0PeOwKzJuIbZHk8Nkr3Dv.E3Mq4flLlUquO', NULL, NULL, NULL, NULL, '2024-01-07 21:40:44', '2024-01-17 22:06:33', 'STAFF'),
-(9, 'mama Lott', 'vysevopu@mailinator.com', NULL, '$2y$12$G38LehBGhK7qnF/HO5ra..r6EjT6cMQVSkeGyvOHMxiUg9n0wzngq', NULL, NULL, NULL, NULL, '2024-01-07 21:42:37', '2024-01-07 21:58:28', 'STAFF'),
-(10, 'jose', 'cohokaxa@mailinator.com', NULL, '$2y$12$HocDdsiVjaAA3ibMeA3jM.NBAlJD2pS2Ct7ydyHrhUvrgz4RjVJt.', NULL, NULL, NULL, NULL, '2024-01-12 02:27:03', '2024-01-12 03:36:08', 'USER');
+(8, 'Jose', 'Jose@gmail.com', NULL, '$2y$12$SKdruBZj2wW5SSuYxf0PeOwKzJuIbZHk8Nkr3Dv.E3Mq4flLlUquO', NULL, NULL, NULL, NULL, '2024-01-07 21:40:44', '2024-01-21 06:12:45', 'STAFF'),
+(9, 'Lotty', 'Lotty@gmail.com', NULL, '$2y$12$G38LehBGhK7qnF/HO5ra..r6EjT6cMQVSkeGyvOHMxiUg9n0wzngq', NULL, NULL, NULL, NULL, '2024-01-07 21:42:37', '2024-01-21 06:12:25', 'STAFF'),
+(10, 'Abdol', 'Abdol@gmail.com', NULL, '$2y$12$HocDdsiVjaAA3ibMeA3jM.NBAlJD2pS2Ct7ydyHrhUvrgz4RjVJt.', NULL, NULL, NULL, NULL, '2024-01-12 02:27:03', '2024-01-22 18:46:52', 'STAFF'),
+(12, 'Rona', 'rona@gmail.com', NULL, '$2y$12$XbYSiphEVPCz8Ut/MlfcauODKRMhQ305a63YXkkQPapCBlKyjkDT6', NULL, NULL, NULL, NULL, '2024-01-21 06:37:00', '2024-01-21 06:37:00', 'USER'),
+(13, 'staff', 'staff@gmail.com', NULL, '$2y$12$pJ2GPRiAZ79OymO8aTivI.B8IP0Dky6YiZPvcCBK3c4bCUsX4pk2S', NULL, NULL, NULL, NULL, '2024-01-22 00:39:41', '2024-01-30 01:40:10', 'STAFF'),
+(14, 'sample', 'sample@gmail.com', NULL, '$2y$12$goDDy/yKhPqhuGhOpJy0rOyS17rdrINxhPNjBDf4Q5vrDNqOb8NQi', NULL, NULL, NULL, NULL, '2024-01-22 01:02:39', '2024-01-22 01:02:39', 'USER');
 
 -- --------------------------------------------------------
 
@@ -282,17 +338,45 @@ CREATE TABLE `vehicles` (
   `transmission` varchar(255) DEFAULT NULL,
   `notes` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `miles_per_gallon` decimal(8,2) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `vehicles`
 --
 
-INSERT INTO `vehicles` (`id`, `account_id`, `image`, `make`, `model`, `year`, `license_plate`, `color`, `chassis_no`, `fuel_type`, `transmission`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 5, '01HKYZNKM59P0ERNTMDDYZ8N9P.jpg', 'honda', 'civic', 2010, 'Ipsum voluptate et omnis ut aliquip fuga Incididunt consequatur et et velit sunt', 'Enim id ut quia sit sequi do quia incididunt accusantium doloribus saepe est ad voluptatem aut excepturi numquam delectus', 'Labore veniam qui eu dolore laboris vero sit facilis', 'Diesel', 'Automatic', 'Voluptas aliquid sit dolore voluptas similique', '2024-01-07 07:59:07', '2024-01-12 06:02:01'),
-(2, 5, '01HKZ0WAWADA6Q4R2B9GPRB14J.png', 'mitsubishi', 'adventure', 2015, 'Non et quos qui rerum magna eos consequat Eius eius eligendi deserunt', 'Quia laboris rerum fugit id voluptatem Cillum', 'Iusto voluptatibus et placeat nostrud ipsum sapiente sunt iusto voluptatem velit eos sed officia delectus sunt neque', 'Diesel', 'Manual', 'Veritatis quis et tempor nisi adipisci facere ut', '2024-01-07 08:12:27', '2024-01-17 22:18:36'),
-(3, 6, NULL, 'Et obcaecati enim Nam nobis amet dolore fugit debitis ut', 'Excepteur numquam laudantium ullamco ullamco iste fuga Et', 1991, 'Veritatis ex sint unde adipisicing animi incididunt labore fuga Quisquam voluptas', 'Minus est magni sint qui eveniet adipisci dolore ipsam est dignissimos consectetur eveniet tenetur aliquid inventore voluptates', 'Voluptas vitae ut corrupti corporis totam quisquam aliquam quia deserunt omnis quos consectetur error distinctio Ex cum ullam quod', 'Diesel', 'Manual', 'Non porro anim commodo et omnis temporibus architecto', '2024-01-12 01:17:56', '2024-01-12 01:17:56');
+INSERT INTO `vehicles` (`id`, `account_id`, `image`, `make`, `model`, `year`, `license_plate`, `color`, `chassis_no`, `fuel_type`, `transmission`, `notes`, `created_at`, `updated_at`, `miles_per_gallon`) VALUES
+(1, 5, '\"01HNA2QVHH7Y4NQKK234B5MNQ3.png\"', 'honda', 'civic', 2010, '1', 'black', 'asd151', 'Diesel', 'Manual', 'Fully paid done change oil - Jan 22, 2024\n\nTire change - jan 23, 2023 - Jose', '2024-01-07 07:59:07', '2024-01-28 23:43:01', NULL),
+(2, 5, NULL, 'mitsubishi', 'adventure', 2015, '2', 'white', 'asd124', 'Unleaded', 'Automatic', 'Kotse ni VP-Sara', '2024-01-07 08:12:27', '2024-01-21 06:57:38', NULL),
+(3, 6, NULL, 'Honda', 'Corolla', 1991, '123asd', 'green', 'asd123gasd123', 'Diesel', 'Manual', 'Kotse ng babae', '2024-01-12 01:17:56', '2024-01-21 06:59:50', NULL),
+(4, 7, NULL, 'Ford', 'Raptor', 2005, '16', 'blue', 'asd123sd1a41', 'Diesel', 'Manual', 'kotse ni sk chairman', '2024-01-21 07:01:26', '2024-01-21 07:01:26', NULL),
+(5, 8, NULL, 'Ford', 'Ranger', 2016, '10', 'Purple', 'abc123asd123', 'Diesel', 'Manual', 'Kotse ni idle', '2024-01-21 07:12:57', '2024-01-21 07:12:57', NULL),
+(6, 8, NULL, 'Honda', 'city', 2023, '2020', 'blac', '12315641', 'Unleaded', 'Manual', NULL, '2024-01-22 18:56:24', '2024-01-31 02:17:59', NULL),
+(7, 9, NULL, 'mitsubishi', 'Lancer', 2002, '3', 'black', '10', 'Diesel', 'Manual', NULL, '2024-01-29 00:31:00', '2024-01-29 00:31:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle_history`
+--
+
+CREATE TABLE `vehicle_history` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `account_id` bigint(20) UNSIGNED NOT NULL,
+  `vehicle_id` bigint(20) UNSIGNED NOT NULL,
+  `task_performed` text NOT NULL,
+  `performed_by` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vehicle_history`
+--
+
+INSERT INTO `vehicle_history` (`id`, `account_id`, `vehicle_id`, `task_performed`, `performed_by`, `created_at`, `updated_at`) VALUES
+(2, 5, 1, '[{\"task\":\"Change Oil\",\"date_performed\":\"2024\\/01\\/31\",\"mileage\":\"30000\"},{\"task\":\"Wheel ailgnment\",\"date_performed\":\"2024\\/01\\/31\",\"mileage\":\"30000\"}]', 'Jose ', '2024-01-31 07:38:51', '2024-01-31 08:57:22');
 
 --
 -- Indexes for dumped tables
@@ -303,7 +387,8 @@ INSERT INTO `vehicles` (`id`, `account_id`, `image`, `make`, `model`, `year`, `l
 --
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `accounts_email_unique` (`email`);
+  ADD UNIQUE KEY `accounts_email_unique` (`email`),
+  ADD KEY `accounts_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -316,7 +401,8 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `inventories`
 --
 ALTER TABLE `inventories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `inventories_job_order_id_foreign` (`job_order_id`);
 
 --
 -- Indexes for table `invoices`
@@ -338,6 +424,13 @@ ALTER TABLE `job_orders`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`);
 
 --
 -- Indexes for table `password_reset_tokens`
@@ -376,6 +469,14 @@ ALTER TABLE `vehicles`
   ADD KEY `vehicles_account_id_foreign` (`account_id`);
 
 --
+-- Indexes for table `vehicle_history`
+--
+ALTER TABLE `vehicle_history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehicle_history_account_id_foreign` (`account_id`),
+  ADD KEY `vehicle_history_vehicle_id_foreign` (`vehicle_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -383,7 +484,7 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -395,25 +496,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `inventories`
 --
 ALTER TABLE `inventories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `job_orders`
 --
 ALTER TABLE `job_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -425,17 +526,35 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `vehicle_history`
+--
+ALTER TABLE `vehicle_history`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `accounts`
+--
+ALTER TABLE `accounts`
+  ADD CONSTRAINT `accounts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `inventories`
+--
+ALTER TABLE `inventories`
+  ADD CONSTRAINT `inventories_job_order_id_foreign` FOREIGN KEY (`job_order_id`) REFERENCES `job_orders` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `job_orders`
@@ -449,6 +568,13 @@ ALTER TABLE `job_orders`
 --
 ALTER TABLE `vehicles`
   ADD CONSTRAINT `vehicles_account_id_foreign` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `vehicle_history`
+--
+ALTER TABLE `vehicle_history`
+  ADD CONSTRAINT `vehicle_history_account_id_foreign` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehicle_history_vehicle_id_foreign` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

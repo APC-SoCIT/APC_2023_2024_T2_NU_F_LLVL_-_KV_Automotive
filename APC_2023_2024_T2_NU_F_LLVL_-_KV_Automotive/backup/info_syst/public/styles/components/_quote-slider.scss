@@ -1,0 +1,44 @@
+// Quote Slider Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.quote-slider__inner {
+  padding: 1rem 5rem 3rem;
+  background-color: white;
+}
+
+.quote-slider__quotation-mark {
+  width: 3.6rem;
+  height: 2.6rem;
+  margin: 0 auto 2rem;
+}
+
+//-----------------------------------------
+// Pagination
+//-----------------------------------------
+.quote-slider__pagination {
+  margin-top: 2rem;
+  text-align: center;
+  
+  .swiper-pagination-bullet {
+    width: 1.4rem;
+    height: 1.4rem;
+    background: none;
+    border: 0.2rem solid HSL(var(--color-lime));
+    opacity: 1;
+    
+    &:focus {
+      @include focus-outline;
+    }
+    
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    background: HSL(var(--color-lime));
+  }
+}

@@ -1,0 +1,16 @@
+// Page Section Styles for Ski Homepage
+// Author: John Flynn
+
+//-----------------------------------------
+// General
+//-----------------------------------------
+.page-section {
+  padding: var(--page-section-padding) 0;
+}
+
+//-----------------------------------------
+// Color Variants
+//-----------------------------------------
+.page-section--ice {
+  background-color: HSL(var(--color-ice));
+}

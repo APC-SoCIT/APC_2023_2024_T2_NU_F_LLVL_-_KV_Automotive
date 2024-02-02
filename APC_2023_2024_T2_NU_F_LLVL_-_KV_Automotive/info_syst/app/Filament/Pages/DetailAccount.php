@@ -20,6 +20,9 @@ class DetailAccount extends Page implements HasForms
 
     protected static ?string $navigationGroup = 'Account Management';
     protected static string $view = 'filament.pages.detail-account';
+    protected static ?string $title = 'Customer Account';
+
+
 
     public function mount(): void
     {
@@ -91,9 +94,9 @@ class DetailAccount extends Page implements HasForms
     {
         try {
             $data = $this->form->getState();
-    
+
             $user = auth()->user();
-    
+
             if ($user && $user->account) {
                 $user->account->update($data);
             } else {
