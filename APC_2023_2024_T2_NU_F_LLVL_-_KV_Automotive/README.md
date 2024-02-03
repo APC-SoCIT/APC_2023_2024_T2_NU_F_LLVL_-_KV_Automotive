@@ -3,6 +3,7 @@
 ### Prerequisites
 
 Before you begin, make sure you have the following installed on your system:
+NOTE: info_syst doesn't work use backup isntead
 
 - [PHP](https://www.php.net/) (Recommended version: [Your PHP Version])
 - [Composer](https://getcomposer.org/)
