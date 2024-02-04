@@ -181,6 +181,7 @@ class VehicleHistoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
+                    ->label('Customer')
                     ->sortable()
                     ->searchable(),
                     Tables\Columns\TextColumn::make('vehicle.model')

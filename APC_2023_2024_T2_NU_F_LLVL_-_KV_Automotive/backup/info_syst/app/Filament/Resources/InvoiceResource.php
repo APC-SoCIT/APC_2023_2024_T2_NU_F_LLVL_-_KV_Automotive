@@ -61,6 +61,7 @@ class InvoiceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
+                ->label('Customer')
                 ->searchable()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('image')

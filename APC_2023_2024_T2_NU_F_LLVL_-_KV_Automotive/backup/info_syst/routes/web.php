@@ -1,9 +1,19 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MailController;
 use App\Http\Livewire\Form;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\SMScontroller;
+use App\Mail\MailNotify;
+use App\Mail\MailTest;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use Vonage\Account\SmsPrice;
+use Illuminate\Support\Facades\Notification;
+use Symfony\Component\Mailer\Transport\Smtp\SmtpTransport;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +58,26 @@ Route::prefix('generate-pdf')->name('generate-pdf.')
             Route::get('vehicle-report/{record}', 'vehicleReport')->name('vehicle.report');
         });
     });
+
+  // Notification::route('vonage', config('services.nexmo.sms_from'))
+    //->notify(new SMSNotif('Your SMS message here'));
+
+
+    //Route::get('/sms', function () {
+      //  $user = User::find(1); // Replace with your user model retrieval logic
+        //$user->notify(new SMSNotif('INV-12345')); // Replace with the actual invoice number
+
+        //return "SMS Notification Sent!";
+   // });
+
+ //  Route::get('/sms',[ SMScontroller::class,'index']);
+
+ //oute::get('/sendmail', [MailController::class, 'index']);
+
+
+Route::get('/send-email/{record}', [EmailController::class, 'sendEmail'])->name('send-email');
+Route::get('/email-sent/{record}', [EmailController::class, 'emailSent'])->name('email-sent');
+
+
+
+

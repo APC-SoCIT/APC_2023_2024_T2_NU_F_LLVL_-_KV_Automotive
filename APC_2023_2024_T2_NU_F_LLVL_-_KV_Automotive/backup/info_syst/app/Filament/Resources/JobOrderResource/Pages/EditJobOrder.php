@@ -16,7 +16,6 @@ class EditJobOrder extends \Filament\Resources\Pages\EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\ViewAction::make(),
             Actions\DeleteAction::make(),
         ];
     }

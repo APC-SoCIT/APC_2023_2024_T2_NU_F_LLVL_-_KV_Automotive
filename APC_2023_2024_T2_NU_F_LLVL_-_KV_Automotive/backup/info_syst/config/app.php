@@ -126,6 +126,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
@@ -188,4 +189,5 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+   // 'admin_sms_number' => env('VONAGE_SMS_FROM'),
 ];

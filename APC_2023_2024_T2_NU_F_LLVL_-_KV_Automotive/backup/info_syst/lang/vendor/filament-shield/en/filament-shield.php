@@ -32,7 +32,7 @@ return [
     */
 
     'nav.group' => 'Account Management',
-    'nav.role.label' => 'Roles',
+    'nav.role.label' => 'Permission',
     'nav.role.icon' => 'heroicon-o-shield-check',
     'resource.label.role' => 'Role',
     'resource.label.roles' => 'Roles',

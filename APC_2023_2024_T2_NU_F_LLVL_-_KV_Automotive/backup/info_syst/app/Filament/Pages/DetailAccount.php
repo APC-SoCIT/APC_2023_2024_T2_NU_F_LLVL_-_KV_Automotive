@@ -21,7 +21,7 @@ class DetailAccount extends Page implements HasForms
     protected static ?string $navigationGroup = 'Account Management';
     protected static string $view = 'filament.pages.detail-account';
 
-    protected static ?string $title = 'Customer Account';
+    protected static ?string $title = 'Customer Profile';
 
     public function mount(): void
     {

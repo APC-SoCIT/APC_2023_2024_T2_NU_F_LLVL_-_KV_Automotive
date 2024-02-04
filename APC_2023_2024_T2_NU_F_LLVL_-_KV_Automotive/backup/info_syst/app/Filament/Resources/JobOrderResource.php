@@ -23,7 +23,10 @@ class JobOrderResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-clipboard';
     protected static ?string $navigationGroup = 'Information Management';
     protected static ?int $navigationSort = 2;
-    protected static ?string $slug = 'Job_Order';
+    protected static ?string $slug = 'Job_Status';
+
+    protected static ?string $pluralModelLabel = 'Job Status';
+
 
     public static function form(Form $form): Form
     {
@@ -104,14 +107,26 @@ class JobOrderResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+
+                Tables\Actions\ActionGroup::make([  
+                Tables\Actions\Action::make('send-email') // Change 'download' to 'send-email'
+                ->label('Send Email')
+                ->color('info') // You can choose the color you prefer
+                ->icon('heroicon-o-envelope')
+                ->url(
+                    fn (JobOrder $record): string => route('send-email', ['record' => $record]),
+                    shouldOpenInNewTab: true // Set to true if you want to open in a new tab
+                ),
+                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ;
     }
 
     public static function getRelations(): array
