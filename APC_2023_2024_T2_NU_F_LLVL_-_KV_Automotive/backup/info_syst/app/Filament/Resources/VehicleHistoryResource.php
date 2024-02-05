@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Blade;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\MarkdownEditor;
 
 
 class VehicleHistoryResource extends Resource
@@ -171,7 +172,8 @@ class VehicleHistoryResource extends Resource
                     ])
                     ->reorderableWithButtons()
                     ->columns(2),
-                    ])
+                    ]),
+                    MarkdownEditor::make('notes'),
             ]);
     }
 
@@ -181,7 +183,7 @@ class VehicleHistoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
-                    ->label('Customer')
+                 ->label('Customer')
                     ->sortable()
                     ->searchable(),
                     Tables\Columns\TextColumn::make('vehicle.model')

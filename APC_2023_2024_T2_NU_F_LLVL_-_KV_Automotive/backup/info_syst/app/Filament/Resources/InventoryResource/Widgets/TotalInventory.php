@@ -13,7 +13,9 @@ class TotalInventory extends BaseWidget
         return [
             Stat::make('Total Inventory Items', Inventory::count())
                 ->color('primary')
-                ->icon('heroicon-o-User'),
+                ->icon('heroicon-o-archive-box-arrow-down')
+                ->color('warning')
+                ->chart([7, 2, 10, 3, 15, 4, 17])
         ];
     }
 }

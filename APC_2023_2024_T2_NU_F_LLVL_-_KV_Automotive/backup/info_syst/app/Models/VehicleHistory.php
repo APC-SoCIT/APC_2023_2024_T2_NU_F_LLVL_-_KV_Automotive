@@ -17,6 +17,7 @@ class VehicleHistory extends Model
         'task_performed',
         'performed_by',
         'validated_by',
+        'notes'
     ];
 
     protected $casts = [

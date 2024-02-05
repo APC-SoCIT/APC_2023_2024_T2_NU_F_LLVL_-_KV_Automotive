@@ -66,9 +66,9 @@ class AdminPanelProvider extends PanelProvider
                 TotalInventory::class,
                 VehicleType::class,
                 TotalRevenue::class,
-                JobOrderWidget::class,
                 TotalRevenue::class,
                 Totalsales::class,
+                JobOrderWidget::class,
                 //Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
