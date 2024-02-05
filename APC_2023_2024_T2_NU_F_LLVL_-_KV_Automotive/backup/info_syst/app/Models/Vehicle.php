@@ -19,7 +19,8 @@ class Vehicle extends Model
         'notes',
         'image',
         'miles_per_gallon',
-        'mileage',// Assuming you have added this foreign key to connect with accounts
+        'mileage',
+        'engine_no',// Assuming you have added this foreign key to connect with accounts
         // Add other attributes you want to allow for mass assignment here
     ];
 

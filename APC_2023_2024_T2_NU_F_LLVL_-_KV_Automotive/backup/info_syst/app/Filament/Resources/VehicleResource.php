@@ -86,6 +86,9 @@ class VehicleResource extends Resource
                 Forms\Components\TextInput::make('chassis_no')
                      ->unique()
                     ->maxLength(255),
+                 Forms\Components\TextInput::make('engine_no')
+                    ->unique()
+                   ->maxLength(255),
                     Forms\Components\Select::make('fuel_type')
                     ->options([
                         'Unleaded' => 'Unleaded',
@@ -132,6 +135,10 @@ class VehicleResource extends Resource
                 Tables\Columns\TextColumn::make('color')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('chassis_no')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                  Tables\Columns\TextColumn::make('engine_no')
+                      ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('fuel_type')
                     ->searchable(),
