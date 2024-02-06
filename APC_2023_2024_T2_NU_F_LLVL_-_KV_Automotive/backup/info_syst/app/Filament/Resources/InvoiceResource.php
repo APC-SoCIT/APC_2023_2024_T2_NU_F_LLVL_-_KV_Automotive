@@ -36,15 +36,22 @@ class InvoiceResource extends Resource
                 Forms\Components\Select::make('account_id')
                     ->relationship(name: 'account', titleAttribute: 'full_name')
                     ->native(false)
+                    ->searchPrompt('Search Account by their name (ex. jose)')
+                    ->noSearchResultsMessage('No Customer found.')
+                    ->placeholder('Ex. Kose Manalo')
+                    ->preload()
                     ->required(),
                 Forms\Components\TextInput::make('created_by')
                     ->required()
+                    ->placeholder('Ex. Glenn Aldrich Buenavente')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('amount')
                     ->required()
                     ->numeric()
+                    ->placeholder('Ex. 1000')
                     ->prefix('₱'),
                 Forms\Components\TextInput::make('invoice_no')
+                 ->placeholder('Ex. 56')
                     ->required()
                     ->numeric(),
                     FileUpload::make('image')
@@ -52,6 +59,7 @@ class InvoiceResource extends Resource
                     ->imageEditor()
                     ->deletable(true),
                     MarkdownEditor::make('notes')
+                    ->placeholder('Ex. Payed Via Cash')
                 ]),
             ]);
     }

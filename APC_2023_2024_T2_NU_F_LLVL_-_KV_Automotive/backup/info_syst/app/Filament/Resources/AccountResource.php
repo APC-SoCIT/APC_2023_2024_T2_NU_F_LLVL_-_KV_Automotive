@@ -29,38 +29,50 @@ class AccountResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('first_name')
+                     ->placeholder('Ex. Glenn')
                      ->alpha()
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('middle_name')
+                     ->placeholder('Ex. Luna')
                      ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('last_name')
+                      ->placeholder('Ex. Buenavente')
                      ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
+                    ->unique(ignoreRecord: true)
                     ->email()
                     ->required()
+                    ->placeholder('Ex. gelnn@gmail.com')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required()
                     ->maxLength(255),
                 Forms\Components\DatePicker::make('birthdate')
+                    ->suffixIcon('heroicon-m-calendar-days')
+                    ->placeholder('mm/dd/yy')
+                    ->native(false)
                   ->required(),
                 Forms\Components\TextInput::make('phone_number')
+                ->placeholder('Ex. 0905526228')
                     ->numeric()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('address')
+                    ->placeholder('Ex. 5  Brgy Calumpit Linghos,')
                      ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('city')
                     ->alpha()
+                    ->placeholder('Bulacan')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('country')
                     ->alpha()
                     ->required()
+                    ->placeholder('PH')
                     ->maxLength(255),
             ]);
     }

@@ -17,7 +17,7 @@ class ListInvoices extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
-    protected function getFooterWidgets(): array
+    protected function getHeaderWidgets(): array
     {
         return [
             TotalRevenue::class

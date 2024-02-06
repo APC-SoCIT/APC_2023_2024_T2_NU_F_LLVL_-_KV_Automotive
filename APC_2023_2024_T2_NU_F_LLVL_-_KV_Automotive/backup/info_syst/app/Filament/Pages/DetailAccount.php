@@ -52,29 +52,51 @@ class DetailAccount extends Page implements HasForms
     {
         return $form
             ->schema([
-                    TextInput::make('first_name')
+                TextInput::make('first_name')
+                     ->placeholder('Ex. Glenn')
+                     ->alpha()
                     ->required()
                     ->maxLength(255),
-                    TextInput::make('middle_name')
+                TextInput::make('middle_name')
+                     ->placeholder('Ex. Luna')
+                     ->alpha()
                     ->maxLength(255),
-                    TextInput::make('last_name')
+               TextInput::make('last_name')
+                      ->placeholder('Ex. Buenavente')
+                     ->alpha()
                     ->maxLength(255),
-                    TextInput::make('email')
+                TextInput::make('email')
+                    ->unique(ignoreRecord: true)
                     ->email()
                     ->required()
+                    ->placeholder('Ex. gelnn@gmail.com')
                     ->maxLength(255),
-                    TextInput::make('password')
+                TextInput::make('password')
                     ->password()
                     ->required()
                     ->maxLength(255),
-                    DatePicker::make('birthdate'),
-                    TextInput::make('phone_number')
+            DatePicker::make('birthdate')
+                    ->suffixIcon('heroicon-m-calendar-days')
+                    ->placeholder('mm/dd/yy')
+                    ->native(false)
+                  ->required(),
+              TextInput::make('phone_number')
+                ->placeholder('Ex. 0905526228')
+                    ->numeric()
                     ->maxLength(255),
-                    TextInput::make('address')
+               TextInput::make('address')
+                    ->placeholder('Ex. 5  Brgy Calumpit Linghos,')
+                     ->required()
                     ->maxLength(255),
-                        TextInput::make('city')
+              TextInput::make('city')
+                    ->alpha()
+                    ->placeholder('Bulacan')
+                    ->required()
                     ->maxLength(255),
-                    TextInput::make('country')
+                TextInput::make('country')
+                    ->alpha()
+                    ->required()
+                    ->placeholder('PH')
                     ->maxLength(255),
             ])
             ->statePath('data');

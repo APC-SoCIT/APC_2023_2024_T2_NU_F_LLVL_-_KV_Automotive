@@ -41,6 +41,9 @@ class VehicleHistoryResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Account by their name (ex. jose)')
+                    ->noSearchResultsMessage('No Customer found.')
+                    ->placeholder('Ex. Glenn Aldrich Buenavente')
                     ->required(),
 
                 Forms\Components\Select::make('vehicle_id')
@@ -54,6 +57,9 @@ class VehicleHistoryResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Vehicle by their make (ex.Honda,Toyota)')
+                    ->noSearchResultsMessage('No Make found.')
+                    ->placeholder('Ex. Honda')
                     ->required(),
 
                 Forms\Components\Select::make('vehicle_model')
@@ -73,6 +79,9 @@ class VehicleHistoryResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Vehicle by their model (ex.Civic,Fortuner)')
+                    ->noSearchResultsMessage('No Model found.')
+                    ->placeholder('Ex. Civic')
                     ->required(),
 
                 Forms\Components\Select::make('vehicle_year')
@@ -91,6 +100,9 @@ class VehicleHistoryResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Vehicle by their year (ex.2002,2004)')
+                    ->noSearchResultsMessage('No year found.')
+                    ->placeholder('Ex. 2002')
                     ->required(),
 
                 Forms\Components\Select::make('vehicle_color')
@@ -109,10 +121,13 @@ class VehicleHistoryResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Vehicle by their color (ex.beige,white)')
+                    ->noSearchResultsMessage('No color found.')
+                    ->placeholder('Ex. white')
                     ->required(),
 
                 Forms\Components\Select::make('vehicle_chassis_no')
-                ->label('chassis no')
+                ->label('Chassis Number')
                 ->relationship('vehicle', 'chassis_no', function ($get, $query) {
                     if ($get('account_id') && $get('vehicle_id')) {
                         $query->where('account_id', $get('account_id'))
@@ -127,7 +142,32 @@ class VehicleHistoryResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Vehicle by their Chassis Number')
+                    ->noSearchResultsMessage('No Chassis Number found.')
+                    ->placeholder('Ex. ABCDEFGHIJ1234567')
                     ->required(),
+
+                    Forms\Components\Select::make('vehicle_engine_no')
+                    ->label('Engine Number')
+                    ->relationship('vehicle', 'engine_no', function ($get, $query) {
+                        if ($get('account_id') && $get('vehicle_id')) {
+                            $query->where('account_id', $get('account_id'))
+                                  ->where('id', $get('vehicle_id'));
+                        } elseif ($get('account_id')) {
+                            $query->where('account_id', $get('account_id'));
+                        } elseif ($get('vehicle_id')) {
+                            $query->where('id', $get('vehicle_id'));
+                        }
+                    })
+                        ->searchable()
+                        ->preload()
+                        ->native(false)
+                        ->searchPrompt('Search Vehicle by their Engine Number')
+                        ->noSearchResultsMessage('No Engine Number found.')
+                        ->placeholder('Ex. 52WVC10338')
+                        ->disabledOn('edit')
+                        ->required(),
+
 
                 Forms\Components\Select::make('vehicle_license_plate')
                 ->label('license plate')
@@ -145,10 +185,14 @@ class VehicleHistoryResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Vehicle by their License plate')
+                    ->noSearchResultsMessage('No License plate found.')
+                    ->placeholder('Ex. NBC 1234')
                     ->required(),
 
 
                 Forms\Components\TextInput::make('performed_by')
+                ->placeholder('Glenn Aldrich Buenavente')
                 ->required()
                 ->maxLength(255),
                 Section::make('Maintenance Log')
@@ -158,14 +202,20 @@ class VehicleHistoryResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('task')
                             ->label('Task')
+                            ->placeholder('Change Oil')
                             ->required()
                             ->maxLength(255),
                             Forms\Components\TextInput::make('mileage')
+                            ->placeholder('30,0000')
                             ->label('Mileage')
                             ->numeric(),
                         Forms\Components\DatePicker::make('date_performed')
+                        ->placeholder('Glenn Aldrich Buenavente')
                             ->required()
+                            ->suffixIcon('heroicon-m-calendar-days')
                             ->native(false)
+                              ->required()
+
                             ->format('Y/m/d'),
                         // Add more fields within the repeater if needed
 
@@ -173,7 +223,8 @@ class VehicleHistoryResource extends Resource
                     ->reorderableWithButtons()
                     ->columns(2),
                     ]),
-                    MarkdownEditor::make('notes'),
+                    MarkdownEditor::make('notes')
+                    ->placeholder('Come back for change oil'),
             ]);
     }
 

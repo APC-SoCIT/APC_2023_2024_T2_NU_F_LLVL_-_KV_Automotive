@@ -39,6 +39,9 @@ class JobOrderResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Account by their name (ex. jose)')
+                    ->noSearchResultsMessage('No Customer found.')
+                    ->placeholder('Ex.Glenn Aldrich Buenavente')
                     ->required(),
                     Forms\Components\Select::make('vehicle_id')
                     ->relationship('vehicle', 'model', function ($get, $query) {
@@ -50,6 +53,9 @@ class JobOrderResource extends Resource
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
+                    ->searchPrompt('Search Vehicle by their make (ex.Honda,Toyota)')
+                    ->noSearchResultsMessage('No Vehicle found.')
+                    ->placeholder('Ex. Honda')
                     ->required(),
 
                 Forms\Components\Select::make('inventory_id')
@@ -57,13 +63,19 @@ class JobOrderResource extends Resource
                 ->preload()
                 ->searchable()
                 ->disabledOn('edit')
+                ->searchPrompt('Search Inventory by their name (ex.Petron Engine Oil)')
+                ->noSearchResultsMessage('No Inventory Name found.')
+                ->placeholder('Ex. Petron Engine Oil')
                 ->native(false),
                 Forms\Components\TextInput::make('quantity_used')
                 ->numeric()
                 ->disabledOn('edit')
+                ->placeholder('Ex. 1')
                 ->minValue(1),
                 Forms\Components\Select::make('status')
                 ->required()
+                ->native(false)
+                ->placeholder('Ex. Pending')
                 ->options([
                     'pending' => 'Pending',
                     'in_progress' => 'In Progress',
@@ -108,7 +120,7 @@ class JobOrderResource extends Resource
             ])
             ->actions([
 
-                Tables\Actions\ActionGroup::make([  
+                Tables\Actions\ActionGroup::make([
                 Tables\Actions\Action::make('send-email') // Change 'download' to 'send-email'
                 ->label('Send Email')
                 ->color('info') // You can choose the color you prefer

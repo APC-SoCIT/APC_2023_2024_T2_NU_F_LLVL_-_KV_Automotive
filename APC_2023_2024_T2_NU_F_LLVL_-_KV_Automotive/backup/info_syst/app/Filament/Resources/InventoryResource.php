@@ -28,20 +28,25 @@ class InventoryResource extends Resource
             ->schema([
 
                 Section::make('Inventory')
+                ->description('')
 
-    ->schema([
+            ->schema([
 
 
                 Forms\Components\TextInput::make('product_name')
                     ->required()
+                    ->placeholder('Ex. Prestone Coolant')
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
+                    ->placeholder('Ex.Prestone 50/50 Prediluted Coolant Blue - 1 Gallon')
                     ->maxLength(65535)
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('quantity')
+                    ->placeholder('Ex. 1000')
                     ->required()
                     ->numeric(),
                 Forms\Components\TextInput::make('price')
+                    ->placeholder('Ex. 500')
                     ->required()
                     ->numeric()
                     ->prefix('₱'),

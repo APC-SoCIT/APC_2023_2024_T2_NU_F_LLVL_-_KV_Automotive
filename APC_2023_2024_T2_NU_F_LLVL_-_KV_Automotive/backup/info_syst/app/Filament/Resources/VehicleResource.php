@@ -41,8 +41,11 @@ class VehicleResource extends Resource
 
                     Forms\Components\Select::make('account_id')
                     ->relationship(name: 'account', titleAttribute: 'full_name')
+                    ->placeholder('Ex. Glenn Aldrich Buenavente')
                     ->native(false)
                     ->required()
+                    ->searchPrompt('Search Account by their name (ex. jose)')
+                    ->noSearchResultsMessage('No Customer found.')
                     ->options(function () {
                         $user = auth()->user();
 
@@ -64,30 +67,103 @@ class VehicleResource extends Resource
                         }
                     }),
                 Forms\Components\TextInput::make('make')
+                    ->placeholder('Ex. Honda')
                     ->required()
                     ->alpha()
+                    ->datalist([
+                        "Abarth",
+                        "Alfa Romeo",
+                        "Aston Martin",
+                        "Audi",
+                        "Bentley",
+                        "BMW",
+                        "Bugatti",
+                        "Cadillac",
+                        "Chevrolet",
+                        "Chrysler",
+                        "Citroën",
+                        "Dacia",
+                        "Daewoo",
+                        "Daihatsu",
+                        "Dodge",
+                        "Donkervoort",
+                        "DS",
+                        "Ferrari",
+                        "Fiat",
+                        "Fisker",
+                        "Ford",
+                        "Honda",
+                        "Hummer",
+                        "Hyundai",
+                        "Infiniti",
+                        "Iveco",
+                        "Jaguar",
+                        "Jeep",
+                        "Kia",
+                        "KTM",
+                        "Lada",
+                        "Lamborghini",
+                        "Lancia",
+                        "Land Rover",
+                        "Landwind",
+                        "Lexus",
+                        "Lotus",
+                        "Maserati",
+                        "Maybach",
+                        "Mazda",
+                        "McLaren",
+                        "Mercedes-Benz",
+                        "MG",
+                        "Mini",
+                        "Mitsubishi",
+                        "Morgan",
+                        "Nissan",
+                        "Opel",
+                        "Peugeot",
+                        "Porsche",
+                        "Renault",
+                        "Rolls-Royce",
+                        "Rover",
+                        "Saab",
+                        "Seat",
+                        "Skoda",
+                        "Smart",
+                        "SsangYong",
+                        "Subaru",
+                        "Suzuki",
+                        "Tesla",
+                        "Toyota",
+                        "Volkswagen",
+                        "Volvo"
+                      ])
                     ->maxLength(255),
                 Forms\Components\TextInput::make('model')
                     ->required()
+                    ->placeholder('Ex. Civic')
                     ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('year')
                     ->required()
+                    ->placeholder('Ex. 2002')
                     ->numeric(),
-                ]),
+                ])->columns(2),
                 Section::make('Car')
                 ->description('Descriptions')
                 ->schema([
                 Forms\Components\TextInput::make('license_plate')
-                    ->unique()
+                    ->unique(ignoreRecord: true)
+                    ->placeholder('Ex. NBC 1234')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('color')
+                    ->placeholder('Ex. White')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('chassis_no')
-                     ->unique()
+                     ->placeholder('Ex. ABCDEFGHIJ1234567')
+                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
                  Forms\Components\TextInput::make('engine_no')
-                    ->unique()
+                    ->unique(ignoreRecord: true)
+                    ->placeholder('Ex.52WVC10338')
                    ->maxLength(255),
                     Forms\Components\Select::make('fuel_type')
                     ->options([
@@ -95,8 +171,11 @@ class VehicleResource extends Resource
                         'Diesel' => 'Diesel',
                     ])
                     ->native(false)
+                    ->placeholder('Ex. Unleaded')
                     ->required(),
                     Forms\Components\TextInput::make('miles_per_gallon')
+                    ->label('Kilometer Per Liter')
+                    ->placeholder('26')
                     ->numeric(),
                 Forms\Components\Select::make('transmission')
                     ->options([
@@ -104,8 +183,9 @@ class VehicleResource extends Resource
                         'Automatic' => 'Automatic',
                     ])
                     ->native(false)
+                    ->placeholder('Ex. Manual')
                     ->required(),
-                ]),
+                ])->columns(2),
                     FileUpload::make('image')
                     ->openable()
                     ->imageEditor()
