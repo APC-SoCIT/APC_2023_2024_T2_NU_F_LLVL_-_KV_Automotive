@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Section;
 
 class AccountResource extends Resource
 {
@@ -28,6 +29,15 @@ class AccountResource extends Resource
     {
         return $form
             ->schema([
+                Section::make()
+                ->icon('heroicon-m-user-circle')
+             ->description('Please Fill out the form so that we can assess your vehicle')
+            ->schema([
+
+                 Section::make('Name')
+                ->description('Ex. Glenn Aldrich Buenavente')
+                ->icon('heroicon-m-shopping-bag')
+               ->schema([
                 Forms\Components\TextInput::make('first_name')
                      ->placeholder('Ex. Glenn')
                      ->alpha()
@@ -41,6 +51,12 @@ class AccountResource extends Resource
                       ->placeholder('Ex. Buenavente')
                      ->alpha()
                     ->maxLength(255),
+                ])->columns(2),
+
+                Section::make('Account')
+                ->description('Please put your credententials dont worry will only use it to email you')
+                ->icon('heroicon-m-code-bracket')
+               ->schema([
                 Forms\Components\TextInput::make('email')
                     ->unique(ignoreRecord: true)
                     ->email()
@@ -51,6 +67,11 @@ class AccountResource extends Resource
                     ->password()
                     ->required()
                     ->maxLength(255),
+               ])->columns(3),
+               Section::make('Address')
+               ->description('Ex. 5 Lilac st, nangka, marikina city')
+               ->icon('heroicon-m-cake')
+              ->schema([
                 Forms\Components\DatePicker::make('birthdate')
                     ->suffixIcon('heroicon-m-calendar-days')
                     ->placeholder('mm/dd/yy')
@@ -74,7 +95,9 @@ class AccountResource extends Resource
                     ->required()
                     ->placeholder('PH')
                     ->maxLength(255),
-            ]);
+                      ])->columns(2),
+                 ]),
+        ]);
     }
 
     public static function table(Table $table): Table

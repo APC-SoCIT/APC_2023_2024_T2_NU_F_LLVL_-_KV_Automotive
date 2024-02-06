@@ -29,8 +29,9 @@ class InvoiceResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Rate limiting')
-                ->description('Prevent abuse by limiting the number of requests per period')
+                Section::make('Invoice')
+                ->icon('heroicon-m-banknotes')
+                ->description('Please fill up the form ans upload the invoice image')
                 ->schema([
 
                 Forms\Components\Select::make('account_id')

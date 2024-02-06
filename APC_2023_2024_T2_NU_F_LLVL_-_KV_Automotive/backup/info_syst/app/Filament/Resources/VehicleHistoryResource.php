@@ -17,6 +17,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Blade;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 
 
 class VehicleHistoryResource extends Resource
@@ -34,6 +37,14 @@ class VehicleHistoryResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            ->schema([
+                Section::make()
+                ->icon('heroicon-m-information-circle')
+             ->description('Please Fill out the form for vehicle history')
+            ->schema([
+                Section::make('Vehicle Details')
+                ->icon('heroicon-m-identification')
+             ->description('Please Fill out the form once the job status is created only the status can be changed')
             ->schema([
                 Forms\Components\Select::make('account_id')
                     ->relationship(name: 'account', titleAttribute: 'full_name')
@@ -195,6 +206,7 @@ class VehicleHistoryResource extends Resource
                 ->placeholder('Glenn Aldrich Buenavente')
                 ->required()
                 ->maxLength(255),
+            ]),
                 Section::make('Maintenance Log')
                  ->description('Maintain a detailed log of service activities for your vehicles.')
                  ->schema([
@@ -225,6 +237,7 @@ class VehicleHistoryResource extends Resource
                     ]),
                     MarkdownEditor::make('notes')
                     ->placeholder('Come back for change oil'),
+                ]),
             ]);
     }
 
@@ -260,7 +273,7 @@ class VehicleHistoryResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('model')
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([

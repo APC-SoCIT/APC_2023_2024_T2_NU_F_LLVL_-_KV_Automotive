@@ -11,7 +11,10 @@ use Filament\Widgets\TableWidget as BaseWidget;
 
 class JobOrderWidget extends BaseWidget
 {
-    protected int | string | array $columnSpan = 'full';
+    protected int | string | array $columnSpan = [
+        'md' => 2,
+        'xl' => 3,
+    ];
     public function table(Table $table): Table
     {
         return $table

@@ -19,6 +19,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ImageColumn;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Blade;
+use Filament\Tables\Filters\Filter;
 
 class VehicleResource extends Resource
 {
@@ -35,8 +36,13 @@ class VehicleResource extends Resource
 
         return $form
             ->schema([
+                Section::make()
+                ->icon('heroicon-m-information-circle')
+             ->description('Please fill out the form cointaining the full detail of the vehicle')
+            ->schema([
                 Section::make('Owner')
-                ->description('Make Model Year')
+                ->description('Details of the vehicle Owner')
+                ->icon('heroicon-m-user-circle')
                 ->schema([
 
                     Forms\Components\Select::make('account_id')
@@ -147,8 +153,9 @@ class VehicleResource extends Resource
                     ->placeholder('Ex. 2002')
                     ->numeric(),
                 ])->columns(2),
-                Section::make('Car')
-                ->description('Descriptions')
+                Section::make('Vehicle')
+                ->icon('heroicon-m-truck')
+                ->description('Full Details of the Owners Vehicle')
                 ->schema([
                 Forms\Components\TextInput::make('license_plate')
                     ->unique(ignoreRecord: true)
@@ -191,6 +198,7 @@ class VehicleResource extends Resource
                     ->imageEditor()
                     ->deletable(true),
                     MarkdownEditor::make('notes')
+            ])
             ]);
     }
 
@@ -236,7 +244,6 @@ class VehicleResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([

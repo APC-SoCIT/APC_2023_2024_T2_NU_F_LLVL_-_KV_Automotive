@@ -29,6 +29,7 @@ class InventoryResource extends Resource
 
                 Section::make('Inventory')
                 ->description('')
+                ->icon('heroicon-m-shopping-cart')
 
             ->schema([
 

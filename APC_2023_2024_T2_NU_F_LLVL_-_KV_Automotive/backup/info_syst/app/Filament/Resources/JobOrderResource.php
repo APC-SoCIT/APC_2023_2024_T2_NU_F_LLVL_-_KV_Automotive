@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Notifications\Notification;
 use Filament\Notifications\Actions\Action;
+use Filament\Forms\Components\Section;
 
 
 class JobOrderResource extends Resource
@@ -31,6 +32,10 @@ class JobOrderResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            ->schema([
+                Section::make()
+                ->icon('heroicon-m-information-circle')
+             ->description('Please Fill out the form once the job status is created only the status can be changed')
             ->schema([
 
                     Forms\Components\Select::make('account_id')
@@ -72,6 +77,12 @@ class JobOrderResource extends Resource
                 ->disabledOn('edit')
                 ->placeholder('Ex. 1')
                 ->minValue(1),
+
+                Section::make('Job Order')
+                ->icon('heroicon-m-wrench-screwdriver')
+             ->description('Change the status based on the service offered')
+            ->schema([
+
                 Forms\Components\Select::make('status')
                 ->required()
                 ->native(false)
@@ -82,6 +93,8 @@ class JobOrderResource extends Resource
                     'completed' => 'Completed',
                 ])
                 ->default('pending'),
+            ])
+            ])
             ]);
 
 

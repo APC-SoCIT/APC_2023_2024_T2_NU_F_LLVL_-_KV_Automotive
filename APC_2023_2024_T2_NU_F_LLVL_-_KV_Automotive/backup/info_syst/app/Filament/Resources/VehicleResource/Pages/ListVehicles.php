@@ -18,7 +18,7 @@ class ListVehicles extends ListRecords
         ];
     }
 
-    protected function getFooterWidgets(): array
+    protected function getHeaderWidgets(): array
     {
         return [
             VehicleType::class

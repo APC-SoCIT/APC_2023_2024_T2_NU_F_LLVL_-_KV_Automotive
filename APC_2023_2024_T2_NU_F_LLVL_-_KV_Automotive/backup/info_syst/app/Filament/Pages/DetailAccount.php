@@ -11,6 +11,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Actions\Action;
 use Filament\Support\Exceptions\Halt;
 use Filament\Notifications\Notification;
+use Filament\Forms\Components\Section;
 
 class DetailAccount extends Page implements HasForms
 {
@@ -51,54 +52,76 @@ class DetailAccount extends Page implements HasForms
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
-                TextInput::make('first_name')
-                     ->placeholder('Ex. Glenn')
-                     ->alpha()
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('middle_name')
-                     ->placeholder('Ex. Luna')
-                     ->alpha()
-                    ->maxLength(255),
-               TextInput::make('last_name')
-                      ->placeholder('Ex. Buenavente')
-                     ->alpha()
-                    ->maxLength(255),
-                TextInput::make('email')
-                    ->unique(ignoreRecord: true)
-                    ->email()
-                    ->required()
-                    ->placeholder('Ex. gelnn@gmail.com')
-                    ->maxLength(255),
-                TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
+        ->schema([
+            Section::make()
+            ->icon('heroicon-m-user-circle')
+         ->description('Please Fill out the form so that we can assess your vehicle')
+        ->schema([
+
+             Section::make('Name')
+            ->description('Ex. Glenn Aldrich Buenavente')
+            ->icon('heroicon-m-shopping-bag')
+           ->schema([
+           TextInput::make('first_name')
+                 ->placeholder('Ex. Glenn')
+                 ->alpha()
+                ->required()
+                ->maxLength(255),
+            TextInput::make('middle_name')
+                 ->placeholder('Ex. Luna')
+                 ->alpha()
+                ->maxLength(255),
+          TextInput::make('last_name')
+                  ->placeholder('Ex. Buenavente')
+                 ->alpha()
+                ->maxLength(255),
+            ])->columns(2),
+
+            Section::make('Account')
+            ->description('Please put your credententials dont worry will only use it to email you')
+            ->icon('heroicon-m-code-bracket')
+           ->schema([
+            TextInput::make('email')
+                ->unique(ignoreRecord: true)
+                ->email()
+                ->required()
+                ->placeholder('Ex. gelnn@gmail.com')
+                ->maxLength(255),
+            TextInput::make('password')
+                ->password()
+                ->required()
+                ->maxLength(255),
+           ])->columns(3),
+           Section::make('Address')
+           ->description('Ex. 5 Lilac st, nangka, marikina city')
+           ->icon('heroicon-m-cake')
+          ->schema([
             DatePicker::make('birthdate')
-                    ->suffixIcon('heroicon-m-calendar-days')
-                    ->placeholder('mm/dd/yy')
-                    ->native(false)
-                  ->required(),
-              TextInput::make('phone_number')
-                ->placeholder('Ex. 0905526228')
-                    ->numeric()
-                    ->maxLength(255),
-               TextInput::make('address')
-                    ->placeholder('Ex. 5  Brgy Calumpit Linghos,')
-                     ->required()
-                    ->maxLength(255),
-              TextInput::make('city')
-                    ->alpha()
-                    ->placeholder('Bulacan')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('country')
-                    ->alpha()
-                    ->required()
-                    ->placeholder('PH')
-                    ->maxLength(255),
-            ])
+                ->suffixIcon('heroicon-m-calendar-days')
+                ->placeholder('mm/dd/yy')
+                ->native(false)
+              ->required(),
+            TextInput::make('phone_number')
+            ->placeholder('Ex. 0905526228')
+                ->numeric()
+                ->maxLength(255),
+           TextInput::make('address')
+                ->placeholder('Ex. 5  Brgy Calumpit Linghos,')
+                 ->required()
+                ->maxLength(255),
+          TextInput::make('city')
+                ->alpha()
+                ->placeholder('Bulacan')
+                ->required()
+                ->maxLength(255),
+           TextInput::make('country')
+                ->alpha()
+                ->required()
+                ->placeholder('PH')
+                ->maxLength(255),
+                  ])->columns(2),
+             ]),
+    ])
             ->statePath('data');
     }
 
