@@ -88,7 +88,6 @@ class DetailAccount extends Page implements HasForms
                 ->placeholder('Ex. gelnn@gmail.com')
                 ->maxLength(255),
             TextInput::make('password')
-                ->confirmed()
                 ->required()
                 ->maxLength(255),
            ])->columns(3),
@@ -102,7 +101,8 @@ class DetailAccount extends Page implements HasForms
                 ->native(false)
               ->required(),
             TextInput::make('phone_number')
-            ->placeholder('Ex. 0905526228')
+                ->placeholder('Ex. 0905526228')
+                ->unique()
                 ->numeric()
                 ->maxLength(255),
            TextInput::make('address')
@@ -110,7 +110,7 @@ class DetailAccount extends Page implements HasForms
                  ->required()
                 ->maxLength(255),
           TextInput::make('city')
-                ->alpha()
+                 ->regex('/^[a-zA-Z\s]+$/')
                 ->placeholder('Bulacan')
                 ->required()
                 ->maxLength(255),

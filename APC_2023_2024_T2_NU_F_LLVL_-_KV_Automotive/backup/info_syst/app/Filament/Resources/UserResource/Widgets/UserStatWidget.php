@@ -12,7 +12,7 @@ class UserStatWidget extends BaseWidget
         'md' => 2,
         'xl' => 3,
     ];
-    
+
     protected function getStats(): array
     {
         return [
@@ -34,11 +34,5 @@ class UserStatWidget extends BaseWidget
                 ->chart([7, 2, 10, 3, 15, 4, 17])
                 ->Icon('heroicon-m-users'),
         ];
-    }
-
-        public static function canView(): bool
-    {
-        return auth()->user()->isAdmin() || auth()->user()->isStaff();
-
     }
 }

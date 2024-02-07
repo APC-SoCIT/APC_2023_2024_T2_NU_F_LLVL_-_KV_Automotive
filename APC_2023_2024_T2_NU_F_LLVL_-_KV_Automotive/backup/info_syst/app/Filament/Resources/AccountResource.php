@@ -86,7 +86,7 @@ class AccountResource extends Resource
                      ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('city')
-                    ->alpha()
+                     ->regex('/^[a-zA-Z\s]+$/')
                     ->placeholder('Bulacan')
                     ->required()
                     ->maxLength(255),

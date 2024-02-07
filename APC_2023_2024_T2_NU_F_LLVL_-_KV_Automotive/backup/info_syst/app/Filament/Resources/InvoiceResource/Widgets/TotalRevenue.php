@@ -85,8 +85,4 @@ class TotalRevenue extends ChartWidget
             ->sum('amount');
     }
 
-    public static function canView(): bool
-    {
-        return auth()->user()->isAdmin() || auth()->user()->isStaff();
-    }
 }
