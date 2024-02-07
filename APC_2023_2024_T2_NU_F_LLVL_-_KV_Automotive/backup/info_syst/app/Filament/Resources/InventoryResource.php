@@ -37,6 +37,7 @@ class InventoryResource extends Resource
                 Forms\Components\TextInput::make('product_name')
                     ->required()
                     ->placeholder('Ex. Prestone Coolant')
+                    ->regex('/^[a-zA-Z\s]+$/')
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
                     ->placeholder('Ex.Prestone 50/50 Prediluted Coolant Blue - 1 Gallon')

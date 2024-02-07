@@ -204,6 +204,7 @@ class VehicleHistoryResource extends Resource
 
                 Forms\Components\TextInput::make('performed_by')
                 ->placeholder('Glenn Aldrich Buenavente')
+                ->regex('/^[a-zA-Z\s]+$/')
                 ->required()
                 ->maxLength(255),
             ]),
@@ -216,18 +217,18 @@ class VehicleHistoryResource extends Resource
                             ->label('Task')
                             ->placeholder('Change Oil')
                             ->required()
+                            ->regex('/^[a-zA-Z\s]+$/')
                             ->maxLength(255),
                             Forms\Components\TextInput::make('mileage')
                             ->placeholder('30,0000')
                             ->label('Mileage')
                             ->numeric(),
                         Forms\Components\DatePicker::make('date_performed')
-                        ->placeholder('Glenn Aldrich Buenavente')
+                        ->placeholder('mm/dd/yy')
                             ->required()
                             ->suffixIcon('heroicon-m-calendar-days')
                             ->native(false)
                               ->required()
-
                             ->format('Y/m/d'),
                         // Add more fields within the repeater if needed
 

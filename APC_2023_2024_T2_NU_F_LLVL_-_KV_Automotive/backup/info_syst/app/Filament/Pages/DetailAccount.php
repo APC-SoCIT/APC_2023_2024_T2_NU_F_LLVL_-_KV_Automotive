@@ -73,7 +73,7 @@ class DetailAccount extends Page implements HasForms
                 ->maxLength(255),
           TextInput::make('last_name')
                   ->placeholder('Ex. Buenavente')
-                 ->alpha()
+                  ->required()
                 ->maxLength(255),
             ])->columns(2),
 
@@ -88,7 +88,7 @@ class DetailAccount extends Page implements HasForms
                 ->placeholder('Ex. gelnn@gmail.com')
                 ->maxLength(255),
             TextInput::make('password')
-                ->password()
+                ->confirmed()
                 ->required()
                 ->maxLength(255),
            ])->columns(3),

@@ -198,6 +198,7 @@ class VehicleResource extends Resource
                     ->imageEditor()
                     ->deletable(true),
                     MarkdownEditor::make('notes')
+                    ->placeholder('Ex. The Speedometer is not working ')
             ])
             ]);
     }
