@@ -26,6 +26,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Filament\Forms\Components\FileUpload;
+use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -44,6 +45,9 @@ class AdminPanelProvider extends PanelProvider
                     navigationGroup: 'Account Management', // Sets the navigation group for the My Profile page (default = null)
                     hasAvatars: false, // Enables the avatar upload form component (default = false)
                     slug: 'my-profile' // Sets the slug for the profile page (default = 'my-profile')
+                )
+                ->enableTwoFactorAuthentication(
+                    force: false, // force the user to enable 2FA before they can use the application (default = false)
                 )
             )
             ->plugins([

@@ -78,7 +78,7 @@ class DetailAccount extends Page implements HasForms
             ])->columns(2),
 
             Section::make('Account')
-            ->description('Please put your credententials dont worry will only use it to email you')
+            ->description('Please put your credententials dont worry we will only use it to email you')
             ->icon('heroicon-m-code-bracket')
            ->schema([
             TextInput::make('email')
