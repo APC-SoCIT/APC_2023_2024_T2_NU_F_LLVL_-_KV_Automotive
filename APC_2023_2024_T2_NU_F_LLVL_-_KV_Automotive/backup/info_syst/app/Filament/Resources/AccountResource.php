@@ -13,6 +13,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Section;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+
 
 class AccountResource extends Resource
 {
@@ -135,7 +139,29 @@ class AccountResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\Action::make('View')
+                ->icon('heroicon-o-eye')
+                ->color('warning')
+                ->modalHeading('Customer Information')
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+                // This is the important part!
+                ->infolist([
+                    // Inside, we can treat this as any info list and add all the fields we want!
+                    \Filament\Infolists\Components\Section::make('Customer Details')
+                    ->icon('heroicon-m-user-circle')
+                        ->schema([
+                            TextEntry::make('full_name'),
+                            TextEntry::make('email'),
+                            TextEntry::make('birthdate')
+                            ->date(),
+                            TextEntry::make('phone_number'),
+                            TextEntry::make('address'),
+                            TextEntry::make('city'),
+                            TextEntry::make('country'),
+                        ])
+                        ->columns(2),
+                ])->slideOver(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

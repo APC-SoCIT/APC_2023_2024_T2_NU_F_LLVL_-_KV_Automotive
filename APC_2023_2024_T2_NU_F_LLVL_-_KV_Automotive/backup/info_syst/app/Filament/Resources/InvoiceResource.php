@@ -16,6 +16,11 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
+
 
 class InvoiceResource extends Resource
 {
@@ -98,7 +103,31 @@ class InvoiceResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\Action::make('View')
+                ->icon('heroicon-o-eye')
+                ->color('warning')
+                ->modalHeading('Vehicle Information')
+                ->modalSubmitAction(false)
+                ->modalCancelActionLabel('Close')
+                ->modalCancelAction(false)
+                // This is the important part!
+                ->infolist([
+                    // Inside, we can treat this as any info list and add all the fields we want!
+                    \Filament\Infolists\Components\Section::make('Vehicle Details')
+                    ->icon('heroicon-m-truck')
+                        ->schema([
+                         TextEntry::make('account.full_name')
+                            ->label('Customer'),
+                         TextEntry::make('amount')
+                         ->prefix('₱'),
+                         TextEntry::make('invoice_no'),
+                        ])
+                        ->columns(2),
+                        ImageEntry::make('image')
+                        ->width(700)
+                        ->height(500),
+                        TextEntry::make('notes'),
+                ])->slideOver(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

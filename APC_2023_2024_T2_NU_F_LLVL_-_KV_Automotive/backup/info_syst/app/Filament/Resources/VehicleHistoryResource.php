@@ -20,6 +20,11 @@ use Filament\Forms\Components\MarkdownEditor;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\RepeatableEntry;
+
+
 
 
 class VehicleHistoryResource extends Resource
@@ -287,7 +292,42 @@ class VehicleHistoryResource extends Resource
                 ->url(
                     fn (VehicleHistory $record): string => route('generate-pdf.vehicle.report', ['record' => $record]), // Update the route name
                     shouldOpenInNewTab: true
-                )
+                ),
+                Tables\Actions\Action::make('View')
+                ->icon('heroicon-o-eye')
+                ->color('warning')
+                ->modalHeading('Vehicle Information')
+                ->modalSubmitAction(false)
+                ->modalCancelActionLabel('Close')
+                ->modalCancelAction(false)
+                // This is the important part!
+                ->infolist([
+                    // Inside, we can treat this as any info list and add all the fields we want!
+                    \Filament\Infolists\Components\Section::make('Vehicle Details')
+                    ->icon('heroicon-m-truck')
+                        ->schema([
+                         TextEntry::make('account.full_name')
+                            ->label('Customer'),
+                         TextEntry::make('vehicle.make'),
+                         TextEntry::make('vehicle.model'),
+                         TextEntry::make('vehicle.year'),
+                         TextEntry::make('vehicle.license_plate'),
+                         TextEntry::make('vehicle.color'),
+                         TextEntry::make('vehicle.chassis_no'),
+                         TextEntry::make('vehicle.engine_no'),
+                         TextEntry::make('performed_by'),
+                         TextEntry::make('notes'),
+                        ])
+                        ->columns(2),
+                        RepeatableEntry::make('task_performed')
+                        ->schema([
+                            TextEntry::make('task'),
+                            TextEntry::make('mileage'),
+                            TextEntry::make('date_performed'),
+                            // Add more fields within the repeater if needed
+
+                        ])
+                ])->slideOver(),
             ])
             ])
             ->bulkActions([

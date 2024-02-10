@@ -20,6 +20,11 @@ use Filament\Tables\Columns\ImageColumn;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Blade;
 use Filament\Tables\Filters\Filter;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
+
 
 class VehicleResource extends Resource
 {
@@ -248,8 +253,40 @@ class VehicleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
-                Tables\Actions\EditAction::make(),
+                    Tables\Actions\Action::make('View')
+                    ->icon('heroicon-o-eye')
+                    ->color('warning')
+                    ->modalHeading('Vehicle Information')
+                    ->modalSubmitAction(false)
+                    ->modalCancelActionLabel('Close')
+                    ->modalCancelAction(false)
+                    // This is the important part!
+                    ->infolist([
+                        // Inside, we can treat this as any info list and add all the fields we want!
+                        \Filament\Infolists\Components\Section::make('Vehicle Details')
+                        ->icon('heroicon-m-truck')
+                            ->schema([
+                             TextEntry::make('account.full_name')
+                                ->label('Customer'),
+                             TextEntry::make('make'),
+                             TextEntry::make('model'),
+                             TextEntry::make('year'),
+                             TextEntry::make('license_plate'),
+                             TextEntry::make('color'),
+                             TextEntry::make('chassis_no'),
+                             TextEntry::make('engine_no'),
+                             TextEntry::make('fuel_type'),
+                             TextEntry::make('miles_per_gallon'),
+                             TextEntry::make('transmission'),
+                            ])
+                            ->columns(2),
+                            ImageEntry::make('image')
+                            ->width(700)
+                            ->height(500),
+                            TextEntry::make('notes'),
+                    ])->slideOver(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make(),
 ]),
             ])
             ->bulkActions([

@@ -13,6 +13,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Section;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+
 
 class UserResource extends Resource
 {
@@ -60,21 +64,24 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                   ->sortable()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                  ->sortable()
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('roles.name')
                     ->label('Permission')
                     ->visible(auth()->user()->isAdmin())
-                    ->sortable()
                     ->badge()
                     ->searchable(),
                     Tables\Columns\TextColumn::make('role')
@@ -95,6 +102,36 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('View')
+                ->icon('heroicon-o-eye')
+                ->color('warning')
+                ->modalHeading('Account Information')
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+                // This is the important part!
+                ->infolist([
+                    // Inside, we can treat this as any info list and add all the fields we want!
+                    \Filament\Infolists\Components\Section::make('Account Details')
+                    ->icon('heroicon-m-user-circle')
+                        ->schema([
+                           TextEntry::make('name'),
+                            TextEntry::make('email'),
+                            TextEntry::make('roles.name')
+                            ->badge()
+                            ->label('Permission'),
+                            TextEntry::make('role')
+                            ->badge()
+                            ->label('Access')
+                            ->color(function(string $state) : string{
+                                return match($state) {
+                                  'ADMIN' => 'danger',
+                                  'STAFF' => 'info',
+                                  'USER' => 'success',
+                                };
+                          }),
+                        ])
+                        ->columns(2),
+                ])->slideOver(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

@@ -13,6 +13,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Section;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+
+
 
 class InventoryResource extends Resource
 {
@@ -84,7 +89,27 @@ class InventoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                //Tables\Actions\ViewAction::make(),
+                Tables\Actions\Action::make('View')
+                ->icon('heroicon-o-eye')
+                ->color('warning')
+                ->modalHeading('Product Information')
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+                // This is the important part!
+                ->infolist([
+                    // Inside, we can treat this as any info list and add all the fields we want!
+                    \Filament\Infolists\Components\Section::make('Product Details')
+                    ->icon('heroicon-m-shopping-cart')
+                        ->schema([
+                           TextEntry::make('product_name'),
+                            TextEntry::make('description'),
+                            TextEntry::make('quantity'),
+                            TextEntry::make('price')
+                            ->prefix('₱'),
+                        ])
+                        ->columns(2),
+                ])->slideOver(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -93,6 +118,19 @@ class InventoryResource extends Resource
                 ]),
             ]);
     }
+
+    // public static function infolist(Infolist $infolist): Infolist
+    // {
+    //     return $infolist
+    //         ->schema([
+    //             Infolists\Components\TextEntry::make('product_name'),
+    //             Infolists\Components\TextEntry::make('description'),
+    //             Infolists\Components\TextEntry::make('quantity'),
+    //             Infolists\Components\TextEntry::make('price')
+    //             ->icon('heroicon-m-banknotes')
+    //                 ->columnSpanFull(),
+    //         ]);
+    // }
 
     public static function getRelations(): array
     {

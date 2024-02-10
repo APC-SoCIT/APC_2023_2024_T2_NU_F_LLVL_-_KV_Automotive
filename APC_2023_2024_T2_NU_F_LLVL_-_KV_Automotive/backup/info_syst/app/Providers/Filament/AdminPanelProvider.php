@@ -27,6 +27,8 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Filament\Forms\Components\FileUpload;
 use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
+use Filament\Enums\ThemeMode;
+
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -55,7 +57,12 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->login()
             ->colors([
-                'primary' => Color::Orange,
+                'danger' => Color::Stone,
+                'gray' => Color::Stone,
+                'info' => Color::Blue,
+                'primary' => Color::Yellow,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

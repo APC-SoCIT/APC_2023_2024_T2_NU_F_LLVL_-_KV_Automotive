@@ -15,6 +15,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Notifications\Notification;
 use Filament\Notifications\Actions\Action;
 use Filament\Forms\Components\Section;
+use Filament\Infolists;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
+
 
 
 class JobOrderResource extends Resource
@@ -106,8 +110,10 @@ class JobOrderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
-                ->sortable(),
+                    ->searchable()
+                     ->sortable(),
                 Tables\Columns\TextColumn::make('vehicle.model')
+                     ->searchable()
                     ->sortable(),
                     Tables\Columns\TextColumn::make('status')
                     ->sortable()
@@ -142,7 +148,35 @@ class JobOrderResource extends Resource
                     fn (JobOrder $record): string => route('send-email', ['record' => $record]),
                     shouldOpenInNewTab: true // Set to true if you want to open in a new tab
                 ),
-                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('View')
+                ->icon('heroicon-o-eye')
+                ->color('warning')
+                ->modalHeading('Job Order Information')
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+                // This is the important part!
+                ->infolist([
+                    // Inside, we can treat this as any info list and add all the fields we want!
+                    \Filament\Infolists\Components\Section::make('Status Details')
+                    ->icon('heroicon-m-shopping-cart')
+                        ->schema([
+                            TextEntry::make('account.full_name')
+                            ->label('Customer'),
+                            TextEntry::make('vehicle.model'),
+                            TextEntry::make('inventory.product_name'),
+                            TextEntry::make('quantity_used'),
+                            TextEntry::make('status')
+                            ->badge()
+                            ->color(function(string $state) : string{
+                                return match($state) {
+                                  'pending' => 'primary',
+                                  'in_progress' => 'info',
+                                  'completed' => 'success',
+                                };
+                          }),
+                        ])
+                        ->columns(2),
+                ])->slideOver(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ])
