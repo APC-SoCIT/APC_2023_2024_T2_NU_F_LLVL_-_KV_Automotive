@@ -212,15 +212,17 @@ class JobOrderResource extends Resource
         $query = parent::getEloquentQuery();
 
         if ($user->isAdmin() || $user->isStaff()) {
-            // Admin can see all users
+            // Admin or staff can see all records
             return $query;
         } else {
-            // Other users can only see their own record
+            // Other users can only see their own records based on their account_id
             return $query->whereHas('account', function ($accountQuery) use ($user) {
-                $accountQuery->where('id', $user->account->id);
+                $accountQuery->where('user_id', $user->id);
             });
         }
     }
+
+    
     public static function save($record, Form $form)
 {
 

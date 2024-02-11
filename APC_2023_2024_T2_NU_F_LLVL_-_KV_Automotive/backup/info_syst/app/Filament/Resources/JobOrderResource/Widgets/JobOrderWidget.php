@@ -7,10 +7,12 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 
 class JobOrderWidget extends BaseWidget
 {
+    use HasPageShield;
     protected int | string | array $columnSpan = [
         'md' => 2,
         'xl' => 3,

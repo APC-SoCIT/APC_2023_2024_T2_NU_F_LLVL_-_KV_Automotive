@@ -100,6 +100,15 @@ class AccountResource extends Resource
                     ->placeholder('PH')
                     ->maxLength(255),
                       ])->columns(2),
+                      Forms\Components\Select::make('user_id')
+                      ->relationship(name: 'user', titleAttribute: 'name')
+                      ->searchable()
+                      ->preload()
+                      ->native(false)
+                      ->searchPrompt('Search Account by their name (ex. jose)')
+                      ->noSearchResultsMessage('No Account found.')
+                      ->placeholder('Ex.Glenn Aldrich Buenavente')
+                      ->required(),
                  ]),
         ]);
     }
@@ -134,6 +143,7 @@ class AccountResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //
@@ -177,6 +187,8 @@ class AccountResource extends Resource
             //
         ];
     }
+
+    
 
     public static function getPages(): array
     {

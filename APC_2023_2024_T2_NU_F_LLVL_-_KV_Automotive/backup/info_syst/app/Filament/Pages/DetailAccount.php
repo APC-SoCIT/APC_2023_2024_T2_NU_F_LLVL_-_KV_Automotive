@@ -12,10 +12,12 @@ use Filament\Actions\Action;
 use Filament\Support\Exceptions\Halt;
 use Filament\Notifications\Notification;
 use Filament\Forms\Components\Section;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class DetailAccount extends Page implements HasForms
 {
 
+    use HasPageShield;
     public ?array $data = [];
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 

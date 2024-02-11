@@ -4,10 +4,12 @@ namespace App\Filament\Resources\InventoryResource\Widgets;
 
 use App\Models\Inventory;
 use Filament\Widgets\ChartWidget;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 
 class Totalsales extends ChartWidget
 {
+    use HasPageShield;
     protected static ?string $heading = 'Total Stock';
 
     protected int | string | array $columnSpan = [

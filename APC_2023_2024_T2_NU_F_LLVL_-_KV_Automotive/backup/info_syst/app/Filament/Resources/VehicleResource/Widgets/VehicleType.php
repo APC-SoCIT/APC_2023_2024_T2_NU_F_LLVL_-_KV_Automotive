@@ -7,9 +7,11 @@ use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 use Illuminate\Support\Carbon;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class VehicleType extends ChartWidget
 {
+    use HasPageShield;
     protected static ?string $heading = 'Vehicle Entry';
 
     protected int | string | array $columnSpan = '1';

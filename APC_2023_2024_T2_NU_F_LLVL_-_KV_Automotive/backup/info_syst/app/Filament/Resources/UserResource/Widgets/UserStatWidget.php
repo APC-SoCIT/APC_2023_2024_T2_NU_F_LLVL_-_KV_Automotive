@@ -5,9 +5,11 @@ namespace App\Filament\Resources\UserResource\Widgets;
 use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class UserStatWidget extends BaseWidget
 {
+    use HasPageShield;
     protected int | string | array $columnSpan = [
         'md' => 2,
         'xl' => 3,

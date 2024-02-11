@@ -24,6 +24,7 @@ use Filament\Infolists;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\ImageEntry;
+use App\Models\Account;
 
 
 class VehicleResource extends Resource
@@ -313,6 +314,9 @@ class VehicleResource extends Resource
         ];
     }
 
+
+
+
     public static function getEloquentQuery(): Builder
     {
         $user = auth()->user();
@@ -323,10 +327,17 @@ class VehicleResource extends Resource
             // Admin or staff can see all records
             return $query;
         } else {
-            // Other users can only see their own records
-            return $query->where('account_id', $user->account->id);
+            // Other users can only see their own records based on their account_id
+            return $query->whereHas('account', function ($accountQuery) use ($user) {
+                $accountQuery->where('user_id', $user->id);
+            });
         }
     }
+
+
+
+
+
 
 
 

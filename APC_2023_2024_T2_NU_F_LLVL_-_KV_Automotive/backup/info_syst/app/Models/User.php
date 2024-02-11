@@ -16,6 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Storage;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -55,9 +56,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
        return $this->role === self::ROLE_USER;
     }
-    public function Account(): HasOne
+    public function account(): BelongsTo
     {
-        return $this->hasOne(Account::class);
+        return $this->belongsTo(Account::class);
     }
 
     public function User(): HasOne
