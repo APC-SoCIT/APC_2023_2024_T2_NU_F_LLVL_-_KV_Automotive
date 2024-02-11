@@ -37,7 +37,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->brandName('LLBL & KV')
+           // ->brandName('LLBL & KV')
             ->path('admin')
             ->plugin(
                 BreezyCore::make()
@@ -57,7 +57,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->login()
             ->colors([
-                'danger' => Color::Stone,
+                'danger' => Color::Rose,
                 'gray' => Color::Stone,
                 'info' => Color::Blue,
                 'primary' => Color::Yellow,
