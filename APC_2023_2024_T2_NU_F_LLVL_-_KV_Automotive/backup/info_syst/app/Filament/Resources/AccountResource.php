@@ -188,7 +188,7 @@ class AccountResource extends Resource
         ];
     }
 
-    
+
 
     public static function getPages(): array
     {
@@ -199,4 +199,20 @@ class AccountResource extends Resource
             'edit' => Pages\EditAccount::route('/{record}/edit'),
         ];
     }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $user = auth()->user();
+
+        $query = parent::getEloquentQuery();
+
+        if ($user->isAdmin() || $user->isStaff()) {
+            // Admin or staff can see all records
+            return $query;
+        } else {
+            // Other users can only see their own records based on their user ID
+            return $query->where('user_id', $user->id);
+        }
+    }
+
 }
