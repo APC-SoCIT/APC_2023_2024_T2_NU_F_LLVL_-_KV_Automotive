@@ -7,26 +7,34 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
-use BezhanSalleh\FilamentShield\Traits\HasPageShield;
+
+
 
 
 class JobOrderWidget extends BaseWidget
 {
-    use HasPageShield;
     protected int | string | array $columnSpan = [
         'md' => 2,
         'xl' => 3,
     ];
     public function table(Table $table): Table
     {
+        $user = auth()->user();
+
+        // Get the query based on user role
+        $query = JobOrder::query();
+        if (!$user->isAdmin() && !$user->isStaff()) {
+            $query->whereHas('account', function ($accountQuery) use ($user) {
+                $accountQuery->where('user_id', $user->id);
+            });
+        }
+
         return $table
-            ->query(
-              JobOrder::WhereDate('Created_at','>', now()->subDays(104)->startOfDay())
-            )
+            ->query($query)
             ->columns([
                 Tables\Columns\TextColumn::make('Account.full_name')
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('status')
+                Tables\Columns\TextColumn::make('status')
                     ->sortable()
                     ->badge()
                     ->color(function(string $state) : string{
@@ -42,7 +50,6 @@ class JobOrderWidget extends BaseWidget
                     ->toggleable(isToggledHiddenByDefault: true),
             ]);
     }
-
 
 
 }

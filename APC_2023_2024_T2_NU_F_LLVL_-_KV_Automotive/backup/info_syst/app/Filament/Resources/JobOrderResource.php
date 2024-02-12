@@ -140,14 +140,17 @@ class JobOrderResource extends Resource
             ->actions([
 
                 Tables\Actions\ActionGroup::make([
-                Tables\Actions\Action::make('send-email') // Change 'download' to 'send-email'
-                ->label('Send Email')
-                ->color('info') // You can choose the color you prefer
-                ->icon('heroicon-o-envelope')
-                ->url(
-                    fn (JobOrder $record): string => route('send-email', ['record' => $record]),
-                    shouldOpenInNewTab: true // Set to true if you want to open in a new tab
-                ),
+                    Tables\Actions\Action::make('send-email') // Change 'download' to 'send-email'
+                    ->label('Send Email')
+                    ->visible(function (JobOrder $record): bool {
+                        $user = auth()->user();
+                        return $user->isAdmin() || $user->isStaff();
+                    })
+                    ->color('info') // You can choose the color you prefer
+                    ->icon('heroicon-o-envelope')
+                    ->url(function (JobOrder $record): string {
+                        return route('send-email', ['record' => $record]);
+                    }, shouldOpenInNewTab: false),
                 Tables\Actions\Action::make('View')
                 ->icon('heroicon-o-eye')
                 ->color('warning')
@@ -222,7 +225,7 @@ class JobOrderResource extends Resource
         }
     }
 
-    
+
     public static function save($record, Form $form)
 {
 

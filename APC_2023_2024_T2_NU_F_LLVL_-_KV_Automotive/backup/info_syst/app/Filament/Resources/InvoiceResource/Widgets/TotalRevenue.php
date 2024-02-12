@@ -7,11 +7,9 @@ use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 use Illuminate\Support\Carbon;
-use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class TotalRevenue extends ChartWidget
 {
-    use HasPageShield;
     protected static ?string $heading = 'Total Revenue';
 
     protected int | string | array $columnSpan = '2';
@@ -86,5 +84,12 @@ class TotalRevenue extends ChartWidget
             ->perDay() // Use perDay() as an example; adjust based on your specific requirements
             ->sum('amount');
     }
+
+        public static function canView(): bool
+    {
+        $user = auth()->user();
+
+        return $user->isAdmin() || $user->isStaff();
+}
 
 }

@@ -37,7 +37,7 @@ class EmailController extends Controller
         echo '<script>';
         echo 'alert("Email sent successfully!");';
         echo 'window.close();'; // Close the current tab
-        echo 'window.location.href = "/admin/job_Order";'; // Redirect to /admin/job_Order
+        echo 'window.location.href = "/admin/Job_Status";'; // Redirect to /admin/job_Order
         echo '</script>';
 
         // The code after this point won't be executed

@@ -5,11 +5,9 @@ namespace App\Filament\Resources\UserResource\Widgets;
 use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class UserStatWidget extends BaseWidget
 {
-    use HasPageShield;
     protected int | string | array $columnSpan = [
         'md' => 2,
         'xl' => 3,
@@ -36,5 +34,12 @@ class UserStatWidget extends BaseWidget
                 ->chart([7, 2, 10, 3, 15, 4, 17])
                 ->Icon('heroicon-m-users'),
         ];
+    }
+
+        public static function canView(): bool
+    {
+        $user = auth()->user();
+
+        return $user->isAdmin() || $user->isStaff();
     }
 }

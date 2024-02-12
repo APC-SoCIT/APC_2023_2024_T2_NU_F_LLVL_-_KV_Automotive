@@ -7,11 +7,11 @@ use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 use Illuminate\Support\Carbon;
-use BezhanSalleh\FilamentShield\Traits\HasPageShield;
+
 
 class VehicleType extends ChartWidget
 {
-    use HasPageShield;
+
     protected static ?string $heading = 'Vehicle Entry';
 
     protected int | string | array $columnSpan = '1';
@@ -47,4 +47,11 @@ class VehicleType extends ChartWidget
         return 'bar';
     }
 
+
+        public static function canView(): bool
+    {
+        $user = auth()->user();
+
+        return $user->isAdmin() || $user->isStaff();
+    }
 }

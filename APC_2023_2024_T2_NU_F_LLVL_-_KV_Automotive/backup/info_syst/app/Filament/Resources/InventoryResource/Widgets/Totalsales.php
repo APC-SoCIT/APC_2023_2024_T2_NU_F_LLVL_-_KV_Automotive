@@ -4,12 +4,12 @@ namespace App\Filament\Resources\InventoryResource\Widgets;
 
 use App\Models\Inventory;
 use Filament\Widgets\ChartWidget;
-use BezhanSalleh\FilamentShield\Traits\HasPageShield;
+
 
 
 class Totalsales extends ChartWidget
 {
-    use HasPageShield;
+
     protected static ?string $heading = 'Total Stock';
 
     protected int | string | array $columnSpan = [
@@ -41,5 +41,12 @@ class Totalsales extends ChartWidget
     protected function getType(): string
     {
         return 'bar';
+    }
+
+        public static function canView(): bool
+    {
+        $user = auth()->user();
+
+        return $user->isAdmin() || $user->isStaff();
     }
 }
