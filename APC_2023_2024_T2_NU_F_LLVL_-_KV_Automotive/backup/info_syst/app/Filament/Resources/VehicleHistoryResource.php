@@ -206,12 +206,14 @@ class VehicleHistoryResource extends Resource
                     ->placeholder('Ex. NBC 1234')
                     ->required(),
 
+                    Forms\Components\TextInput::make('performed_by')
+                    ->label('Validated by:')
+                    ->placeholder('Glenn Aldrich Buenavente')
+                    ->regex('/^[a-zA-Z\s-]+$/')
+                    ->required()
+                    ->disabledOn('edit')
+                    ->maxLength(255),
 
-                Forms\Components\TextInput::make('performed_by')
-                ->placeholder('Glenn Aldrich Buenavente')
-                ->regex('/^[a-zA-Z\s]+$/')
-                ->required()
-                ->maxLength(255),
             ]),
                 Section::make('Maintenance Log')
                  ->description('Maintain a detailed log of service activities for your vehicles.')
@@ -235,8 +237,11 @@ class VehicleHistoryResource extends Resource
                             ->native(false)
                               ->required()
                             ->format('Y/m/d'),
-                        // Add more fields within the repeater if needed
-
+                            Forms\Components\TextInput::make('performed_by')
+                            ->placeholder('Glenn Aldrich Buenavente')
+                            ->regex('/^[a-zA-Z\s-]+$/')
+                            ->required()
+                            ->maxLength(255),
                     ])
                     ->reorderableWithButtons()
                     ->columns(2),

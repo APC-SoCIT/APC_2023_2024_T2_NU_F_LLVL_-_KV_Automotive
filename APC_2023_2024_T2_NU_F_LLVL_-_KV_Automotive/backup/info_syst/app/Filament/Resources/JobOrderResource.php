@@ -45,6 +45,7 @@ class JobOrderResource extends Resource
                     Forms\Components\Select::make('account_id')
                     ->relationship(name: 'account', titleAttribute: 'full_name')
                     ->searchable()
+                    ->label('Customer')
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
@@ -86,7 +87,18 @@ class JobOrderResource extends Resource
                 ->icon('heroicon-m-wrench-screwdriver')
              ->description('Change the status based on the service offered')
             ->schema([
-
+                Forms\Components\TextInput::make('task_performed')
+                ->label('Task')
+                ->placeholder('Change Oil')
+                ->required()
+                ->regex('/^[a-zA-Z\s]+$/')
+                ->maxLength(255),
+                Forms\Components\TextInput::make('performed_by')
+                ->label('Performed by')
+                ->placeholder('Jose')
+                ->required()
+                ->regex('/^[a-zA-Z\s]+$/')
+                ->maxLength(255),
                 Forms\Components\Select::make('status')
                 ->required()
                 ->native(false)
@@ -111,6 +123,7 @@ class JobOrderResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('account.full_name')
                     ->searchable()
+                    ->label('Customer')
                      ->sortable(),
                 Tables\Columns\TextColumn::make('vehicle.model')
                      ->searchable()
@@ -181,6 +194,7 @@ class JobOrderResource extends Resource
                         ->columns(2),
                 ])->slideOver(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ])
             ->bulkActions([

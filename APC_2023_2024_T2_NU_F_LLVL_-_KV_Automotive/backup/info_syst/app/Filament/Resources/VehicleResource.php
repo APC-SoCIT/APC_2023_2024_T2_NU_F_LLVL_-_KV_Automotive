@@ -54,6 +54,7 @@ class VehicleResource extends Resource
                     Forms\Components\Select::make('account_id')
                     ->relationship(name: 'account', titleAttribute: 'full_name')
                     ->placeholder('Ex. Glenn Aldrich Buenavente')
+                    ->label('Customer')
                     ->native(false)
                     ->required()
                     ->searchPrompt('Search Account by their name (ex. jose)')

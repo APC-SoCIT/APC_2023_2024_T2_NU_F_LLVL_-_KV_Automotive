@@ -10,7 +10,7 @@ class JobOrder extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['vehicle_id', 'account_id', 'inventory_id', 'status', 'quantity_used'];
+    protected $fillable = ['vehicle_id', 'account_id', 'inventory_id', 'status', 'quantity_used','task_performed','performed_by'];
 
     public function vehicle(): BelongsTo
     {
@@ -25,6 +25,11 @@ class JobOrder extends Model
     public function inventory(): BelongsTo
     {
         return $this->belongsTo(Inventory::class);
+    }
+
+    public function VehicleHistory()
+    {
+        return $this->belongsTo(VehicleHistory::class);
     }
 
     public static function boot()

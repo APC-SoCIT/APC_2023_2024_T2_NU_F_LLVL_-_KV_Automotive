@@ -34,6 +34,12 @@ class VehicleHistory extends Model
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
+    public function jobOrders()
+    {
+        return $this->hasMany(JobOrder::class);
+    }
+
+
     public function getFirstTaskAttribute()
 {
     $taskPerformed = json_decode($this->attributes['task_performed'], true);
