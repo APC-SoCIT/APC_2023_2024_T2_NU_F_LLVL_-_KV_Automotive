@@ -102,7 +102,7 @@
                     <tr>
                         <td class="wrapper" style="font-family: Helvetica, sans-serif; font-size: 16px; vertical-align: top; box-sizing: border-box; padding: 24px;" valign="top">
                             <div style="text-align: center;">
-                                <img src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/413151349_1303008093729218_6211963685636022506_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHMn9SJYzRlohYf-YBhd7QrBGvc-wTNTLcEa9z7BM1Mt8-vvNRZwX0GaFZc8Pv1yiEyLI5Nxw_eQz4SV81E6_mA&_nc_ohc=EPL73D9l_wEAX_ncohn&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdQ6pD2FG1QLX_07DdaJcRzN4mbARUmwkgmfi-2PIk1_DQ&oe=65CB7103" alt="Home" title="Go to Home" style="width: 335px; height: auto; margin: 0 auto; pointer-events: none;" />
+                                <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t1.15752-9/413151349_1303008093729218_6211963685636022506_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHMn9SJYzRlohYf-YBhd7QrBGvc-wTNTLcEa9z7BM1Mt8-vvNRZwX0GaFZc8Pv1yiEyLI5Nxw_eQz4SV81E6_mA&_nc_ohc=Qv5rE9iwoYMAX8Z_atK&_nc_ht=scontent.fmnl9-2.fna&oh=03_AdTMsMnDdhuoxGF4mo7_NnwqW1XIfYZ0ETwgZWVXn4wNFw&oe=65F2FE03" alt="Home" title="Go to Home" style="width: 335px; height: auto; margin: 0 auto; pointer-events: none;" />
                             </div>
                             <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px; text-align: left;">Hi there,</p>
                             <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px;">This is a notification for Job Status #{{ $jobOrder->id }}.</p>
@@ -114,6 +114,8 @@
                                 <li><strong>Account:</strong> {{ optional($jobOrder->account)->full_name }}</li>
                                 <li><strong>Vehicle:</strong> {{ optional($jobOrder->vehicle)->model }}</li>
                                 <li><strong>Item Used:</strong> {{ optional($jobOrder->inventory)->product_name }}</li>
+                                <li><strong>Status:</strong> {{ $jobOrder->task_performed }}</li>
+                                <li><strong>Status:</strong> {{ $jobOrder->performed_by }}</li>
                                 <!-- Add more details as needed -->
                             </ul>
 
