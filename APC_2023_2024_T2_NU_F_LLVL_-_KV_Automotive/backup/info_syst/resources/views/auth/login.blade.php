@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-
+    <title>LLBL&KV</title> <!-- Change the tab name here -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23EFCD52' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12'/%3E%3C/svg%3E"> <!-- Change the href attribute to the path of your Hero Icon SVG file -->
 </head>
 <body>
 
@@ -9,7 +10,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <a href="{{ route('home') }}" style="display: block; text-align: center;">
-                <img src="{{ asset('https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/413151349_1303008093729218_6211963685636022506_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHMn9SJYzRlohYf-YBhd7QrBGvc-wTNTLcEa9z7BM1Mt8-vvNRZwX0GaFZc8Pv1yiEyLI5Nxw_eQz4SV81E6_mA&_nc_ohc=EPL73D9l_wEAX_ncohn&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdQ6pD2FG1QLX_07DdaJcRzN4mbARUmwkgmfi-2PIk1_DQ&oe=65CB7103') }}" alt="Home" title="Go to Home" style="width: 335px; height: auto; margin: 0 auto;" />
+                <img src="{{ asset('storage/llbl.png') }}" alt="Home" title="Go to Home" style="width: 335px; height: auto; margin: 0 auto;" />
             </a>
             <div id="error-message"></div>
             <div class="input-box">

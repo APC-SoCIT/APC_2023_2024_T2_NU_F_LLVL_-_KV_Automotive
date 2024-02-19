@@ -35,7 +35,7 @@ class EditJobOrder extends \Filament\Resources\Pages\EditRecord
         // Notify the authenticated user
         $recipient = auth()->user();
         Notification::make()
-            ->title('Saved successfully')
+            ->title('Saved successfully and Notified')
             ->sendToDatabase($recipient);
 
         // Notify additional users based on account association
