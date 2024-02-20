@@ -96,7 +96,7 @@
         <td class="container" style="font-family: Helvetica, sans-serif; font-size: 16px; vertical-align: top; max-width: 600px; padding: 0; padding-top: 24px; width: 600px; margin: 0 auto;" width="600" valign="top">
             <div class="content" style="box-sizing: border-box; display: block; margin: 0 auto; max-width: 600px; padding: 0;">
                 <!-- START CENTERED WHITE CONTAINER -->
-                <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
+                <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">The Current Status is {{ $jobOrder->status }} </span>
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff; border: 1px solid #eaebed; border-radius: 16px; width: 100%;" width="100%">
                     <!-- START MAIN CONTENT AREA -->
                     <tr>
@@ -105,7 +105,7 @@
                                 <img src="('storage/llbl.png')" alt="Home" title="Go to Home" style="width: 335px; height: auto; margin: 0 auto; pointer-events: none;" />
                             </div>
                             <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px; text-align: left;">Hi there,</p>
-                            <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px;">This is a notification for Job Status #{{ $jobOrder->id }}.</p>
+                            <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px;">This is an update of your Job Status #{{ $jobOrder->id }}.</p>
 
                             <p>Details:</p>
 
@@ -119,7 +119,7 @@
                                 <!-- Add more details as needed -->
                             </ul>
 
-                            <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px;">This is a generated email.</p>
+                            <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px;">This is a generated email. please do not reply if you wish to reply contact yahoo@lasquety.com</p>
                         </td>
                     </tr>
                     <!-- END MAIN CONTENT AREA -->
