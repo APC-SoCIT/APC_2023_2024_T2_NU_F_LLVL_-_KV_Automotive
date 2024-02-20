@@ -221,7 +221,7 @@
       <div class="section__container footer__container">
         <div class="footer__col">
           <div class="logo footer__logo">
-            <a href="#"><img src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/413151349_1303008093729218_6211963685636022506_n.png?_nc_cat=101&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHMn9SJYzRlohYf-YBhd7QrBGvc-wTNTLcEa9z7BM1Mt8-vvNRZwX0GaFZc8Pv1yiEyLI5Nxw_eQz4SV81E6_mA&_nc_ohc=EPL73D9l_wEAX_ncohn&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdQyfvzWldJyAB04z-dEFUzEzOLcMaeiLrWAXRm4PDwhCw&oe=65CCC283" alt="logo" style="max-width: 60%; padding-left:10px;" /></a>
+            <a href="#"><img src="{{ asset('storage/llbl.png') }}" /></a>
           </div>
           <p class="section__description">
             Our unwavering commitment to excellence in car servicing sets us apart. Whether it's a routine oil change, a precision tune-up, meticulous body repair, or ensuring top-notch brake performance, we go above and beyond to deliver quality and reliability with every service.
