@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
@@ -38,9 +39,9 @@ class Account extends Model
         return $this->hasMany(Vehicle::class);
     }
 
-    public function User()
+    public function User(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
 }

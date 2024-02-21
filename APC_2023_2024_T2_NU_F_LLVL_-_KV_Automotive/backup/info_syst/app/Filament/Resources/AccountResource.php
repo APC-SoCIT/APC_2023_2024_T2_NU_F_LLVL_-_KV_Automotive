@@ -68,6 +68,7 @@ class AccountResource extends Resource
                     ->placeholder('Ex. gelnn@gmail.com')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('password')
+                    ->hidden()
                     ->password()
                     ->required()
                     ->maxLength(255),
@@ -101,6 +102,7 @@ class AccountResource extends Resource
                     ->maxLength(255),
                       ])->columns(2),
                       Forms\Components\Select::make('user_id')
+                      ->label('Link Account')
                       ->relationship(name: 'user', titleAttribute: 'name')
                       ->searchable()
                       ->preload()
@@ -109,10 +111,7 @@ class AccountResource extends Resource
                       ->noSearchResultsMessage('No Account found.')
                       ->placeholder('Ex.Glenn Aldrich Buenavente')
                       ->required()
-                      ->visible(function (Account $record): bool {
-                        $user = auth()->user();
-                        return $user->isAdmin();
-                    }),// if not admin, hide the field,
+                      ->hidden(! auth()->user()->isAdmin()),// if not admin, hide the field,
                  ]),
         ]);
     }
