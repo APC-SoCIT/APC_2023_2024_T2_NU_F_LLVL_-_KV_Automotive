@@ -58,7 +58,7 @@ class AccountResource extends Resource
                 ])->columns(2),
 
                 Section::make('Account')
-                ->description('Please put your credententials dont worry will only use it to email you')
+                ->description('Please put your credententials dont worry will only use it to email you, Such ass send status about you Car ')
                 ->icon('heroicon-m-code-bracket')
                ->schema([
                 Forms\Components\TextInput::make('email')
