@@ -17,8 +17,9 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Storage;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
@@ -26,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    use HasPanelShield;
 
     const ROLE_ADMIN = "ADMIN";
     const ROLE_STAFF = "STAFF";
@@ -41,8 +43,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function canAccessPanel(FilamentPanel $panel): bool
     {
-    return
-     $this->isAdmin() ||  $this->isStaff() || $this->isUser();
+        // Check if the user has the super_admin role or the panel_user role
+        // Also, check if the user is admin, staff, or user
+        return $this->hasRole('super_admin') ||
+               $this->hasRole('user') ||
+               $this->isAdmin() ||
+               $this->isStaff() ||
+               $this->isUser();
     }
 
     public function isAdmin() {
