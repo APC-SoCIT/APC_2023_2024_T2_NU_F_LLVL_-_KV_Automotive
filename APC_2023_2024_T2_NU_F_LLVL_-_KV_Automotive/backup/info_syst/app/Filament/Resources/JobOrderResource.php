@@ -153,6 +153,7 @@ class JobOrderResource extends Resource
             ->actions([
 
                 Tables\Actions\ActionGroup::make([
+
                     Tables\Actions\Action::make('send-email') // Change 'download' to 'send-email'
                     ->label('Send Email')
                     ->visible(function (JobOrder $record): bool {
@@ -164,6 +165,19 @@ class JobOrderResource extends Resource
                     ->url(function (JobOrder $record): string {
                         return route('send-email', ['record' => $record]);
                     }, shouldOpenInNewTab: false),
+
+                    Tables\Actions\Action::make('send-sms') // Change 'download' to 'send-sms'
+                    ->label('Send SMS')
+                    ->visible(function (JobOrder $record): bool {
+                        // Your visibility logic here
+                        return true;
+                    })
+                    ->color('success') // You can choose the color you prefer
+                    ->icon('heroicon-o-phone')
+                    ->url(function (JobOrder $record): string {
+                        return route('send-sms', ['order' => $record]);
+                    }, shouldOpenInNewTab: false),
+
                 Tables\Actions\Action::make('View')
                 ->icon('heroicon-o-eye')
                 ->color('warning')
@@ -193,6 +207,7 @@ class JobOrderResource extends Resource
                         ])
                         ->columns(2),
                 ])->slideOver(),
+
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])

@@ -13,7 +13,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Vonage\Account\SmsPrice;
 use Illuminate\Support\Facades\Notification;
-use Symfony\Component\Mailer\Transport\Smtp\SmtpTransport;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +76,9 @@ Route::prefix('generate-pdf')->name('generate-pdf.')
 
 Route::get('/send-email/{record}', [EmailController::class, 'sendEmail'])->name('send-email');
 Route::get('/email-sent/{record}', [EmailController::class, 'emailSent'])->name('email-sent');
+
+Route::get('/send-sms/{order}', [SMSController::class, 'sendSMS'])->name('send-sms');
+
 
 
 

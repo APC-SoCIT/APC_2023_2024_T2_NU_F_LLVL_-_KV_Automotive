@@ -36,8 +36,7 @@ class EmailController extends Controller
         // Display a dialog box using JavaScript
         echo '<script>';
         echo 'alert("Email sent successfully!");';
-        echo 'window.close();'; // Close the current tab
-        echo 'window.location.href = "/admin/Job_Status";'; // Redirect to /admin/job_Order
+        echo 'window.history.back();'; // Close the current tab
         echo '</script>';
 
         // The code after this point won't be executed

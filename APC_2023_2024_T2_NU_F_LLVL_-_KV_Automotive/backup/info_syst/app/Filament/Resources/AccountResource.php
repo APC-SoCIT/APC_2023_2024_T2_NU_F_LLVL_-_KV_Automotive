@@ -110,7 +110,6 @@ class AccountResource extends Resource
                       ->searchPrompt('Search Account by their name (ex. jose)')
                       ->noSearchResultsMessage('No Account found.')
                       ->placeholder('Ex.Glenn Aldrich Buenavente')
-                      ->required()
                       ->hidden(! auth()->user()->isAdmin()),// if not admin, hide the field,
                  ]),
         ]);
