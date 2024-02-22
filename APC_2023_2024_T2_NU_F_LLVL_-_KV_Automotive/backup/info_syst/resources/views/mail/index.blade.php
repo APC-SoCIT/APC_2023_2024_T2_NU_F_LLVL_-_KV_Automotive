@@ -120,7 +120,7 @@
                                 <!-- Add more details as needed -->
                             </ul>
 
-                            <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px;">This is a generated email. please do not reply if you wish to reply contact yahoo@lasquety.com</p>
+                            <p style="font-family: Helvetica, sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-bottom: 16px;">This is a generated email. please do not reply if you wish to reply contact contact no. 0917-851-5875 email:vallasquety@yahoo.com</p>
                         </td>
                     </tr>
                     <!-- END MAIN CONTENT AREA -->
@@ -136,13 +136,13 @@
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
         <tr>
             <td class="content-block" style="font-family: Helvetica, sans-serif; vertical-align: top; color: #9a9ea6; font-size: 16px; text-align: center;" valign="top" align="center">
-                <span class="apple-link" style="color: #9a9ea6; font-size: 16px; text-align: center;">Company Inc, 7-11 Commercial Ct, BULACAN BT1 2NB</span>
-                <br>Phone: 09178515875.
+                <span class="apple-link" style="color: #9a9ea6; font-size: 16px; text-align: center;">1833 Paz Mendoza Guazon Street, Paco, Maynila</span>
+                <br>Phone: 0917-851-5875.
             </td>
         </tr>
         <tr>
             <td class="content-block powered-by" style="font-family: Helvetica, sans-serif; vertical-align: top; color: #9a9ea6; font-size: 16px; text-align: center;" valign="top" align="center">
-                Powered by <a href="http://htmlemail.io" style="color: #9a9ea6; font-size: 16px; text-align: center; text-decoration: none;">BCLS</a>
+                Powered by <a href="#09178515875" style="color: #9a9ea6; font-size: 16px; text-align: center; text-decoration: none;">BCLS</a>
             </td>
         </tr>
     </table>

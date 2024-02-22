@@ -112,10 +112,10 @@
             </p>
           </div>
           <div class="service__card">
-            <img src="https://www.kbb.com/wp-content/uploads/2020/03/how-often-change-oil.jpg?w=918" alt="service" />
+            <img src="https://www.shutterstock.com/image-photo/mechanic-pouring-oil-into-engine-600nw-2196366251.jpg" alt="service" />
             <h4>Change Oil</h4>
             <p>
-                Ensure peak engine performance with our oil change service. We'll replace the old oil, swap out the filter, and refill it with top-quality oil.
+              Ensure peak engine performance with our oil change service. We'll replace the old oil, swap out the filter, and refill it with top-quality oil.
             </p>
           </div>
           <div class="service__card">

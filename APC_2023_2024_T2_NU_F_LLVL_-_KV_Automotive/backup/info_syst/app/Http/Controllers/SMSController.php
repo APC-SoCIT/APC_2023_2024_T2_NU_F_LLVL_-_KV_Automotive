@@ -23,7 +23,7 @@ class SMSController extends Controller
                    "Task Performed: " . $order->task_performed . "\n" .
                    "Performed By: " . $order->performed_by . "\n" .
                    "Item Used: " . optional($order->inventory)->product_name . "\n\n" . // Use optional() for safety
-                   "This is a generated text. please do not reply if you wish to reply contact yahoo@lasquety.com";
+                   "This is a generated text. please do not reply if you wish to reply contact no. 0917-851-5875 email:vallasquety@yahoo.com";
 
 
 
