@@ -169,8 +169,8 @@ class JobOrderResource extends Resource
                     Tables\Actions\Action::make('send-sms') // Change 'download' to 'send-sms'
                     ->label('Send SMS')
                     ->visible(function (JobOrder $record): bool {
-                        // Your visibility logic here
-                        return true;
+                        $user = auth()->user();
+                        return $user->isAdmin() || $user->isStaff();
                     })
                     ->color('success') // You can choose the color you prefer
                     ->icon('heroicon-o-phone')
