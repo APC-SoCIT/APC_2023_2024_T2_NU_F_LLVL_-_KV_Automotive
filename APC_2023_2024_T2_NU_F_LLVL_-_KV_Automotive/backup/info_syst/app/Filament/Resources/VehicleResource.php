@@ -64,7 +64,7 @@ class VehicleResource extends Resource
 
                         if ($user->isAdmin() || $user->isStaff()) {
                             // Admin or staff can see all accounts with concatenated names
-                            return \App\Models\Account::select('first_name', 'middle_name', 'last_name', 'id')
+                            return Account::select('first_name', 'middle_name', 'last_name', 'id')
                                 ->get()
                                 ->map(function ($account) {
                                     return [
@@ -74,10 +74,23 @@ class VehicleResource extends Resource
                                 })
                                 ->pluck('name', 'id');
                         } else {
-                            // Other users can only see their own account with concatenated names
-                            $userAccount = $user->account;
-                            return [$userAccount->id => "{$userAccount->first_name} {$userAccount->middle_name} {$userAccount->last_name}"];
+                            // Other users can only see their own accounts with concatenated names
+                            $userAccounts = $user->accounts;
+
+                            if ($userAccounts->isNotEmpty()) {
+                                return $userAccounts->map(function ($account) {
+                                    return [
+                                        'id' => $account->id,
+                                        'name' => "{$account->first_name} {$account->middle_name} {$account->last_name}",
+                                    ];
+                                })->pluck('name', 'id');
+                            } else {
+                                // Handle the case where user does not have any accounts
+                                return [];
+                            }
                         }
+
+
                     }),
                 Forms\Components\TextInput::make('make')
                     ->placeholder('Ex. Honda')
@@ -190,6 +203,7 @@ class VehicleResource extends Resource
                     Forms\Components\TextInput::make('miles_per_gallon')
                     ->label('Kilometer Per Liter')
                     ->placeholder('26')
+                    ->Suffix('L')
                     ->numeric(),
                 Forms\Components\Select::make('transmission')
                     ->options([
