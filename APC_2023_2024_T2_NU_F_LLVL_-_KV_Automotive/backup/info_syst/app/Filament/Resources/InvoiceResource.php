@@ -44,7 +44,7 @@ class InvoiceResource extends Resource
                     ->native(false)
                     ->searchPrompt('Search Account by their name (ex. jose)')
                     ->noSearchResultsMessage('No Customer found.')
-                    ->placeholder('Ex. Kose Manalo')
+                    ->placeholder('Ex. Bose Manalo')
                     ->preload()
                     ->required(),
                 Forms\Components\TextInput::make('created_by')
@@ -59,7 +59,8 @@ class InvoiceResource extends Resource
                 Forms\Components\TextInput::make('invoice_no')
                  ->placeholder('Ex. 56')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->unique(ignoreRecord: true),
                     FileUpload::make('image')
                     ->openable()
                     ->imageEditor()

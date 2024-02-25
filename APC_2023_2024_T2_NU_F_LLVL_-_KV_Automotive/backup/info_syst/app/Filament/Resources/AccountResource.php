@@ -43,17 +43,18 @@ class AccountResource extends Resource
                 ->icon('heroicon-m-shopping-bag')
                ->schema([
                 Forms\Components\TextInput::make('first_name')
-                     ->placeholder('Ex. Glenn')
-                     ->alpha()
+                    ->placeholder('Ex. Glenn')
+                    ->alpha()
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('middle_name')
-                     ->placeholder('Ex. Luna')
-                     ->alpha()
+                    ->placeholder('Ex. Luna')
+                    ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('last_name')
-                      ->placeholder('Ex. Buenavente')
-                     ->alpha()
+                    ->placeholder('Ex. Buenavente')
+                    ->alpha()
+                    ->required()
                     ->maxLength(255),
                 ])->columns(2),
 
@@ -65,12 +66,10 @@ class AccountResource extends Resource
                     ->unique(ignoreRecord: true)
                     ->email()
                     ->required()
-                    ->placeholder('Ex. gelnn@gmail.com')
+                    ->placeholder('Ex. glenn@gmail.com')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('password')
                     ->hidden()
-                    ->password()
-                    ->required()
                     ->default('User123')
                     ->maxLength(255),
                ])->columns(3),
@@ -82,17 +81,18 @@ class AccountResource extends Resource
                     ->suffixIcon('heroicon-m-calendar-days')
                     ->placeholder('mm/dd/yy')
                     ->native(false)
-                  ->required(),
+                    ->required(),
                 Forms\Components\TextInput::make('phone_number')
                 ->placeholder('Ex. 0905526228')
                     ->numeric()
+                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('address')
                     ->placeholder('Ex. 5  Brgy Calumpit Linghos,')
                      ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('city')
-                     ->regex('/^[a-zA-Z\s]+$/')
+                    ->regex('/^[a-zA-Z\s]+$/')
                     ->placeholder('Bulacan')
                     ->required()
                     ->maxLength(255),

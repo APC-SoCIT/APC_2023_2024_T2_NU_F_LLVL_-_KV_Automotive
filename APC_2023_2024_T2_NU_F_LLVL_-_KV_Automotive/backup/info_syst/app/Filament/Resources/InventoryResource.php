@@ -67,7 +67,7 @@ class InventoryResource extends Resource
             ->columns([
 
                 Tables\Columns\TextColumn::make('product_name')
-                     ->sortable()
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()

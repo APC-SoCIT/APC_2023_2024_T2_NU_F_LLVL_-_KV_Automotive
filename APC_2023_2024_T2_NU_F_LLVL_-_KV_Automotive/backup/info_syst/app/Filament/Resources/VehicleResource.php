@@ -166,7 +166,6 @@ class VehicleResource extends Resource
                 Forms\Components\TextInput::make('model')
                     ->required()
                     ->placeholder('Ex. Civic')
-                    ->alpha()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('year')
                     ->required()
@@ -253,7 +252,8 @@ class VehicleResource extends Resource
                 Tables\Columns\TextColumn::make('fuel_type')
                     ->searchable(),
                     Tables\Columns\TextColumn::make('miles_per_gallon')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Fuel Usage'),
                 Tables\Columns\TextColumn::make('transmission')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -292,7 +292,8 @@ class VehicleResource extends Resource
                              TextEntry::make('chassis_no'),
                              TextEntry::make('engine_no'),
                              TextEntry::make('fuel_type'),
-                             TextEntry::make('miles_per_gallon'),
+                             TextEntry::make('miles_per_gallon')
+                                ->label('Kilometers per liter'),
                              TextEntry::make('transmission'),
                             ])
                             ->columns(2),
