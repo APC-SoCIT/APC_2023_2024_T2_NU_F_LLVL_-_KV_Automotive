@@ -111,7 +111,7 @@
 
                             <ul>
                                 <li><strong>Account:</strong> {{ optional($jobOrder->account)->full_name }}</li>
-                                <li><strong>Vehicle:</strong> {{ optional($jobOrder->vehicle)->model }}</li>
+                                <li><strong>Vehicle:</strong> {{ optional($jobOrder->vehicle)->make_and_model }}</li>
                                 <li><strong>License Plate:</strong> {{ optional($jobOrder->vehicle)->license_plate }}</li>
                                 <li><strong>Status:</strong> {{ $jobOrder->status }}</li>
                                 <li><strong>Tasked Performed:</strong> {{ $jobOrder->task_performed }}</li>

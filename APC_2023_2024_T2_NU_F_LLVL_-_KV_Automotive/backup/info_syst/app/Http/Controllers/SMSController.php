@@ -17,7 +17,7 @@ class SMSController extends Controller
         // Construct the message for the SMS
         $message = "Job Status Update #" . $order->id . "\n\n" .
                     "Account: " . optional($order->account)->full_name . "\n" . // Use optional() for safety
-                    "Vehicle: " . optional($order->vehicle)->model . "\n" . // Use optional() for safety
+                    "Vehicle: " . optional($order->vehicle)->make_and_model . "\n" . // Use optional() for safety
                     "License Plate: " . optional($order->vehicle)->license_plate . "\n" . // Use optional() for safety
                    "Status: " . ucfirst($order->status) . "\n" .
                    "Task Performed: " . $order->task_performed . "\n" .
