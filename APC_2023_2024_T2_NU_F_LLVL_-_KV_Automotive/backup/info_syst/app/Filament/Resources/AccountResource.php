@@ -71,6 +71,7 @@ class AccountResource extends Resource
                     ->hidden()
                     ->password()
                     ->required()
+                    ->default('User123')
                     ->maxLength(255),
                ])->columns(3),
                Section::make('Address')
