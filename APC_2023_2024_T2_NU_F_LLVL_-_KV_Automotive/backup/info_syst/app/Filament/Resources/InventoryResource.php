@@ -67,14 +67,18 @@ class InventoryResource extends Resource
             ->columns([
 
                 Tables\Columns\TextColumn::make('product_name')
+                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('quantity')
                     ->numeric()
+                    ->searchable()
                     ->sortable(),
                     Tables\Columns\TextColumn::make('description')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price')
                     ->money('PHP')
+                    ->searchable()  
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
