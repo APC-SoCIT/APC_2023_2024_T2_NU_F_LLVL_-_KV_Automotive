@@ -235,6 +235,8 @@ class VehicleResource extends Resource
                     ->square(),
                 Tables\Columns\TextColumn::make('make')
                     ->searchable(),
+                    Tables\Columns\TextColumn::make('make_and_model')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('model')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('year')

@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\VehicleHistoryResource\Pages;
 use App\Filament\Resources\VehicleHistoryResource\RelationManagers;
-use App\Filament\Resources\Filter;
 use App\Models\VehicleHistory;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -24,8 +23,10 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\RepeatableEntry;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Contracts\Validation\Rule;
+use App\Models\Vehicle;
+
+
+
 
 class VehicleHistoryResource extends Resource
 {
@@ -41,6 +42,9 @@ class VehicleHistoryResource extends Resource
 
     public static function form(Form $form): Form
     {
+
+
+
         return $form
             ->schema([
                 Section::make()
@@ -62,51 +66,22 @@ class VehicleHistoryResource extends Resource
                     ->placeholder('Ex. Glenn Aldrich Buenavente')
                     ->required(),
 
-
                     Forms\Components\Select::make('vehicle_id')
-                    ->label('make')
-                    ->relationship('vehicle', 'make', function ($get, $query) {
+                    ->label('Vehicle')
+                    ->relationship('vehicle', 'make_and_model', function ($get, $query) {
                         if ($get('account_id')) {
                             $query->where('account_id', $get('account_id'));
                         }
-                    Filter::make('is_unique')
-    ->baseQuery(fn (Builder $query): Builder => $query->groupBy('name'));
-
-                    })
-                    ->getOptionLabelUsing(function ($value) {
-                        return $value->make;
                     })
                     ->searchable()
                     ->preload()
                     ->native(false)
                     ->disabledOn('edit')
-                    ->searchPrompt('Search Vehicle by their make (ex. Honda, Toyota)')
-                    ->noSearchResultsMessage('No Make found.')
-                    ->placeholder('Ex. Honda')
+                    ->searchPrompt('Search Vehicle by make and model (e.g., Honda Civic)')
+                    ->noSearchResultsMessage('No Vehicle found.')
+                    ->placeholder('Ex. Honda Civic')
                     ->required(),
 
-                    Forms\Components\Select::make('vehicle_id')
-                    ->label('make')
-                    ->relationship('vehicle', 'make', function ($get, $query) {
-                        if ($get('account_id')) {
-                            $query->where('account_id', $get('account_id'));
-                        }
-                
-                        // Do not select 'make' here, as it will be included in baseQuery
-                        $query->select('id');
-                    })
-                    ->baseQuery(fn (Builder $query): Builder => $query->select('id', 'make')->groupBy('make'))
-                    ->getOptionLabelUsing(function ($value) {
-                        return $value->make;
-                    })
-                    ->searchable()
-                    ->preload()
-                    ->native(false)
-                    ->disabledOn('edit')
-                    ->searchPrompt('Search Vehicle by their make (ex. Honda, Toyota)')
-                    ->noSearchResultsMessage('No Make found.')
-                    ->placeholder('Ex. Honda')
-                    ->required(),
 
                 Forms\Components\Select::make('vehicle_year')
                 ->label('year')
@@ -255,8 +230,7 @@ class VehicleHistoryResource extends Resource
                     ->columns(2),
                     ]),
                     MarkdownEditor::make('notes')
-                    ->label('Advise')
-                    ->placeholder('Recommendation for next visit ex:Change brake pads'),
+                    ->placeholder('Come back for change oil'),
                 ]),
             ]);
     }
@@ -270,7 +244,7 @@ class VehicleHistoryResource extends Resource
                  ->label('Customer')
                     ->sortable()
                     ->searchable(),
-                    Tables\Columns\TextColumn::make('vehicle.model')
+                    Tables\Columns\TextColumn::make('vehicle.make_and_model')
                     ->label('model')
                     ->sortable()
                     ->searchable(),
@@ -284,7 +258,7 @@ class VehicleHistoryResource extends Resource
                     ->searchable(),
                     Tables\Columns\TextColumn::make('first_task')
                     ->label('Task Record')
-                    //->sortable()
+                    ->sortable()
                     ->searchable(),
 
                     Tables\Columns\TextColumn::make('created_at')
@@ -293,7 +267,6 @@ class VehicleHistoryResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('model')
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([

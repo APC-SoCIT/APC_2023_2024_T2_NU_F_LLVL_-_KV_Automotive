@@ -20,9 +20,12 @@ class Vehicle extends Model
         'image',
         'miles_per_gallon',
         'mileage',
-        'engine_no',// Assuming you have added this foreign key to connect with accounts
+        'engine_no',
+        'make_and_model',// Assuming you have added this foreign key to connect with accounts
         // Add other attributes you want to allow for mass assignment here
     ];
+
+
 
     // Define relationships or other configurations here
 
@@ -39,6 +42,24 @@ class Vehicle extends Model
     protected $casts = [
         'image' => 'array',
     ];
+
+    public function getMakeAndModelAttribute()
+    {
+        return "{$this->make} {$this->model}";
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($vehicle) {
+            $vehicle->make_and_model = $vehicle->getMakeAndModelAttribute();
+        });
+
+        static::updating(function ($vehicle) {
+            $vehicle->make_and_model = $vehicle->getMakeAndModelAttribute();
+        });
+    }
 
 }
 

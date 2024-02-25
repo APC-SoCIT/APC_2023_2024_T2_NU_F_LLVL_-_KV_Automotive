@@ -14,6 +14,19 @@ class Inventory extends Model
         'description',
         'quantity',
         'price',
+        'status',
         // Add other attributes you want to allow for mass assignment here
     ];
+    protected $casts = [
+        'price' => 'decimal:2',
+    ];
+
+    public function getStatusAttribute()
+    {
+        if ($this->quantity < 10) {
+            return 'Low Stock';
+        } else {
+            return 'In Stock';
+        }
+    }
 }

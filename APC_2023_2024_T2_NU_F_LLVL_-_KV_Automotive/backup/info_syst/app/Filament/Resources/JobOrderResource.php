@@ -54,7 +54,7 @@ class JobOrderResource extends Resource
                     ->placeholder('Ex.Glenn Aldrich Buenavente')
                     ->required(),
                     Forms\Components\Select::make('vehicle_id')
-                    ->relationship('vehicle', 'model', function ($get, $query) {
+                    ->relationship('vehicle', 'make_and_model', function ($get, $query) {
                         if ($get('account_id')) {
                             $query->where('account_id', $get('account_id'));
                         }
@@ -65,13 +65,14 @@ class JobOrderResource extends Resource
                     ->disabledOn('edit')
                     ->searchPrompt('Search Vehicle by their make (ex.Honda,Toyota)')
                     ->noSearchResultsMessage('No Vehicle found.')
-                    ->placeholder('Ex. Honda')
+                    ->placeholder('Ex. Honda City')
                     ->required(),
 
                 Forms\Components\Select::make('inventory_id')
                 ->relationship(name: 'inventory', titleAttribute: 'product_name')
                 ->preload()
                 ->searchable()
+                ->required()
                 ->disabledOn('edit')
                 ->searchPrompt('Search Inventory by their name (ex.Petron Engine Oil)')
                 ->noSearchResultsMessage('No Inventory Name found.')
@@ -79,6 +80,7 @@ class JobOrderResource extends Resource
                 ->native(false),
                 Forms\Components\TextInput::make('quantity_used')
                 ->numeric()
+                ->required()
                 ->disabledOn('edit')
                 ->placeholder('Ex. 1')
                 ->minValue(1),
@@ -125,9 +127,12 @@ class JobOrderResource extends Resource
                     ->searchable()
                     ->label('Customer')
                      ->sortable(),
-                Tables\Columns\TextColumn::make('vehicle.model')
+                Tables\Columns\TextColumn::make('vehicle.make_and_model')
                      ->searchable()
                     ->sortable(),
+                    Tables\Columns\TextColumn::make('task_performed')
+                    ->searchable()
+                   ->sortable(),
                     Tables\Columns\TextColumn::make('status')
                     ->sortable()
                     ->badge()
@@ -195,6 +200,8 @@ class JobOrderResource extends Resource
                             TextEntry::make('vehicle.model'),
                             TextEntry::make('inventory.product_name'),
                             TextEntry::make('quantity_used'),
+                            TextEntry::make('task_performed')
+                            ->label('Task'),
                             TextEntry::make('status')
                             ->badge()
                             ->color(function(string $state) : string{

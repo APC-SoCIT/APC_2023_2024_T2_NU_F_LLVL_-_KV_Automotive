@@ -51,12 +51,19 @@ class InventoryResource extends Resource
                 Forms\Components\TextInput::make('quantity')
                     ->placeholder('Ex. 1000')
                     ->required()
+                    ->minValue(1)
+                    ->maxValue(1000)
                     ->numeric(),
                 Forms\Components\TextInput::make('price')
                     ->placeholder('Ex. 500')
                     ->required()
                     ->numeric()
                     ->prefix('₱'),
+                Forms\Components\TextInput::make('status')
+                    ->label('Status')
+                    ->hidden()
+                    ->disabledOn('edit')
+                    ->readonly(),
     ])
             ]);
     }
@@ -78,8 +85,16 @@ class InventoryResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price')
                     ->money('PHP')
-                    ->searchable()  
+                    ->searchable()
                     ->sortable(),
+                    Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(function(string $state) : string{
+                        return match($state) {
+                          'Low Stock' => 'danger',
+                          'In Stock' => 'success',
+                        };
+                  }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -111,6 +126,8 @@ class InventoryResource extends Resource
                             TextEntry::make('quantity'),
                             TextEntry::make('price')
                             ->prefix('₱'),
+                            TextEntry::make('status')
+                            ->label('Status'),
                         ])
                         ->columns(2),
                 ])->slideOver(),

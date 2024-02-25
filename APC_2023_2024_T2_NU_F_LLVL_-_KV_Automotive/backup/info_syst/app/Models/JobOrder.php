@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class JobOrder extends Model
 {
@@ -44,9 +45,10 @@ class JobOrder extends Model
         static::updating(function ($jobOrder) {
             // Check if the inventory is updated, then handle the quantity change
             if ($jobOrder->isDirty('inventory_id')) {
-                // Increase the quantity for the old inventory
-                $jobOrder->getOriginal('inventory_id') && Inventory::find($jobOrder->getOriginal('inventory_id'))->increment('quantity', $jobOrder->quantity_used);
-                // Reduce the quantity for the new inventory
+                $oldInventory = Inventory::find($jobOrder->getOriginal('inventory_id'));
+                if ($oldInventory) {
+                    $oldInventory->increment('quantity', $jobOrder->quantity_used);
+                }
                 $jobOrder->inventory->decrement('quantity', $jobOrder->quantity_used);
             }
         });
