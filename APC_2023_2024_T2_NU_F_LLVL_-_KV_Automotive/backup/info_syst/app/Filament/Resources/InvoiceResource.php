@@ -126,7 +126,7 @@ class InvoiceResource extends Resource
                         ->columns(2),
                         ImageEntry::make('image')
                         ->width(700)
-                        ->height(500),
+                        ->height(1000),
                         TextEntry::make('notes'),
                 ])->slideOver(),
                 Tables\Actions\EditAction::make(),

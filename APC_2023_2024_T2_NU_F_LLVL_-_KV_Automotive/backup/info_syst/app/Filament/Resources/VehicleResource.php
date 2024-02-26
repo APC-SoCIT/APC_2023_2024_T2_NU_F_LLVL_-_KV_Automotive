@@ -234,30 +234,43 @@ class VehicleResource extends Resource
                 ImageColumn::make('image')
                     ->square(),
                 Tables\Columns\TextColumn::make('make')
-                    ->searchable(),
-                    Tables\Columns\TextColumn::make('make_and_model')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('model')
+                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('year')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('license_plate')
-                    ->searchable(),
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('color')
-                    ->searchable(),
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('chassis_no')
+                     ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                   Tables\Columns\TextColumn::make('engine_no')
                       ->searchable()
+                      ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('fuel_type')
-                    ->searchable(),
+                     ->sortable()
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                     Tables\Columns\TextColumn::make('miles_per_gallon')
                     ->searchable()
-                    ->label('Fuel Usage'),
+                    ->sortable()
+                    ->label('Fuel Usage')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('transmission')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -351,8 +364,6 @@ class VehicleResource extends Resource
             });
         }
     }
-
-
 
 
 
