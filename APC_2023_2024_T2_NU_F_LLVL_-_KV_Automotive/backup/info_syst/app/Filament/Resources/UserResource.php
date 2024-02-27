@@ -44,12 +44,14 @@ class UserResource extends Resource
                     ->maxLength(255),
                     Forms\Components\Select::make('role')
                     ->required()
+                    ->label('Access')
                     ->options(User::ROLES)
                     ->visible(auth()->user()->isAdmin())
                     ->native(false)
                     ->default('USER'),
                     Forms\Components\Select::make('roles')
                     ->relationship('roles', 'name')
+                    ->label('Permission')
                     ->multiple()
                     ->preload()
                     ->searchable(),

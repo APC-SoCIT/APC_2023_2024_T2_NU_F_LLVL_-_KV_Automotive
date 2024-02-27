@@ -18,7 +18,7 @@ class VehicleHistory extends Model
         'performed_by',
         'validated_by',
         'notes'
-    ];
+    ];  
 
     protected $casts = [
        'task_performed' => 'json',

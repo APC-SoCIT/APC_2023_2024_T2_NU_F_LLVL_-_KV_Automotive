@@ -129,7 +129,10 @@ class InvoiceResource extends Resource
                         ->height(1000),
                         TextEntry::make('notes'),
                 ])->slideOver(),
+                Tables\Actions\ActionGroup::make([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

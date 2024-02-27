@@ -56,6 +56,7 @@
             border-collapse: collapse;
             border-spacing: 0;
             margin-bottom: 20px;
+            margin-left: -3%
         }
 
         table th,
@@ -81,6 +82,7 @@
         table .qty,
         table .total {
             background: #EEEEEE;
+
         }
 
         table tbody tr:last-child td {
@@ -151,6 +153,7 @@
                 <tr>
                     <th class="no">#</th>
                     <th class="desc">TASK</th>
+                    <th class="Part">Part Used</th>
                     <th class="date">DATE PERFORMED</th>
                     <th class="mileage">MILEAGE</th>
                     <th class="performed-by">PERFORMED BY</th>
@@ -162,6 +165,7 @@
                     <tr>
                         <td class="no">{{ $index + 1 }}</td>
                         <td class="desc">{{ $task['task'] }}</td>
+                        <td class="Part">{{ $task['Part_Used'] }}</td>
                         <td class="date">{{ $task['date_performed'] }}</td>
                         <td class="mileage">{{ $task['mileage'] }}</td>
                         <td class="performed_by">{{ $task['performed_by'] }}</td>

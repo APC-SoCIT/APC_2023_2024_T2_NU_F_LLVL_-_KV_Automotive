@@ -209,7 +209,13 @@ class VehicleHistoryResource extends Resource
                             ->required()
                             ->regex('/^[a-zA-Z\s]+$/')
                             ->maxLength(255),
+                            Forms\Components\TextInput::make('Part_Used')
+                            ->label('Part Used')
+                            ->placeholder('Petron Engine Oil')
+                            ->regex('/^[a-zA-Z\s]+$/')
+                            ->maxLength(255),
                             Forms\Components\TextInput::make('mileage')
+                            ->required()
                             ->placeholder('30,0000')
                             ->label('Mileage')
                             ->numeric(),
@@ -309,6 +315,7 @@ class VehicleHistoryResource extends Resource
                         RepeatableEntry::make('task_performed')
                         ->schema([
                             TextEntry::make('task'),
+                            TextEntry::make('Part_Used'),
                             TextEntry::make('mileage'),
                             TextEntry::make('date_performed'),
                             // Add more fields within the repeater if needed

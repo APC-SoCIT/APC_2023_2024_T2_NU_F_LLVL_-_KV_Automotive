@@ -131,7 +131,10 @@ class InventoryResource extends Resource
                         ])
                         ->columns(2),
                 ])->slideOver(),
+                Tables\Actions\ActionGroup::make([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
