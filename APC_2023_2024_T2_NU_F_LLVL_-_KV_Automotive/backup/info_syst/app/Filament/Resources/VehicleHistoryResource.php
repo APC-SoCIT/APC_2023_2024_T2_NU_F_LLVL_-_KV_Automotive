@@ -298,19 +298,28 @@ class VehicleHistoryResource extends Resource
                     // Inside, we can treat this as any info list and add all the fields we want!
                     \Filament\Infolists\Components\Section::make('Vehicle Details')
                     ->icon('heroicon-m-truck')
-                        ->schema([
-                         TextEntry::make('account.full_name')
-                            ->label('Customer'),
-                         TextEntry::make('vehicle.make'),
-                         TextEntry::make('vehicle.model'),
-                         TextEntry::make('vehicle.year'),
-                         TextEntry::make('vehicle.license_plate'),
-                         TextEntry::make('vehicle.color'),
-                         TextEntry::make('vehicle.chassis_no'),
-                         TextEntry::make('vehicle.engine_no'),
-                         TextEntry::make('performed_by'),
-                         TextEntry::make('notes'),
-                        ])
+                    ->schema([
+                        TextEntry::make('account.full_name')
+                           ->label('Customer'),
+                        TextEntry::make('vehicle.make')
+                        ->label('make'),
+                        TextEntry::make('vehicle.model')
+                        ->label('model'),
+                        TextEntry::make('vehicle.year')
+                        ->label('year'),
+                        TextEntry::make('vehicle.license_plate')
+                        ->label('license plate'),
+                        TextEntry::make('vehicle.color')
+                        ->label('color'),
+                        TextEntry::make('vehicle.chassis_no')
+                        ->label('chassis no.'),
+                        TextEntry::make('vehicle.engine_no')
+                        ->label('engine no.'),
+                        TextEntry::make('performed_by')
+                        ->label('performed by:'),
+                        TextEntry::make('notes')
+                        ->label('notes'),
+                       ])
                         ->columns(2),
                         RepeatableEntry::make('task_performed')
                         ->schema([

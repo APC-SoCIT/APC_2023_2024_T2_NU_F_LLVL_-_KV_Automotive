@@ -128,6 +128,10 @@
             padding: 8px 0;
             text-align: center;
         }
+
+        @page {
+    size: landscape;
+    }
     </style>
 </head>
 <body>
