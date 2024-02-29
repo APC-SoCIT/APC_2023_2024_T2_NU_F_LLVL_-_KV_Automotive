@@ -16,7 +16,7 @@ class LoginController extends Controller
             return response()->json(['redirect' => route('login')]);
         } else {
             // Authentication failed
-            return response()->json(['message' => 'Invalid email or password'], 4   22);
+            return response()->json(['message' => 'Invalid email or password'], 422);
         }
     }
 }
