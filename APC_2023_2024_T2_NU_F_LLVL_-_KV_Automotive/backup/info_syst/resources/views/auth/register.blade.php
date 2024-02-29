@@ -38,6 +38,7 @@
             padding: 30px 40px;
             box-shadow: 0 0 30px #ffffff;
             position: relative;
+            text-align: center;
         }
 
         .wrapper a {
@@ -49,13 +50,20 @@
         .wrapper img {
             width: 335px;
             height: auto;
-            margin: 0 auto;
+            margin: 0 auto 20px auto;
         }
 
         .error-message {
-            color: #ff0000;
+            color: #EECD51;
             font-size: 14px;
             margin-top: 10px;
+        }
+
+        .password-error-message {
+            color: #EECD51;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: center;
         }
 
         .wrapper .input-box {
@@ -154,13 +162,9 @@
             <img src="{{ asset('storage/llbl.png') }}" alt="Home" title="Go to Home" />
         </a>
 
-        <div class="error-message">
-            @error('password')
-                {{ $message }}
-            @enderror
-        </div>
+        <div class="error-message" id="error-message"></div>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" onsubmit="return validatePassword()">
             @csrf
 
             <div class="input-box">
@@ -174,13 +178,13 @@
             </div>
 
             <div class="input-box">
-                <input id="password" type="password" placeholder="Password" name="password" required autocomplete="new-password">
+                <input id="password" type="password" placeholder="Password" name="password" required autocomplete="new-password" onkeyup="checkPassword()">
                 <i class='bx bxs-lock-alt'></i>
             </div>
 
             <div class="input-box">
-                <input id="password_confirmation" type="password" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
-                <i class="show-password-icon bx bx-hide"></i>
+                <input id="password_confirmation" type="password" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password" onkeyup="checkPassword()">
+                <i class="show-password-icon bx bx-hide" onclick="togglePassword()"></i>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -195,20 +199,51 @@
                 <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
             </div>
         </form>
+        <div class="password-error-message" id="password-error-message"></div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        function validatePassword() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("password_confirmation").value;
+
+            const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+
+            if (!passwordRegex.test(password)) {
+                document.getElementById("password-error-message").innerHTML = "Password must be at least 8 characters long and contain at least one number and one special character: !@#$%^&*()";
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById("error-message").innerHTML = "Passwords do not match";
+                return false;
+            }
+
+            return true;
+        }
+
+        function checkPassword() {
+            const password = document.getElementById("password").value;
+            const passwordMessage = document.getElementById("password-error-message");
+
+            const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+
+            if (passwordRegex.test(password)) {
+                passwordMessage.innerHTML = "";
+            }
+        }
+
+        function togglePassword() {
             const passwordInput = document.getElementById("password");
             const confirmPasswordInput = document.getElementById("password_confirmation");
             const showPasswordIcon = document.querySelector(".show-password-icon");
 
-            showPasswordIcon.addEventListener("click", function() {
-                const type = passwordInput.type === "password" ? "text" : "password";
-                passwordInput.type = type;
-                confirmPasswordInput.type = type;
-            });
-        });
+            const type = passwordInput.type === "password" ? "text" : "password";
+            passwordInput.type = type;
+            confirmPasswordInput.type = type;
+
+            showPasswordIcon.classList.toggle("bx-show");
+        }
     </script>
 </body>
 </html>

@@ -49,7 +49,7 @@ class AdminPanelProvider extends PanelProvider
                     slug: 'my-profile' // Sets the slug for the profile page (default = 'my-profile')
                 )
                 ->enableTwoFactorAuthentication(
-                    force: false, // force the user to enable 2FA before they can use the application (default = false)
+                    force: true, // force the user to enable 2FA before they can use the application (default = false)
                 )
             )
             ->plugins([
